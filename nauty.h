@@ -28,9 +28,9 @@ it is necessary to check they are correct.
 #define SIZEOF_INT 4
 #define SIZEOF_LONG 4
 #define SIZEOF_LONG_LONG 8   /* 0 if nonexistent */
-#define SIZEOF_POINTER 4
-#define SIZEOF_INT128_T 0   /* 0 if nonexistent */
-#define SIZEOF_INT128 0   /* 0 if nonexistent */
+#define SIZEOF_POINTER 8
+#define SIZEOF_INT128_T 16   /* 0 if nonexistent */
+#define SIZEOF_INT128 16   /* 0 if nonexistent */
 
 /* Note that the following is only for running nauty in multiple threads
    and will slow it down a little otherwise. */
