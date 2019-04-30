@@ -28,9 +28,9 @@ it is necessary to check they are correct.
 #define SIZEOF_INT 4
 #define SIZEOF_LONG 4
 #define SIZEOF_LONG_LONG 8   /* 0 if nonexistent */
-#define SIZEOF_POINTER 8
-#define SIZEOF_INT128_T 16   /* 0 if nonexistent */
-#define SIZEOF_INT128 16   /* 0 if nonexistent */
+#define SIZEOF_POINTER 4
+#define SIZEOF_INT128_T 0   /* 0 if nonexistent */
+#define SIZEOF_INT128 0   /* 0 if nonexistent */
 
 /* Note that the following is only for running nauty in multiple threads
    and will slow it down a little otherwise. */
@@ -172,8 +172,8 @@ it is necessary to check they are correct.
 *       28-Nov-96 : - include sys/types.h if not ANSI (tentative!)           *
 *       24-Jan-97 : - and stdlib.h if ANSI                                   *
 *                   - removed use of cfree() from UNIX variants              *
-*       25-Jan-97 : - changed options.getcanon from boolean to int           *
-*                     Backwards compatibility is ok, as boolean and int      *
+*       25-Jan-97 : - changed options.getcanon from booleann to int           *
+*                     Backwards compatibility is ok, as booleann and int      *
 *                     are the same.  Now getcanon=2 means to get the label   *
 *                     and not care about the group.  Sometimes faster.       *
 *        6-Feb-97 : - Put in #undef for FALSE and TRUE to cope with          *
@@ -825,8 +825,7 @@ typedef int nvector,np2vector;
 
     /* typedefs for sets, graphs, permutations, etc.: */
 
-// renaming "boolean" to "booleann" to avoid name clashes in MINGW
-typedef int booleann;    /* boolean MUST be the same as int */
+typedef int booleann;    /* booleann MUST be the same as int */
 
 #define UPROC void      /* obsolete */
 

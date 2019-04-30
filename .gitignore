@@ -1,0 +1,15 @@
+*.obj
+*.tlog
+*.exe
+*.idb
+*.pdb
+*.ilk
+*.log
+*.asv
+
+# VS code
+*.ipch
+*.bin
+
+This_is_nauty27rc2
+This_is_nauty27rc2.

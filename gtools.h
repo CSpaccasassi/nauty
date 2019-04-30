@@ -77,10 +77,6 @@ extern int errno;
 #include <signal.h>
 #endif
 
-#ifdef _WIN32
-#include "stddef.h"
-#endif
-
 #if HAVE_PERROR
 #define ABORT(msg) do {if (errno != 0) perror(msg); exit(1);} while(0)
 #else

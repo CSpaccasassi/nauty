@@ -225,7 +225,7 @@ extern "C" {
 #endif
  
 extern void gtools_check(int,int,int,int);
-extern FILE *opengraphfile(char*,int*,boolean,long);
+extern FILE *opengraphfile(char*,int*,booleann,long);
 extern void writeline(FILE*,char*);
 extern char *gtools_getline(FILE*);     /* formerly getline() */
 extern int graphsize(char*);
@@ -235,9 +235,10 @@ extern void stringtograph(char*,graph*,int);
 extern void stringtograph_inc(char*,graph*,int,graph*,int);
 extern size_t edgecount(char*);
 extern int checkgline(char*);
-extern graph *readgg(FILE*,graph*,int,int*,int*,boolean*);
+extern graph *readgg(FILE*,graph*,int,int*,int*,booleann*);
+extern graph *readggcrn(FILE*,graph*,int,int*,int*,booleann*,int);
 extern graph *readg(FILE*,graph*,int,int*,int*);
-extern graph *readgg_inc(FILE*,graph*,int,int*,int*,graph*,int,int,boolean*);
+extern graph *readgg_inc(FILE*,graph*,int,int*,int*,graph*,int,int,booleann*);
 extern graph *readg_inc(FILE*,graph*,int,int*,int*,graph*,int,int);
 extern char *ntog6(graph*,int,int);
 extern char *ntos6(graph*,int,int);
@@ -257,7 +258,7 @@ extern void writepc_sg(FILE*,sparsegraph*);
 extern void stringtosparsegraph(char*,sparsegraph*,int*);
 extern sparsegraph *read_sg(FILE*,sparsegraph*);
 extern sparsegraph *read_sg_loops(FILE*,sparsegraph*,int*);
-extern sparsegraph *read_sgg_loops(FILE*,sparsegraph*,int*,boolean*);
+extern sparsegraph *read_sgg_loops(FILE*,sparsegraph*,int*,booleann*);
 extern sparsegraph *readpc_sg(FILE*,sparsegraph*);
 extern sparsegraph *readpcle_sg(FILE*,sparsegraph*);
 extern char *getecline(FILE*);
@@ -275,27 +276,27 @@ extern void arg_sequence_min(char**,char*,long*,int,int,int*,char*);
 extern void writerange(FILE*,int,long,long);
 extern void gt_abort(const char*);
 extern char *stringcopy(char*);
-extern boolean strhaschar(char*,int);
+extern booleann strhaschar(char*,int);
 
-extern void fcanonise(graph*,int,int,graph*,char*,boolean);
+extern void fcanonise(graph*,int,int,graph*,char*,booleann);
 extern void fcanonise_inv
              (graph*,int,int,graph*,char*,void(*)(graph*,int*,int*,int,
-               int,int,int*,int,boolean,int,int),int,int,int,boolean);
+               int,int,int*,int,booleann,int,int),int,int,int,booleann);
 extern void fcanonise_inv_sg
            (sparsegraph*,int,int,sparsegraph*,char*,void(*)(graph*,int*,int*,
-             int,int,int,int*,int,boolean,int,int),int,int,int,boolean);
+             int,int,int,int*,int,booleann,int,int),int,int,int,booleann);
 extern void setlabptn(int*,int*,int*,int);
 extern void fgroup(graph*,int,int,char*,int*,int*);
 extern void fgroup_inv
 	     (graph*,int,int,char*,int*,int*,void(*)(graph*,int*,int*,int,
-                int,int,int*,int,boolean,int,int),int,int,int);
+                int,int,int*,int,booleann,int,int),int,int,int);
 extern int istransitive(graph*,int,int,graph*);
 extern void tg_canonise(graph*,graph*,int,int);
 
 extern TLS_ATTR int readg_code;
 extern TLS_ATTR char *readg_line;
 extern TLS_ATTR size_t ogf_linelen;
-extern TLS_ATTR boolean is_pipe;
+extern TLS_ATTR booleann is_pipe;
 
 #ifdef __cplusplus
 }
