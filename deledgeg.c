@@ -23,8 +23,8 @@ main(int argc, char *argv[])
 {
     char *infilename,*outfilename;
     FILE *infile,*outfile;
-    boolean badargs,dolabel,quiet,dswitch;
-    boolean digraph;
+    booleann badargs,dolabel,quiet,dswitch;
+    booleann digraph;
     int i,j,m,n,v,w,argnum;
     int codetype,outcode;
     graph *g,*gq;
@@ -32,7 +32,7 @@ main(int argc, char *argv[])
     char *arg,sw;
     setword *gv,*gw;
     int mindeg,actmindeg,degv;
-    boolean zswitch;
+    booleann zswitch;
     double t;
 #if MAXN
     graph h[MAXN*MAXM];

@@ -109,9 +109,9 @@ FILE *fdopen(int, const char*);
 static struct invarrec
 {
     void (*entrypoint)(graph*,int*,int*,int,int,int,int*,
-                      int,boolean,int,int);
+                      int,booleann,int,int);
     void (*entrypoint_sg)(graph*,int*,int*,int,int,int,int*,
-                      int,boolean,int,int);
+                      int,booleann,int,int);
     char *name;
 } invarproc[]
     = {{NULL, NULL, "none"},
@@ -139,7 +139,7 @@ static struct invarrec
 
 static pid_t
 beginsort(FILE **sortin, FILE **sortout, char *tempdir,
-          boolean vdswitch, boolean keep)
+          booleann vdswitch, booleann keep)
 /* begin sort process, open streams for i/o to it, and return its pid */
 {
     int pid;
@@ -229,7 +229,7 @@ tosort(FILE *f, char *cdstr, char *dstr, nauty_counter index)
 
 /**************************************************************************/
 
-static boolean
+static booleann
 fromsort(FILE *f, char **cdstr, char **dstr, nauty_counter *index)
 /* read one graph from sort process */
 {
@@ -277,10 +277,10 @@ main(int argc, char *argv[])
     int status,loops;
     char *dstr,*cdstr,*prevdstr,*prevcdstr;
     char sw,*fmt;
-    boolean badargs,quiet,vswitch,dswitch,kswitch,format,uswitch;
-    boolean iswitch,Iswitch,Kswitch,Tswitch;
-    boolean zswitch,sswitch,gswitch,Sswitch,tswitch;
-    boolean digraph;
+    booleann badargs,quiet,vswitch,dswitch,kswitch,format,uswitch;
+    booleann iswitch,Iswitch,Kswitch,Tswitch;
+    booleann zswitch,sswitch,gswitch,Sswitch,tswitch;
+    booleann digraph;
     nauty_counter numread,prevnumread,numwritten,classsize;
     int m,n,i,ii,argnum,line;
     int outcode,codetype;

@@ -53,7 +53,7 @@ typedef struct weightwhere {
 #define NAUTY_KILLED (-12)
 
 typedef struct Candidate {
-    boolean sortedlab;
+    booleann sortedlab;
     int *invlab;
     int *lab;
     int code;
@@ -165,22 +165,22 @@ typedef struct TracesVars {
 } TracesVars;
 
 typedef struct TracesInfo {
-    boolean autofound;
-    boolean deg_one;
-    boolean first_matching;
-    boolean regular;
-    boolean exitfromref;
-    boolean identitygroup;
-    boolean minimalinorbits;
-    boolean thegraphisparse;
-    boolean thegrouphaschanged;
-    boolean thereisnextlevel;
-    boolean useTempOrbits1;
-    boolean useTempOrbits2;
+    booleann autofound;
+    booleann deg_one;
+    booleann first_matching;
+    booleann regular;
+    booleann exitfromref;
+    booleann identitygroup;
+    booleann minimalinorbits;
+    booleann thegraphisparse;
+    booleann thegrouphaschanged;
+    booleann thereisnextlevel;
+    booleann useTempOrbits1;
+    booleann useTempOrbits2;
 } TracesInfo;
 
 typedef struct TracesSpine {
-    boolean thetracexists;
+    booleann thetracexists;
     Candidate *listend;
     Candidate *liststart;
     int ccend;
@@ -231,7 +231,7 @@ typedef struct grph_strct {
     int *e;
     int *w;
     int d;
-    boolean one;
+    booleann one;
 } grph_strct;
 
 typedef struct ExpPathInfo {
@@ -240,11 +240,11 @@ typedef struct ExpPathInfo {
     int info;
 } ExpPathInfo;
 
-static boolean traces_degree_refine(sparsegraph*, Candidate*, int, Partition*,
+static booleann traces_degree_refine(sparsegraph*, Candidate*, int, Partition*,
                                     struct TracesVars*, struct TracesInfo*, int, int*);
 static int  traces_vertexclass_refine (int, int*, int*, Candidate*, Partition*, int*);
 static int  traces_refine(Candidate*, int, Partition*,
-                          struct TracesVars*, struct TracesInfo*, int, boolean);
+                          struct TracesVars*, struct TracesInfo*, int, booleann);
 static void traces_refine_notrace(Candidate*, int, Partition*,
                                   struct TracesVars*, struct TracesInfo*);
 static void traces_refine_maketrie(Candidate*, int, Partition*,
@@ -257,69 +257,69 @@ static int  traces_refine_refine(sparsegraph*, Candidate*, int, Partition*,
                                  struct TracesVars*, struct TracesInfo*);
 static void  refine_tr_refine(Candidate*, int, Partition*,
                              struct TracesVars*, struct TracesInfo*);
-static int given_gens(sparsegraph*, permnode*, int*, boolean);
+static int given_gens(sparsegraph*, permnode*, int*, booleann);
 static void quickSort(int*, int);
 static struct Partition* NewPartition(int);
 static struct Candidate* NewCandidate(int, Candidate**, int);
 static void NewPartSpine(int, int);
 static int FreeList(Candidate*, int);
 static int FixBase(int*, struct TracesVars*, Candidate*, int, int);
-static boolean FixedBase(int*, struct TracesVars*, Candidate*, int, int);
+static booleann FixedBase(int*, struct TracesVars*, Candidate*, int, int);
 static void factorial(double*, int*, int);
 static void factorial2(double*, int*, int);
 static int CheckForAutomorphisms(Candidate*, Candidate*, struct TracesVars*, struct TracesInfo*, int, int, Partition*);
 static int CheckForSingAutomorphisms(Candidate*, Partition*, Candidate*, struct TracesVars*, struct TracesInfo*, int, int);
 static int CheckForMatching(Candidate*, Candidate*, Partition*, struct TracesVars*, struct TracesInfo*, int, int);
 static void Individualize(Partition*, Candidate*, int, int, int, int);
-static boolean TreeFyTwo(int, Candidate*, Candidate*, Partition*, int, struct TracesVars*, struct TracesInfo*);
+static booleann TreeFyTwo(int, Candidate*, Candidate*, Partition*, int, struct TracesVars*, struct TracesInfo*);
 static void ExperimentalStep(Partition*, Candidate*, struct TracesVars*, struct TracesInfo*, int, int);
-static boolean TargetCell(Candidate*, Partition*, int, struct TracesVars*, int);
-static boolean TargetCellFirstPath(Candidate*, Partition*, struct TracesVars*);
+static booleann TargetCell(Candidate*, Partition*, int, struct TracesVars*, int);
+static booleann TargetCellFirstPath(Candidate*, Partition*, struct TracesVars*);
 static int TargetCellExpPath(Candidate*, Partition*, struct TracesVars*);
-static boolean TargetCellSmall(Candidate*, Partition*, int, struct TracesVars*, int);
-static boolean TargetCellFirstPathSmall(Candidate*, Partition*, struct TracesVars*);
+static booleann TargetCellSmall(Candidate*, Partition*, int, struct TracesVars*, int);
+static booleann TargetCellFirstPathSmall(Candidate*, Partition*, struct TracesVars*);
 static int TargetCellExpPathSmall(Candidate*, Partition*, struct TracesVars*);
-static boolean SelectNextLevel(int, struct TracesVars*, struct TracesInfo*);
+static booleann SelectNextLevel(int, struct TracesVars*, struct TracesInfo*);
 static void CopyCand(Candidate*, Candidate*, int, int*, int*);
 static struct trie* trie_new(int, struct TracesVars*);
 static struct trie* trie_make(trie*, int, int, struct TracesVars*);
 static struct trie* trie_comp(trie*, int);
 static void trie_dump(trie*);
 static void trie_class(trie*, int*);
-static void RemoveFromLevel(int, int, int, boolean);
+static void RemoveFromLevel(int, int, int, booleann);
 static int CompStage0(Partition*, Partition*, Candidate*, Candidate*, int, int, struct TracesVars*, struct TracesInfo*);
 static int CompStage1(Partition*, Partition*, Candidate*, Candidate*, int, int, struct TracesVars*, struct TracesInfo*);
 static int CompStage2(Partition*, Partition*, Candidate*, Candidate*, int, int, struct TracesVars*, struct TracesInfo*);
 static void grouporderplus(sparsegraph*, Candidate*, Partition*, permnode**, double*, int*, int, struct TracesVars*, struct TracesInfo*);
-static boolean Prefix(Candidate*, Candidate*, int);
-static boolean findperm(permnode*, int*, int);
+static booleann Prefix(Candidate*, Candidate*, int);
+static booleann findperm(permnode*, int*, int);
 static int spinelementorbsize(int*, int*, int, int);
 static trielist* searchtrie_new(int, struct TracesVars*);
 static searchtrie* searchtrie_make(Candidate*, Candidate*, int, struct TracesVars*);
-static boolean lookup(searchtrie*);
+static booleann lookup(searchtrie*);
 static int* findcurrorbits(schreier*, int);
 static int Preprocess(sparsegraph*, permnode**, Candidate*, int, Partition*, struct TracesVars*);
-static void MakeTree(int, int, sparsegraph*, int, struct TracesVars*, boolean);
+static void MakeTree(int, int, sparsegraph*, int, struct TracesVars*, booleann);
 static void MakeCanTree(int, sparsegraph*, int, Candidate*, Partition*, struct TracesVars*);
 static int maxint(int, int);
 static int minint(int, int);
 static void orbjoin_sp_perm(int*, int*, int*, int, int*);
 static void orbjoin_sp_pair(int*, int*, int, int, int, int*);
-static boolean isautom_sg_pair(graph*, int*, boolean, int, int, struct TracesVars*);
+static booleann isautom_sg_pair(graph*, int*, booleann, int, int, struct TracesVars*);
 static void SetAutom(int, int, struct TracesVars*);
 static void ResetAutom(int, int, struct TracesVars*);
 static void PrintVect(int*, int, int, int);
 static void putgraphplus_sg(FILE*, sparsegraph*, int);
-static boolean VerifyId(int *p, int n);
+static booleann VerifyId(int *p, int n);
 static void PrintPartition(int*, int*, int, int, int);
 static void Place(int, Candidate*, Partition*);
 static int NonSingDeg(int, Candidate*, Partition*);
 static int NonSingDegPlus1(Candidate*, Partition*, int, TracesVars*);
 static void NonSingDegPlus2(Candidate*, Partition*, int, TracesVars*);
 static void Edge_Delete(int, int, Candidate*, TracesVars*);
-static boolean VerifyPart(Partition*, int, int);
+static booleann VerifyPart(Partition*, int, int);
 static int VerifyPerm(int*, int,int);
-static boolean VerifyCand(Candidate*, int, int);
+static booleann VerifyCand(Candidate*, int, int);
 static int FirstNeighbour(int, Candidate*, Partition*, int*, int, int*, int);
 static int NextNeighbour(int, Candidate*, Partition*, int*, int, int*, int);
 static sparsegraph* copy_sg_structure(sparsegraph*, sparsegraph*);
@@ -698,8 +698,8 @@ DYNALLSTAT(int, BreakSteps, BreakSteps_sz);
 DYNALLSTAT(int, CStack, CStack_sz);
 DYNALLSTAT(int, CurrOrbSize, CurrOrbSize_sz);
 DYNALLSTAT(int, CurrRefCells, CurrRefCells_sz);
-DYNALLSTAT(boolean, Diff, Diff_sz);
-DYNALLSTAT(boolean, Factorials, Factorials_sz);
+DYNALLSTAT(booleann, Diff, Diff_sz);
+DYNALLSTAT(booleann, Factorials, Factorials_sz);
 DYNALLSTAT(int, fix, fix_sz);
 DYNALLSTAT(int, IDENTITY_PERM, IDENTITY_PERM_sz);
 DYNALLSTAT(int, Markers, Markers_sz);
@@ -748,8 +748,8 @@ static TLS_ATTR int AUTPERM[MAXN];
 static TLS_ATTR int BreakSteps[MAXN];
 static TLS_ATTR int CurrOrbSize[MAXN];
 static TLS_ATTR int CurrRefCells[MAXN];
-static TLS_ATTR boolean Diff[MAXN];
-static TLS_ATTR boolean Factorials[MAXN];
+static TLS_ATTR booleann Diff[MAXN];
+static TLS_ATTR booleann Factorials[MAXN];
 static TLS_ATTR int fix[MAXN];
 static TLS_ATTR int IDENTITY_PERM[MAXN];
 static TLS_ATTR int Markers[MAXN];
@@ -1046,7 +1046,7 @@ Traces(sparsegraph *g_arg, int *lab, int *ptn,
     }
     
     if (tv->preprocessed) {
-        memset(Diff,0,n*sizeof(boolean));
+        memset(Diff,0,n*sizeof(booleann));
         for (i=0; i<n; i++) {
             if ((TheGraph[i].d > 1) && (tv->input_graph->d[i] != TheGraph[i].d))
                 Diff[i] = TRUE;
@@ -1363,7 +1363,7 @@ int traces_refine(Candidate *Cand,
                   struct TracesVars* tv,
                   struct TracesInfo *ti,
                   int num_indv,
-                  boolean make_code) {
+                  booleann make_code) {
     
     int i, j, k, jk, sc, ind0, ind1, ind2, ind3, ind4, tlp1, labi;
     int value, iend, newcell;
@@ -1374,7 +1374,7 @@ int traces_refine(Candidate *Cand,
     int Sparse = TRUE;
     int *lab, *cls, *InvLab, *TracePos, *SplitCell, *LabCell, *TraceEnd, Traceccend, *Tracestpend;
     int BigCell, BigCellPos, BigCellSize;
-    boolean TraceCell = FALSE;
+    booleann TraceCell = FALSE;
     int *nghb;
     int conta;
     const int variation = 0;
@@ -3901,7 +3901,7 @@ int traces_refine_sametrace(Candidate *Cand,
     int Sparse = TRUE;
     int *lab, *cls, *InvLab, *TracePos, *SplitCell, *LabCell, *TraceEnd, Traceccend, *Tracestpend;
     int BigCell, BigCellPos, BigCellSize;
-    boolean TraceCell = FALSE;
+    booleann TraceCell = FALSE;
     int *nghb;
     const int variation = 0;
     int currentweight, weightstart, weightend, currentcell, currentsize;
@@ -4743,7 +4743,7 @@ void refine_tr_refine(Candidate *Cand,
     int Sparse = TRUE;
     int *lab, *cls, *InvLab, *TracePos, *SplitCell, *LabCell, TraceEnd, Traceccend, Tracestpend;
     int BigCell, BigCellPos, BigCellSize;
-    boolean TraceCell = FALSE;
+    booleann TraceCell = FALSE;
     int *nghb;
     const int variation = 0;
     int currentweight, weightstart, weightend, currentcell, currentsize;
@@ -5334,9 +5334,9 @@ void Allocate_Traces_Structures(int n) {
     DYNALLOC1(int, BreakSteps, BreakSteps_sz, n, "Traces");
     DYNALLOC1(int, CurrOrbSize, CurrOrbSize_sz, n, "Traces");
     DYNALLOC1(int, CurrRefCells, CurrRefCells_sz, n, "Traces");
-    DYNALLOC1(boolean, Diff, Diff_sz, n, "Traces");
+    DYNALLOC1(booleann, Diff, Diff_sz, n, "Traces");
     DYNALLOC1(int, CStack, CStack_sz, n, "Traces");
-    DYNALLOC1(boolean, Factorials, Factorials_sz, n, "Traces");
+    DYNALLOC1(booleann, Factorials, Factorials_sz, n, "Traces");
     DYNALLOC1(int, fix, fix_sz, n, "Traces");
     DYNALLOC1(int, IDENTITY_PERM, IDENTITY_PERM_sz, n, "Traces");
     DYNALLOC1(int, Markers, Markers_sz, n, "Traces");
@@ -6005,7 +6005,7 @@ int CheckForMatching(Candidate *CurrCand, Candidate *NextCand, Partition *Part, 
     Candidate *CheckAutList;
     int *cls;
     searchtrie *TrieCandFrom, *TrieCheckFrom;
-    boolean CodeVerify;
+    booleann CodeVerify;
     
     SpineTL = Spine+tv->tolevel;
     CheckAutList = SpineTL->liststart;
@@ -6308,7 +6308,7 @@ int CompStage0(Partition *CurrPart, Partition *NextPart, Candidate *CurrCand, Ca
                int m, int n, struct TracesVars* tv, struct TracesInfo *ti) {
     int i, j, i1, j2, k, cu, cu1, num_indv;
     int temp, tmp, auxcode, search_vtx, gom_level;
-    boolean closeloop, firstsing, has_nexttcell;
+    booleann closeloop, firstsing, has_nexttcell;
     Candidate *SpTLliststart, *AuxCand;
     searchtrie *TreeNode, *TreeNode1, *TreeNode2;
     
@@ -7024,9 +7024,9 @@ int CompStage2(Partition *CurrPart, Partition *NextPart, Candidate *CurrCand, Ca
     Candidate *AuxCand;
     searchtrie *TreeNode, *TreeNode1, *TreeNode2;
     int *CuOrb,*AuxOrb;
-    boolean has_nexttcell = FALSE;
+    booleann has_nexttcell = FALSE;
     searchtrie *TrieNode;
-    boolean schreierwrong;
+    booleann schreierwrong;
     
 #ifdef NAUTY_IN_MAGMA
     if (main_seen_interrupt) return NAUTY_KILLED;
@@ -7627,7 +7627,7 @@ void factorial2(double *size1, int *size2, int k) {
     }
 }
 
-boolean findperm(permnode *pn, int *p, int n) {
+booleann findperm(permnode *pn, int *p, int n) {
     permnode *rn;
     
     if (!pn) {
@@ -7731,7 +7731,7 @@ int FixBase(int *fix, struct TracesVars *tv, Candidate *Cand, int from, int to) 
     return j;
 }
 
-boolean FixedBase(int *fix, struct TracesVars *tv, Candidate *Cand, int from, int to) {
+booleann FixedBase(int *fix, struct TracesVars *tv, Candidate *Cand, int from, int to) {
     int i, k, nfix;
     
     nfix = 0;
@@ -7772,7 +7772,7 @@ int FreeList(Candidate *List, int cond) {
 
 /* Check if the permutations in the list gens are automorphisms,
  * also set mark and refcount fields and initialise orbits. */
-int given_gens(sparsegraph *g, permnode *gens, int *orbits, boolean digraph) {
+int given_gens(sparsegraph *g, permnode *gens, int *orbits, booleann digraph) {
     int i, m, n, norbs;
     permnode *pn;
     
@@ -7809,7 +7809,7 @@ void grouporderplus(sparsegraph *sg_orig, Candidate *Cand, Partition *Part, perm
     
     searchtrie *TrieNode;
     int NSFCInd, ind;
-    boolean do_ngh = FALSE;
+    booleann do_ngh = FALSE;
     
     numvertices = n;
     memcpy(CanonIndices, IDENTITY_PERM, n*sizeof(int));
@@ -8562,7 +8562,7 @@ void Initialize_Traces_Time_Variables (TracesVars *tv) {
     tv->schreier3 = 0;
 }
 
-boolean isautom_sg_pair(graph *g, int *p, boolean digraph, int m, int n, struct TracesVars *tv) {
+booleann isautom_sg_pair(graph *g, int *p, booleann digraph, int m, int n, struct TracesVars *tv) {
     int *d, *e;
     size_t *v;
     int i, k, pi, di;
@@ -8589,7 +8589,7 @@ boolean isautom_sg_pair(graph *g, int *p, boolean digraph, int m, int n, struct 
     return TRUE;
 }
 
-boolean lookup(searchtrie *t) {
+booleann lookup(searchtrie *t) {
     searchtrie *TreeNode;
     
     TreeNode = t;
@@ -8650,11 +8650,11 @@ void MakeDiscrete(Partition *Part, int cell) {
     }
 }
 
-void MakeTree(int v1, int v2, sparsegraph *sg, int n, struct TracesVars* tv, boolean forceautom) {
+void MakeTree(int v1, int v2, sparsegraph *sg, int n, struct TracesVars* tv, booleann forceautom) {
     int ind, vtx1, vtx2, ngh1, ngh2, trind, deg0, deg1;
     size_t j1;
     int *sge1, *sge2;
-    boolean build_autom;
+    booleann build_autom;
     
     if (v1 == v2) return;
     build_autom = tv->build_autom || forceautom;
@@ -8950,7 +8950,7 @@ void Place(int vtx, Candidate *Cand, Partition *Part) {
     }
 }
 
-boolean Prefix(Candidate *Cand1, Candidate *Cand2, int k) {
+booleann Prefix(Candidate *Cand1, Candidate *Cand2, int k) {
     int i;
     
     for (i=1; i<=k; i++) {
@@ -9373,7 +9373,7 @@ void quickSort(int *arr, int elements) {
     }
 }
 
-void RemoveFromLevel(int from, int to, int strategy, boolean reinit) {
+void RemoveFromLevel(int from, int to, int strategy, booleann reinit) {
     int i;
     
     for (i=from; i<=to; i++) {
@@ -9479,10 +9479,10 @@ int Select_from_CStack(int *cls, int CStackInd) {
     return k;
 }
 
-boolean SelectNextLevel(int n, struct TracesVars *tv, struct TracesInfo *ti) {
+booleann SelectNextLevel(int n, struct TracesVars *tv, struct TracesInfo *ti) {
     int i, j, val;
     Candidate *FirstCand;
-    boolean orbitcell;
+    booleann orbitcell;
     VERB_PRINT("SelNxtLev",3,FALSE)
     
     switch (tv->compstage) {
@@ -9652,7 +9652,7 @@ int spinelementorbsize(int *orbits, int *lab, int size, int elem) {
     return j;
 }
 
-boolean TargetCell(Candidate *TargCand, Partition *Part, int n, struct TracesVars* tv, int Lv) {
+booleann TargetCell(Candidate *TargCand, Partition *Part, int n, struct TracesVars* tv, int Lv) {
     int TCell = -1, TCSize = 1;
     int i;
     VERB_PRINT("TCELL",3,FALSE)
@@ -9725,11 +9725,11 @@ int TargetCellExpPath(Candidate *TargCand, Partition *Part, struct TracesVars* t
     }
 }
 
-boolean TargetCellFirstPath(Candidate *TargCand, Partition *Part, struct TracesVars* tv) {
+booleann TargetCellFirstPath(Candidate *TargCand, Partition *Part, struct TracesVars* tv) {
     int n, TCell, TCSize, TCell1, TCSize1;
     int Lv, i, Lev, vtx, vtx_d;
     int loopstart, loopend;
-    boolean divided;
+    booleann divided;
     VERB_PRINT("TCFP",3,FALSE)
     
     n = tv->input_graph->nv;
@@ -9881,7 +9881,7 @@ void traces_freedyn(void) {
 #endif
 }
 
-boolean TreeFyTwo(int From, Candidate *Cand1, Candidate *Cand2, Partition *Part, int n,
+booleann TreeFyTwo(int From, Candidate *Cand1, Candidate *Cand2, Partition *Part, int n,
                   struct TracesVars* tv, struct TracesInfo *ti) {
     int i, i1, i2, j1, j2, k;
     int vtx1, vtx2, ngh1, ngh2, arg, val;
@@ -10098,7 +10098,7 @@ struct trie *trie_new(int n, struct TracesVars* tv) {
     return TrieArray[0];
 }
 
-boolean VerifyCand(Candidate *Cand, int n, int line) {
+booleann VerifyCand(Candidate *Cand, int n, int line) {
     int i, k;
     
     for (i=0; i<n; i++) {
@@ -10113,7 +10113,7 @@ boolean VerifyCand(Candidate *Cand, int n, int line) {
     return TRUE;
 }
 
-boolean VerifyId(int *p, int n) {
+booleann VerifyId(int *p, int n) {
     int i, r;
     
     r = TRUE;
@@ -10126,7 +10126,7 @@ boolean VerifyId(int *p, int n) {
     return r;
 }
 
-boolean VerifyPart(Partition *Part, int start, int end) {
+booleann VerifyPart(Partition *Part, int start, int end) {
     int i,j;
     
     for (i=start; i<end; i+=Part->cls[i]) {
@@ -10245,7 +10245,7 @@ void WeightCodes(int n) {
 
 
 
-boolean TargetCellSmall(Candidate *TargCand, Partition *Part, int n, struct TracesVars* tv, int Lv) {
+booleann TargetCellSmall(Candidate *TargCand, Partition *Part, int n, struct TracesVars* tv, int Lv) {
     int TCell = -1, TCSize = n;
     int i;
     
@@ -10313,11 +10313,11 @@ int TargetCellExpPathSmall(Candidate *TargCand, Partition *Part, struct TracesVa
     }
 }
 
-boolean TargetCellFirstPathSmall(Candidate *TargCand, Partition *Part, struct TracesVars* tv) {
+booleann TargetCellFirstPathSmall(Candidate *TargCand, Partition *Part, struct TracesVars* tv) {
     int n, TCell, TCSize, TCell1, TCSize1;
     int Lv, i, Lev, vtx, vtx_d;
     int loopstart, loopend;
-    boolean divided;
+    booleann divided;
     
     n = tv->input_graph->nv;
     if (Part->cells == n) {

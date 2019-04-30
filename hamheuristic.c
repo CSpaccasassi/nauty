@@ -37,7 +37,7 @@ static long seed = 314159265;
 /**************************************************************************/
 
 static int
-hamheur(sparsegraph *sg, boolean pathok, unsigned long limit, int *cyc)
+hamheur(sparsegraph *sg, booleann pathok, unsigned long limit, int *cyc)
 /* Try up to limit, fill cyc if YES and cyc!=NULL */
 /* For payjok = TRUE, return when a hamiltonian path is found */
 {
@@ -49,7 +49,7 @@ hamheur(sparsegraph *sg, boolean pathok, unsigned long limit, int *cyc)
     int n,*e,*d,len,d0,*e0,d1,*e1,dx,*ex;
     int i,ix,x,j,w,vext,exts;
     unsigned long count;
-    boolean left,cycle;
+    booleann left,cycle;
     long ran;
  
     SG_VDE(sg,v,d,e);
@@ -254,8 +254,8 @@ main(int argc, char *argv[])
     int n,codetype;
     int argnum,i,j,outcode,tvalue;
     char *arg,sw;
-    boolean badargs;
-    boolean pswitch,sswitch,gswitch,qswitch,Lswitch,tswitch,vswitch,uswitch;
+    booleann badargs;
+    booleann pswitch,sswitch,gswitch,qswitch,Lswitch,tswitch,vswitch,uswitch;
     long Lvalue;
     double t;
     char *infilename,*outfilename;

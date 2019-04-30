@@ -69,7 +69,7 @@ main(int argc, char *argv[])
 {
         char *infilename,*outfilename;
         FILE *infile,*outfile;
-        boolean badargs,dolabel,quiet;
+        booleann badargs,dolabel,quiet;
 	int j,m,n,v,argnum;
 	int codetype,outcode;
 	graph *g;

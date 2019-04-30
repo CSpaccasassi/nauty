@@ -164,7 +164,7 @@ static integer maxint;   /* set by find_maxint() */
            {fprintf(stderr,">E overflow with %%d or %%p format\n"); exit(1);} \
       x += (inc);}    /*  x += inc   with safety check */
 
-typedef int boolean;
+typedef int booleann;
 #define FALSE 0
 #define TRUE  1
 
@@ -332,7 +332,7 @@ writeline(char *outf, number *val, unsigned long count)
     int i,n;
     integer mins,nsecs;
     double secs,hms;
-    boolean neg;
+    booleann neg;
 
     n = 0;
 
@@ -401,7 +401,7 @@ writeline(char *outf, number *val, unsigned long count)
 /*********************************************************************/
 
 static void
-print_counts(countnode *root, boolean printcounts)
+print_counts(countnode *root, booleann printcounts)
 /* Use a non-recursive inorder traversal to print the tree */
 {
     int code;
@@ -572,7 +572,7 @@ splay(countnode *p)
 
 static void
 add_one(countnode **to_root, char *fmt, integer pmod, int nval,
-        number *val, int *valtype, int which, boolean numcompare)
+        number *val, int *valtype, int which, booleann numcompare)
 /* Add one match to the node with the given format, creating it if it is new.
    The tree is then splayed to ensure good efficiency. */
 {
@@ -743,11 +743,11 @@ scanline(char *s, char *f, number *val, int *valtype,
 {
     int n;                   /* Number of values assigned */
     int digit;
-    boolean doass,neg,oflow,badgmp;
+    booleann doass,neg,oflow,badgmp;
     integer ival;
     double dval,digval,comval;
     char ends,*saves;
-    static boolean gmp_warning = FALSE;
+    static booleann gmp_warning = FALSE;
     integer *ilist;
     size_t ilist_sz;
     int nilist;
@@ -1173,7 +1173,7 @@ sort_formats(int *order, int numformats)
 /****************************************************************************/
 
 static void
-read_formats(char *filename, int *numformatsp, boolean mustexist)
+read_formats(char *filename, int *numformatsp, booleann mustexist)
 /* Read formats from the given file. */
 {
     FILE *f;
@@ -1182,7 +1182,7 @@ read_formats(char *filename, int *numformatsp, boolean mustexist)
     char line[MAXLINELEN+3];
     integer pmod;
     char *s;
-    boolean oflow,badpmod;
+    booleann oflow,badpmod;
     int digit;
 
     if (strcmp(filename,"-") == 0)
@@ -1358,7 +1358,7 @@ read_env_formats(int *numformatsp)
 
 /****************************************************************************/
 
-static boolean
+static booleann
 readoneline(FILE *f, char *line, int size, int *nulls)
 /* Get a line.  Read at most size-1 chars until EOF or \n.
    If \n is read, it is stored.  Then \0 is appended.
@@ -1441,12 +1441,12 @@ main(int argc, char *argv[])
     char *filename;
     FILE *infile;
     int numformats,firstarg,nulls;
-    boolean havefinal,nowarn,noWarn,listformats,readfiles;
+    booleann havefinal,nowarn,noWarn,listformats,readfiles;
     integer seq;
     int order[MAXFORMATS];
     glob_t globlk,globlk_stdin,*pglob;
     char *glob_stdin_v[2];
-    boolean printcounts;
+    booleann printcounts;
 
     HELP;
 

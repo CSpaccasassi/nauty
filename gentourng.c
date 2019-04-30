@@ -80,7 +80,7 @@ OUTPROC feature.
    f is a stream open for writing, g is the graph in nauty format,
    and n is the number of vertices. Your procedure can be in a
    separate file so long as it is linked with gentourng. The global
-   variables nooutput, and canonise (all type boolean) can be
+   variables nooutput, and canonise (all type booleann) can be
    used to test for the presence of the flags -u and -l,
    respectively. If -l is present, the group size and similar
    details can be found in the global variable nauty_stats.
@@ -189,16 +189,16 @@ static void (*outproc)(FILE*,graph*,int);
 
 static FILE *outfile;           /* file for output graphs */
 static int connec;              /* 1 for -c, 0 for not */
-boolean graph6;                 /* presence of -g */
-boolean digraph6;               /* presence of -z */
-boolean sparse6;                /* presence of -s */
-boolean nooutput;               /* presence of -u */
-boolean canonise;               /* presence of -l */
-boolean quiet;                  /* presence of -q */
-boolean header;                 /* presence of -h */
+booleann graph6;                 /* presence of -g */
+booleann digraph6;               /* presence of -z */
+booleann sparse6;                /* presence of -s */
+booleann nooutput;               /* presence of -u */
+booleann canonise;               /* presence of -l */
+booleann quiet;                  /* presence of -q */
+booleann header;                 /* presence of -h */
 statsblk nauty_stats;
 static int mindeg,maxdeg,maxn,mod,res;
-static boolean regular;
+static booleann regular;
 #define PRUNEMULT 20   /* bigger -> more even split at greater cost */
 static int min_splitlevel,odometer,splitlevel,multiplicity;
 static graph gcan[MAXN];
@@ -341,7 +341,7 @@ nullwrite(FILE *f, graph *g, int n)
 
 /***********************************************************************/
 
-static boolean
+static booleann
 isstrong(graph *g, int n)
 /* test if tournament g is strongly-connected 
  * This code is strictly for tournaments only.
@@ -549,7 +549,7 @@ userautomproc(int count, int *p, int *orbits,
 
 static void
 refinex(graph *g, int *lab, int *ptn, int level, int *numcells,
-     int *count, set *active, boolean goodret, int *code, int m, int n)
+     int *count, set *active, booleann goodret, int *code, int m, int n)
 {
         int i,c1,c2,labc1;
         setword x,lact;
@@ -702,8 +702,8 @@ makecanon(graph *g, graph *gcan, int n)
 
 /**************************************************************************/
 
-static boolean
-accept1(graph *g, int n, xword x, graph *gx, int *deg, boolean *rigid)
+static booleann
+accept1(graph *g, int n, xword x, graph *gx, int *deg, booleann *rigid)
 /* decide if n in theta(g+x) -  version for n+1 < maxn */
 {
         int i;
@@ -803,7 +803,7 @@ accept1(graph *g, int n, xword x, graph *gx, int *deg, boolean *rigid)
 
 /**************************************************************************/
 
-static boolean
+static booleann
 hitinvar(graph *g, int *invar, int n)
 /* make hitting invariant
  *    return FALSE if n-1 not maximal else return TRUE */
@@ -831,8 +831,8 @@ hitinvar(graph *g, int *invar, int n)
 
 /**************************************************************************/
 
-static boolean
-accept2(graph *g, int n, xword x, graph *gx, int *deg, boolean nuniq)
+static booleann
+accept2(graph *g, int n, xword x, graph *gx, int *deg, booleann nuniq)
 /* decide if n in theta(g+x)  --  version for n+1 == maxn */
 {
         int i;
@@ -847,7 +847,7 @@ accept2(graph *g, int n, xword x, graph *gx, int *deg, boolean nuniq)
         statsblk stats;
         static DEFAULTOPTIONS_GRAPH(options);
         setword workspace[50];
-	boolean cheapacc;
+	booleann cheapacc;
 
 #ifdef INSTRUMENT
         ++a2calls;
@@ -1018,7 +1018,7 @@ accept2(graph *g, int n, xword x, graph *gx, int *deg, boolean nuniq)
 /**************************************************************************/
 
 static void
-genextend(graph *g, int n, int *deg, boolean rigid)
+genextend(graph *g, int n, int *deg, booleann rigid)
 /* extend from n to n+1 -- version for general graphs */
 {
         xword x,dlow,dhigh,dcrit;
@@ -1028,11 +1028,11 @@ genextend(graph *g, int n, int *deg, boolean rigid)
         int xlb,xub,xlbx,xubx;
         graph gx[MAXN];
         int degx[MAXN];
-        boolean rigidx;
-	boolean subconnec;
+        booleann rigidx;
+	booleann subconnec;
 
 #ifdef INSTRUMENT
-        boolean haschild;
+        booleann haschild;
 
         haschild = FALSE;
         if (rigid) ++rigidnodes[n];
@@ -1182,8 +1182,8 @@ main(int argc, char *argv[])
 #endif
 {
         char *arg;
-        boolean badargs,gotd,gotD,gotf,gotmr;
-	boolean secret,connec1;
+        booleann badargs,gotd,gotD,gotf,gotmr;
+	booleann secret,connec1;
 	char *outfilename,sw;
         int i,j,argnum;
         graph g[1];

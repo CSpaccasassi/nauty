@@ -118,7 +118,7 @@ int remember_size[MAXN]; // remember_size[i] is the number of characters allocat
 
 
 /* OPTIONS */
-boolean dummybool;
+booleann dummybool;
 int mingerichtdeg;
 int remaining_doubles=0; /* hoeveel bogen kunnen ten hoogste nog in allebei 
 			    richtingen gericht worden ? */

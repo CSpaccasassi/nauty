@@ -62,14 +62,14 @@ res/mod : only generate subset res out of subsets 0..mod-1\n\
 
 static FILE *outfile;             /* file for output graphs */
 static char *outfilename;
-boolean     nooutput;                       /* presence of -u */
-boolean     graph6;                         /* presence of -g */
-boolean     sparse6;                        /* presence of -s */
-boolean     header;                         /* presence of -h */
+booleann     nooutput;                       /* presence of -u */
+booleann     graph6;                         /* presence of -g */
+booleann     sparse6;                        /* presence of -s */
+booleann     header;                         /* presence of -h */
 static int  connec;                          /* 1 for -c, 2 for -C, 0 for neither */
-boolean     connec1;                        /* presence of -c */
-boolean     connec2;                        /* presence of -C */
-boolean     canonise;                       /* presence of -l */  //????????
+booleann     connec1;                        /* presence of -c */
+booleann     connec2;                        /* presence of -C */
+booleann     canonise;                       /* presence of -l */  //????????
 
 
 typedef struct
@@ -111,12 +111,12 @@ pairstruct  *pepair;
 dovistruct  *pdovi;
 edgestruct  *pedge;
 setword     active;
-boolean     goodret;
+booleann     goodret;
 static int  nmax, m, code, numcells, mod, res, splitlevel, splitcount;
 //TMP static splitlevel,splitcount,mod,res;    ??????TMP?
-static void    extend(int, graph *, edgestruct *, pairstruct *, int, int * , int *, setword *, int *, boolean );
+static void    extend(int, graph *, edgestruct *, pairstruct *, int, int * , int *, setword *, int *, booleann );
 static int     init_refinex( int *, int *, int *, set *, int);
-static void     refinex( graph *, int *, int *, int , int *, int *, set *, boolean , int *, int , int );
+static void     refinex( graph *, int *, int *, int , int *, int *, set *, booleann , int *, int , int );
 static UPROC    userautom1();
 static UPROC 	userautom2();
 static UPROC 	userautom3();
@@ -150,7 +150,7 @@ nullwrite(FILE *f, graph *g, int n)
 
 /***********************************************************************/
 
-static boolean
+static booleann
 isconnected(graph *g, int n)
 /* test if g is connected with vertices 0,1.., n-1 */
 {
@@ -174,7 +174,7 @@ isconnected(graph *g, int n)
 
 /**********************************************************************/
 
-static boolean
+static booleann
 isbiconnected(graph *g, int n)
 /* test if g is biconnected */
 {
@@ -229,7 +229,7 @@ isbiconnected(graph *g, int n)
 
 static void
 extend(int n, graph *g, edgestruct *edge, pairstruct *epair, int numpair,
-   int *epairorbit, int *multar, setword *zar, int *col00w, boolean connectflag)
+   int *epairorbit, int *multar, setword *zar, int *col00w, booleann connectflag)
 {
     int   vm1, vm2, vm3, vm4, vt1, vt2, vt3, vt4, c, b, mcol1,
           tcol, got_one, i, j, numpair1, numdovi, maxdovi, i1, j1, i2, j2,
@@ -247,7 +247,7 @@ extend(int n, graph *g, edgestruct *edge, pairstruct *epair, int numpair,
     dovistruct 	dovi[3*MAXN];
     dovistruct  dovimax;
     register    setword    gi1, gi2, gj1, gj2;
-    boolean     conf;
+    booleann     conf;
 
     /////////////////////////////////////////////////////////////////////////
     if( n == splitlevel )
@@ -1159,7 +1159,7 @@ init_refinex( int *clr, int *lb, int *p, set *active, int n)
  *****************************************************************************/
 static void
 refinex(graph *g, int *lab, int *ptn, int level, int *numcells, int *count,
-           set *active, boolean goodret, int *code, int m, int n)
+           set *active, booleann goodret, int *code, int m, int n)
 {
     int     i, c1, c2, labc1, split1, split2, cell1, cell2, cnt, bmin, bmax;
     int     workperm[MAXN], bucket[MAXN+2];
@@ -1304,7 +1304,7 @@ int main(int argc, char *argv[])
     graph 	g[MAXN];
     double      timebefore, timeafter;
     setword     zar[MAXN];
-    boolean     badargs, gotf, gotmr, quiet;
+    booleann     badargs, gotf, gotmr, quiet;
     char        *arg;
     char        msg[201];
 

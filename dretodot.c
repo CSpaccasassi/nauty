@@ -254,8 +254,8 @@ main(int argc, char *argv[])
     size_t j1, e_count;
 	int argnum, initorg, cell, numCol, modcode, vtx, refcode, MaxV, MaxE;
 	char *arg, sw;
-	boolean badargs, make_ranks, too_big;
-	boolean rswitch, dswitch, mswitch, nswitch, oswitch, iswitch, xswitch, Sswitch, gswitch, fswitch, vswitch, rswitch1, Eswitch, Vswitch;
+	booleann badargs, make_ranks, too_big;
+	booleann rswitch, dswitch, mswitch, nswitch, oswitch, iswitch, xswitch, Sswitch, gswitch, fswitch, vswitch, rswitch1, Eswitch, Vswitch;
 	char *infilename, *outfilename, *drefilename;
 	FILE *infile, *outfile, *drefile;
 	nauty_counter nin;

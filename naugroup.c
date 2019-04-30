@@ -83,7 +83,7 @@ freepermrec(permrec *p, int n)
 /**************************************************************************/
 
 grouprec *
-groupptr(boolean cutloose)
+groupptr(booleann cutloose)
 /* Give the address of the group structure, cutting it loose
    if requested. */
 {
@@ -275,7 +275,7 @@ makecosetreps(grouprec *grp)
 /**************************************************************************/
 
 int
-permcycles(int *p, int n, int *len, boolean sort)
+permcycles(int *p, int n, int *len, booleann sort)
 /* Puts in len[0..] the cycle lengths of p.  If sort, sort them. 
    Return the number of cycles. */
 {

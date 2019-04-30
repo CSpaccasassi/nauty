@@ -121,7 +121,7 @@ main(int argc, char *argv[])
 {
     char *infilename,*outfilename;
     FILE *infile,*outfile;
-    boolean badargs,quiet,kswitch;
+    booleann badargs,quiet,kswitch;
     int j,argnum,kvalue;
     int codetype,outcode;
     SG_DECL(g); SG_DECL(h);

@@ -25,7 +25,7 @@
      -l          Put a blank line whenever the first parameter changes,\n\
                     if there are at least two parameters.\n\
      -1          Write output as lines of numbers separated by spaces,\n\
-                 with 0/1 for boolean and both endpoints of ranges given\n\
+                 with 0/1 for booleann and both endpoints of ranges given\n\
                  separately even if they are the same, and the count at\n\
                  the end of the line. Also, no total is written.\n\
      -2          The same as -1 but counts are not written.\n\
@@ -161,11 +161,11 @@ typedef long value_t;
 static struct constraint_st    /* Table of Constraints */
 {
     char symbol;
-    boolean digraphok;   /* Can be computed for digraphs */
-    boolean rangeonly;   /* Display a range */
+    booleann digraphok;   /* Can be computed for digraphs */
+    booleann rangeonly;   /* Display a range */
     int needed;     /* 1 = sortkey, 2 = constraint; 3 = both */
-    boolean computed;
-    boolean inverse;
+    booleann computed;
+    booleann inverse;
     nauty_counter prereq;  /* Must be earlier,
                               must be <= bits in nauty_counter */
     value_t lo,hi;
@@ -272,8 +272,8 @@ static struct constraint_st    /* Table of Constraints */
           ? group_in_range((group_node*)VAL(i),LO(i),HI(i)) \
           : INBOUNDS0(i))
 
-static boolean docount,dofilter;
-static boolean rangemarkerseen = FALSE;  /* --: seen */
+static booleann docount,dofilter;
+static booleann rangemarkerseen = FALSE;  /* --: seen */
 
 #define MAXKEYS NUMCONSTRAINTS /* Maximum number of keys to sort by */
 
@@ -315,7 +315,7 @@ typedef struct value_st    /* variant for value tree */
 #define SCAN_ARGS , FILE *f
 #define ACTION(p) {possibleblankline(f,TOCOUNT(p)->val); \
                printkeyvals(f,TOCOUNT(p)->count,TOCOUNT(p)->val); }
-#define INSERT_ARGS , boolean isvalue, SPLAYNODE *new_val, size_t new_val_sz
+#define INSERT_ARGS , booleann isvalue, SPLAYNODE *new_val, size_t new_val_sz
 #define COMPARE(p) (isvalue ? \
           compare_value_node(TOVALUE(new_val),TOVALUE(p)) \
         : compare_count_node(TOCOUNT(new_val),TOCOUNT(p)))
@@ -344,7 +344,7 @@ typedef struct grpsize_st
     long groupsize2;
 } group_node;
 
-static boolean lswitch,oneswitch,twoswitch;
+static booleann lswitch,oneswitch,twoswitch;
 
 /**********************************************************************/
 
@@ -618,7 +618,7 @@ printkeyvals(FILE *f, nauty_counter count, range *val)
 /**********************************************************************/
 
 static void
-groupstats(graph *g, boolean digraph, int m, int n, group_node *sz,
+groupstats(graph *g, booleann digraph, int m, int n, group_node *sz,
        int *numorbits, int *fixedpts)  
 /* Find the automorphism group of the undirected graph g.
    Return the group size and number of orbits and fixed points. */
@@ -714,14 +714,14 @@ groupstats(graph *g, boolean digraph, int m, int n, group_node *sz,
 /**********************************************************************/
 
 static void
-compute(graph *g, int m, int n, int code, boolean digraph)
+compute(graph *g, int m, int n, int code, booleann digraph)
 /* Compute property i assuming the prerequisites are known. */
 {
     int mind,maxd,mincount,maxcount;
     int minind,maxind,minincount,maxincount;
     int rad,diam,loops;
     unsigned long ned;
-    boolean eul;
+    booleann eul;
     group_node sz;
     int norbs,fixedpts;
     int minadj,maxadj,minnon,maxnon;
@@ -887,7 +887,7 @@ compute(graph *g, int m, int n, int code, boolean digraph)
 
 /**********************************************************************/
 
-static boolean
+static booleann
 group_in_range(group_node *sz, value_t lo, value_t hi)
 /* Test if the group size is in the given range */
 {
@@ -925,8 +925,8 @@ group_in_range(group_node *sz, value_t lo, value_t hi)
 
 /**********************************************************************/
 
-static boolean
-selected(graph *g, int m, int n, boolean digraph)
+static booleann
+selected(graph *g, int m, int n, booleann digraph)
 /* See if g is selected by the constraints */
 {
     int i;
@@ -987,7 +987,7 @@ decodekeys(char *s)
 	if (rangemarkerseen && VALTYPE(j) == BOOLTYPE)
 	{
 	    fprintf(stderr,
-                    ">W ignoring unsplit boolean property %c\n",s[i]);
+                    ">W ignoring unsplit booleann property %c\n",s[i]);
 	    continue;
 	}
 
@@ -1020,12 +1020,12 @@ main(int argc, char *argv[])
     nauty_counter nin,nout;
     int argnum,i,j,nprev,mprev,digbad;
     char *arg,sw,*baseptr,*bp;
-    boolean badargs,lastwritten,digraph;
+    booleann badargs,lastwritten,digraph;
     long pval1,pval2,maxin;
-    boolean fswitch,pswitch,Vswitch,vswitch,Xswitch,qswitch;
+    booleann fswitch,pswitch,Vswitch,vswitch,Xswitch,qswitch;
     nauty_counter cmask;
     long arglo,arghi;
-    boolean havecon,neg,doflush,isselected;
+    booleann havecon,neg,doflush,isselected;
     double t;
 
     HELP; PUTVERSION;

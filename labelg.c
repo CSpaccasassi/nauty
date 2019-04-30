@@ -61,9 +61,9 @@
 static struct invarrec
 {
     void (*entrypoint)(graph*,int*,int*,int,int,int,int*,
-                      int,boolean,int,int);
+                      int,booleann,int,int);
     void (*entrypoint_sg)(graph*,int*,int*,int,int,int,int*,
-                      int,boolean,int,int);
+                      int,booleann,int,int);
     char *name;
 } invarproc[]
     = {{NULL, NULL, "none"},
@@ -101,11 +101,11 @@ main(int argc, char *argv[])
 	int m,n,codetype;
 	int argnum,j,outcode;
 	char *arg,sw,*fmt;
-	boolean badargs,digraph;
-	boolean sswitch,gswitch,qswitch,fswitch,Oswitch;
-	boolean iswitch,Iswitch,Kswitch,Mswitch,Sswitch;
-	boolean uswitch,tswitch,Cswitch,Wswitch,zswitch;
-	boolean dooutput;
+	booleann badargs,digraph;
+	booleann sswitch,gswitch,qswitch,fswitch,Oswitch;
+	booleann iswitch,Iswitch,Kswitch,Mswitch,Sswitch;
+	booleann uswitch,tswitch,Cswitch,Wswitch,zswitch;
+	booleann dooutput;
 	int tabsize,outinvar;
 	int inv,mininvarlevel,maxinvarlevel,invararg;
 	long minil,maxil;

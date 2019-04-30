@@ -63,8 +63,8 @@ static TLS_ATTR set dnwork[40*MAXM];
 *                                                                            *
 *****************************************************************************/
 
-boolean
-isautom(graph *g, int *perm, boolean digraph, int m, int n)
+booleann
+isautom(graph *g, int *perm, booleann digraph, int m, int n)
 {
     set *pg;
     int pos;
@@ -489,8 +489,8 @@ refine1(graph *g, int *lab, int *ptn, int level, int *numcells,
 *                                                                            *
 *****************************************************************************/
 
-boolean
-cheapautom(int *ptn, int level, boolean digraph, int n)
+booleann
+cheapautom(int *ptn, int level, booleann digraph, int n)
 {
     int i,k,nnt;
 
@@ -615,7 +615,7 @@ bestcell(graph *g, int *lab, int *ptn, int level, int tc_level, int m, int n)
 
 int
 targetcell(graph *g, int *lab, int *ptn, int level, int tc_level,
-       boolean digraph, int hint, int m, int n)
+       booleann digraph, int hint, int m, int n)
 {
     int i;
 

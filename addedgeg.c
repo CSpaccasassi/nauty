@@ -80,8 +80,8 @@ main(int argc, char *argv[])
 {
         char *infilename,*outfilename;
         FILE *infile,*outfile;
-        boolean badargs,dolabel,quiet,Dswitch;
-	boolean bswitch,tswitch,fswitch,Fswitch,zswitch;
+        booleann badargs,dolabel,quiet,Dswitch;
+	booleann bswitch,tswitch,fswitch,Fswitch,zswitch;
 	int mincycle;
 	int i,j,m,n,v,w,argnum;
 	int codetype,outcode;
@@ -94,11 +94,11 @@ main(int argc, char *argv[])
 #if MAXN
 	graph h[MAXN*MAXM];
 	int deg[MAXN],dist[MAXN];
-	boolean okdist[MAXN+1];
+	booleann okdist[MAXN+1];
 #else
 	DYNALLSTAT(graph,h,h_sz);
 	DYNALLSTAT(int,deg,deg_sz);
-	DYNALLSTAT(boolean,okdist,okdist_sz);
+	DYNALLSTAT(booleann,okdist,okdist_sz);
 	DYNALLSTAT(int,dist,dist_sz);
 #endif
 
@@ -204,7 +204,7 @@ main(int argc, char *argv[])
 
 #if !MAXN
 	    DYNALLOC1(int,deg,deg_sz,n,"addedgeg");
-	    DYNALLOC1(boolean,okdist,okdist_sz,n+1,"addedgeg");
+	    DYNALLOC1(booleann,okdist,okdist_sz,n+1,"addedgeg");
 	    DYNALLOC1(int,dist,dist_sz,n,"addedgeg");
 #endif
 

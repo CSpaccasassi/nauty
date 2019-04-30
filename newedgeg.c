@@ -72,7 +72,7 @@ newedge(graph *g1, int m1, int n1,
 /*************************************************************************/
 
 static void
-na_newedge(graph *g1, int m1, int n1, boolean dolabel)
+na_newedge(graph *g1, int m1, int n1, booleann dolabel)
 /* Make all graphs by non-adjacent edge addition. */
 {
 	int n2,m2;
@@ -127,7 +127,7 @@ main(int argc, char *argv[])
 {
         char *infilename,*outfilename;
         FILE *infile;
-        boolean badargs,dolabel,quiet;
+        booleann badargs,dolabel,quiet;
 	int j,m,n,argnum;
 	int codetype;
 	graph *g;

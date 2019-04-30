@@ -112,20 +112,20 @@ static int clocks_per_sec=0;
 
 
 /* Recursion and helper functions */
-static boolean sub_unweighted_single(int *table, int size, int min_size,
+static booleann sub_unweighted_single(int *table, int size, int min_size,
 				     graph_t *g);
 static int sub_unweighted_all(int *table, int size, int min_size, int max_size,
-			      boolean maximal, graph_t *g,
+			      booleann maximal, graph_t *g,
 			      clique_options *opts);
 static int sub_weighted_all(int *table, int size, int weight,
 			    int current_weight, int prune_low, int prune_high,
-			    int min_weight, int max_weight, boolean maximal,
+			    int min_weight, int max_weight, booleann maximal,
 			    graph_t *g, clique_options *opts);
 
 
-static boolean store_clique(set_t clique, graph_t *g, clique_options *opts);
-static boolean is_maximal(set_t clique, graph_t *g);
-static boolean false_function(set_t clique,graph_t *g,clique_options *opts);
+static booleann store_clique(set_t clique, graph_t *g, clique_options *opts);
+static booleann is_maximal(set_t clique, graph_t *g);
+static booleann false_function(set_t clique,graph_t *g,clique_options *opts);
 
 
 
@@ -264,7 +264,7 @@ static int unweighted_clique_search_single(int *table, int min_size,
  * clique_size[] for all values in table must be defined and correct,
  * otherwise inaccurate results may occur.
  */
-static boolean sub_unweighted_single(int *table, int size, int min_size,
+static booleann sub_unweighted_single(int *table, int size, int min_size,
 				     graph_t *g) {
 	int i;
 	int v;
@@ -364,7 +364,7 @@ static boolean sub_unweighted_single(int *table, int size, int min_size,
  */
 static int unweighted_clique_search_all(int *table, int start,
 					int min_size, int max_size,
-					boolean maximal, graph_t *g,
+					booleann maximal, graph_t *g,
 					clique_options *opts) {
 #if 0
 	struct timeval timeval;
@@ -459,7 +459,7 @@ static int unweighted_clique_search_all(int *table, int start,
  * otherwise inaccurate results may occur.
  */
 static int sub_unweighted_all(int *table, int size, int min_size, int max_size,
-			      boolean maximal, graph_t *g,
+			      booleann maximal, graph_t *g,
 			      clique_options *opts) {
 	int i;
 	int v;
@@ -724,7 +724,7 @@ static int weighted_clique_search_single(int *table, int min_weight,
  */
 static int weighted_clique_search_all(int *table, int start,
 				      int min_weight, int max_weight,
-				      boolean maximal, graph_t *g,
+				      booleann maximal, graph_t *g,
 				      clique_options *opts) {
 #if 0
 	struct timeval timeval;
@@ -839,7 +839,7 @@ static int weighted_clique_search_all(int *table, int start,
  */
 static int sub_weighted_all(int *table, int size, int weight,
 			    int current_weight, int prune_low, int prune_high,
-			    int min_weight, int max_weight, boolean maximal,
+			    int min_weight, int max_weight, booleann maximal,
 			    graph_t *g, clique_options *opts) {
 	int i;
 	int v,w;
@@ -947,7 +947,7 @@ static int sub_weighted_all(int *table, int size, int weight,
  * Returns FALSE if opts->user_function() returned FALSE; otherwise
  * returns TRUE.
  */
-static boolean store_clique(set_t clique, graph_t *g, clique_options *opts) {
+static booleann store_clique(set_t clique, graph_t *g, clique_options *opts) {
 
 	clique_list_count++;
 
@@ -994,7 +994,7 @@ static boolean store_clique(set_t clique, graph_t *g, clique_options *opts) {
  */
 static void maximalize_clique(set_t s,graph_t *g) {
 	int i,j;
-	boolean add;
+	booleann add;
 
 	for (i=0; i < g->n; i++) {
 		add=TRUE;
@@ -1022,11 +1022,11 @@ static void maximalize_clique(set_t s,graph_t *g) {
  *
  * Returns TRUE is clique is a maximal clique of g, otherwise FALSE.
  */
-static boolean is_maximal(set_t clique, graph_t *g) {
+static booleann is_maximal(set_t clique, graph_t *g) {
 	int i,j;
 	int *table;
 	int len;
-	boolean addable;
+	booleann addable;
 
 	if (temp_count) {
 		temp_count--;
@@ -1063,7 +1063,7 @@ static boolean is_maximal(set_t clique, graph_t *g) {
  *
  * Returns FALSE.  Can be used as user_function.
  */
-static boolean false_function(set_t clique,graph_t *g,clique_options *opts) {
+static booleann false_function(set_t clique,graph_t *g,clique_options *opts) {
 	return FALSE;
 }
 
@@ -1125,7 +1125,7 @@ int clique_unweighted_max_weight(graph_t *g, clique_options *opts) {
  * Note: Does NOT use opts->user_function() or opts->clique_list[].
  */
 set_t clique_unweighted_find_single(graph_t *g,int min_size,int max_size,
-				    boolean maximal, clique_options *opts) {
+				    booleann maximal, clique_options *opts) {
 	int i;
 	int *table;
 	set_t s;
@@ -1253,7 +1253,7 @@ set_t clique_unweighted_find_single(graph_t *g,int min_size,int max_size,
  * by set_free().
  */
 int clique_unweighted_find_all(graph_t *g, int min_size, int max_size,
-			       boolean maximal, clique_options *opts) {
+			       booleann maximal, clique_options *opts) {
 	int i;
 	int *table;
 	int count;
@@ -1407,7 +1407,7 @@ int clique_max_weight(graph_t *g,clique_options *opts) {
  *       weights are the same.
  */
 set_t clique_find_single(graph_t *g,int min_weight,int max_weight,
-			 boolean maximal, clique_options *opts) {
+			 booleann maximal, clique_options *opts) {
 	int i;
 	int *table;
 	set_t s;
@@ -1571,7 +1571,7 @@ set_t clique_find_single(graph_t *g,int min_weight,int max_weight,
  *       weights are the same.
  */
 int clique_find_all(graph_t *g, int min_weight, int max_weight,
-		    boolean maximal, clique_options *opts) {
+		    booleann maximal, clique_options *opts) {
 	int i,n;
 	int *table;
 
@@ -1717,7 +1717,7 @@ int clique_find_all(graph_t *g, int min_weight, int max_weight,
  *
  * Returns always TRUE  (ie. never requests abort).
  */
-boolean clique_print_time(int level, int i, int n, int max,
+booleann clique_print_time(int level, int i, int n, int max,
 			  double cputime, double realtime,
 			  clique_options *opts) {
 	static float prev_time=100;
@@ -1766,7 +1766,7 @@ boolean clique_print_time(int level, int i, int n, int max,
  *
  * Returns always TRUE  (ie. never requests abort).
  */
-boolean clique_print_time_always(int level, int i, int n, int max,
+booleann clique_print_time_always(int level, int i, int n, int max,
 				 double cputime, double realtime,
 				 clique_options *opts) {
 	static float prev_time=100;
@@ -1915,7 +1915,7 @@ void graph_crop(graph_t *g) {
  *
  * Note: Does NOT require weights to be 1.
  */
-boolean graph_weighted(graph_t *g) {
+booleann graph_weighted(graph_t *g) {
 	int i,w;
 
 	w=g->weights[0];
@@ -1958,7 +1958,7 @@ void graph_print(graph_t *g) {
 	int nonpos=0;
 	int extra=0;
 	unsigned int weight=0;
-	boolean weighted;
+	booleann weighted;
 	
 	ASSERT((sizeof(setelement)*8)==ELEMENTSIZE);
 
@@ -2043,7 +2043,7 @@ void graph_print(graph_t *g) {
  * 
  * Returns TRUE if the graph is valid, FALSE otherwise.
  */
-boolean graph_test(graph_t *g,FILE *output) {
+booleann graph_test(graph_t *g,FILE *output) {
 	int i,j;
 	int edges=0;
 	int asymm=0;
@@ -2051,7 +2051,7 @@ boolean graph_test(graph_t *g,FILE *output) {
 	int refl=0;
 	int extra=0;
 	unsigned int weight=0;
-	boolean weighted;
+	booleann weighted;
 
 	ASSERT((sizeof(setelement)*8)==ELEMENTSIZE);
 
@@ -2304,11 +2304,11 @@ void reorder_reverse(int *order,int n) {
  *
  * Returns TRUE if it is a bijection, FALSE otherwise.
  */
-boolean reorder_is_bijection(int *order,int n) {
-	boolean *used;
+booleann reorder_is_bijection(int *order,int n) {
+	booleann *used;
 	int i;
 
-	used=calloc(n,sizeof(boolean));
+	used=calloc(n,sizeof(booleann));
 	for (i=0; i<n; i++) {
 		if (order[i]<0 || order[i]>=n) {
 			free(used);
@@ -2354,7 +2354,7 @@ int *reorder_ident(int n) {
  *
  * Returns an identity ordering.
  */
-int *reorder_by_ident(graph_t *g,boolean weighted) {
+int *reorder_by_ident(graph_t *g,booleann weighted) {
 	return reorder_ident(g->n);
 }
 
@@ -2363,7 +2363,7 @@ int *reorder_by_ident(graph_t *g,boolean weighted) {
  *
  * Returns a reverse identity ordering.
  */
-int *reorder_by_reverse(graph_t *g,boolean weighted) {
+int *reorder_by_reverse(graph_t *g,booleann weighted) {
 	int i;
 	int *order;
 
@@ -2379,7 +2379,7 @@ int *reorder_by_reverse(graph_t *g,boolean weighted) {
  * Equivalent to reorder_by_weighted_greedy_coloring or
  * reorder_by_unweighted_greedy_coloring according to the value of weighted.
  */
-int *reorder_by_greedy_coloring(graph_t *g,boolean weighted) {
+int *reorder_by_greedy_coloring(graph_t *g,booleann weighted) {
 	if (weighted)
 		return reorder_by_weighted_greedy_coloring(g,weighted);
 	else
@@ -2396,15 +2396,15 @@ int *reorder_by_greedy_coloring(graph_t *g,boolean weighted) {
  *
  * Experimentally efficient for use with unweighted graphs.
  */
-int *reorder_by_unweighted_greedy_coloring(graph_t *g,boolean weighted) {
+int *reorder_by_unweighted_greedy_coloring(graph_t *g,booleann weighted) {
 	int i,j,v;
-	boolean *tmp_used;
+	booleann *tmp_used;
 	int *degree;   /* -1 for used vertices */
 	int *order;
 	int maxdegree,maxvertex=0;
-	boolean samecolor;
+	booleann samecolor;
 
-	tmp_used=calloc(g->n,sizeof(boolean));
+	tmp_used=calloc(g->n,sizeof(booleann));
 	degree=calloc(g->n,sizeof(int));
 	order=calloc(g->n,sizeof(int));
 
@@ -2419,7 +2419,7 @@ int *reorder_by_unweighted_greedy_coloring(graph_t *g,boolean weighted) {
 	v=0;
 	while (v < g->n) {
 		/* Reset tmp_used. */
-		memset(tmp_used,0,g->n * sizeof(boolean));
+		memset(tmp_used,0,g->n * sizeof(booleann));
 
 		do {
 			/* Find vertex to be colored. */
@@ -2464,17 +2464,17 @@ int *reorder_by_unweighted_greedy_coloring(graph_t *g,boolean weighted) {
  *
  * Experimentally efficient for use with weighted graphs.
  */
-int *reorder_by_weighted_greedy_coloring(graph_t *g, boolean weighted) {
+int *reorder_by_weighted_greedy_coloring(graph_t *g, booleann weighted) {
 	int i,j,p=0;
 	int cnt;
 	int *nwt;    /* Sum of surrounding vertices' weights */
 	int min_wt,max_nwt;
-	boolean *used;
+	booleann *used;
 	int *order;
 	
 	nwt=malloc(g->n * sizeof(int));
 	order=malloc(g->n * sizeof(int));
-	used=calloc(g->n,sizeof(boolean));
+	used=calloc(g->n,sizeof(booleann));
 	
 	for (i=0; i < g->n; i++) {
 		nwt[i]=0;
@@ -2518,7 +2518,7 @@ int *reorder_by_weighted_greedy_coloring(graph_t *g, boolean weighted) {
  * Returns a reordering of the graph g so that the vertices with largest
  * degrees (most neighbors) are first.
  */
-int *reorder_by_degree(graph_t *g, boolean weighted) {
+int *reorder_by_degree(graph_t *g, booleann weighted) {
 	int i,j,v;
 	int *degree;
 	int *order;
@@ -2565,11 +2565,11 @@ int *reorder_by_degree(graph_t *g, boolean weighted) {
  *       numbers.  srand() is re-initialized every time reorder_by_random()
  *       is called using the system time.
  */
-int *reorder_by_random(graph_t *g, boolean weighted) {
+int *reorder_by_random(graph_t *g, booleann weighted) {
 	/* struct tms t; */
 	int i,r;
 	int *new;
-	boolean *used;
+	booleann *used;
 
 /*
 	srand(times(&t)+time(NULL));
@@ -2577,7 +2577,7 @@ int *reorder_by_random(graph_t *g, boolean weighted) {
 	INITRANBYTIME;
 
 	new=calloc(g->n, sizeof(int));
-	used=calloc(g->n, sizeof(boolean));
+	used=calloc(g->n, sizeof(booleann));
 	for (i=0; i < g->n; i++) {
 		do {
 			r=NEXTRAN % g->n;
@@ -2595,7 +2595,7 @@ int *reorder_by_random(graph_t *g, boolean weighted) {
    cliques of a given size in an undirected graph. */
 
 int
-find_clique(graph *g, int m, int n, int min, int max, boolean maximal)
+find_clique(graph *g, int m, int n, int min, int max, booleann maximal)
 /* If there is a clique of size [min,max], perhaps required to be
    maximal, then return its size.  If there is none, return 0.
    It is required that min <= max.  Use min=max=0 to ask for
@@ -2629,7 +2629,7 @@ find_clique(graph *g, int m, int n, int min, int max, boolean maximal)
 
 
 int
-find_indset(graph *g, int m, int n, int min, int max, boolean maximal)
+find_indset(graph *g, int m, int n, int min, int max, booleann maximal)
 /* If there is an independent set of size [min,max], perhaps required
    to be maximal, then return its size.  If there is none, return 0.
    It is required that min <= max.  Use min=max=0 to ask for

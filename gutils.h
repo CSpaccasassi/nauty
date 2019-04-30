@@ -5,23 +5,23 @@ extern "C" {
 #endif
 
 extern void degstats(graph*,int,int,
-                     unsigned long*,int*,int*,int*,int*,boolean*);
-extern void degstats2(graph*,boolean,int,int,unsigned long*,int*l,
-     int*,int*,int*,int*, int*, int*,int*,int*, boolean*);
+                     unsigned long*,int*,int*,int*,int*,booleann*);
+extern void degstats2(graph*,booleann,int,int,unsigned long*,int*l,
+     int*,int*,int*,int*, int*, int*,int*,int*, booleann*);
 extern void degstats3(graph*,int,int,
                      unsigned long*,int*,int*,int*,int*,int*);
 extern void diamstats(graph*,int,int,int*,int*);
 extern void find_dist(graph*,int,int,int,int*);
 extern void find_dist2(graph*,int,int,int,int,int*);
 extern int girth(graph*,int,int);
-extern boolean isbiconnected1(graph*,int);
-extern boolean isbiconnected(graph*,int,int);
-extern boolean isbipartite(graph*,int,int);
+extern booleann isbiconnected1(graph*,int);
+extern booleann isbiconnected(graph*,int,int);
+extern booleann isbipartite(graph*,int,int);
 extern int bipartiteside(graph*,int,int);
-extern boolean twocolouring(graph*,int*,int,int);
-extern boolean isconnected1(graph*,int);
-extern boolean isconnected(graph*,int,int);
-extern boolean issubconnected(graph*,set*,int,int); 
+extern booleann twocolouring(graph*,int*,int,int);
+extern booleann isconnected1(graph*,int);
+extern booleann isconnected(graph*,int,int);
+extern booleann issubconnected(graph*,set*,int,int); 
 extern long maxcliques(graph*,int,int);
 extern int maxcliquesize(graph*,int,int);
 extern int maxindsetsize(graph*,int,int);
@@ -41,7 +41,7 @@ extern long numtriangles(graph*,int,int);
 extern long numdirtriangles(graph*,int,int);
 extern void delete1(graph*,graph*,int,int);
 extern int conncontent(graph*,int,int);
-extern boolean stronglyconnected(graph*,int,int);
+extern booleann stronglyconnected(graph*,int,int);
 
 /* extern int diameter_sg(sparsegraph*,int*,int*); */
 

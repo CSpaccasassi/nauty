@@ -67,14 +67,14 @@
 */
 
 /*
- * We #define boolean instead of using a typedef because nauty.h uses it
+ * We #define booleann instead of using a typedef because nauty.h uses it
  * also.  AFAIK, there is no way to check for an existing typedef, and
  * re-typedefing is illegal (even when using exactly the same datatype!).
-#ifndef boolean
-#define boolean int
+#ifndef booleann
+#define booleann int
 #endif
 
-BDM: In nauty's version we will use nauty's boolean (which is int anyway).
+BDM: In nauty's version we will use nauty's booleann (which is int anyway).
  */
 
 /*
@@ -528,20 +528,20 @@ extern void graph_free(graph_t *g);
 extern void graph_resize(graph_t *g, int size);
 extern void graph_crop(graph_t *g);
 
-extern boolean graph_weighted(graph_t *g);
+extern booleann graph_weighted(graph_t *g);
 extern int graph_edge_count(graph_t *g);
 
 extern graph_t *graph_read_dimacs(FILE *fp);
 extern graph_t *graph_read_dimacs_file(char *file);
-extern boolean graph_write_dimacs_ascii(graph_t *g, char *comment,FILE *fp);
-extern boolean graph_write_dimacs_ascii_file(graph_t *g,char *comment,
+extern booleann graph_write_dimacs_ascii(graph_t *g, char *comment,FILE *fp);
+extern booleann graph_write_dimacs_ascii_file(graph_t *g,char *comment,
 					     char *file);
-extern boolean graph_write_dimacs_binary(graph_t *g, char *comment,FILE *fp);
-extern boolean graph_write_dimacs_binary_file(graph_t *g, char *comment,
+extern booleann graph_write_dimacs_binary(graph_t *g, char *comment,FILE *fp);
+extern booleann graph_write_dimacs_binary_file(graph_t *g, char *comment,
 					      char *file);
 
 extern void graph_print(graph_t *g);
-extern boolean graph_test(graph_t *g, FILE *output);
+extern booleann graph_test(graph_t *g, FILE *output);
 extern int graph_test_regular(graph_t *g);
 
 UNUSED_FUNCTION INLINE
@@ -578,30 +578,30 @@ extern int *reorder_duplicate(int *order,int n);
 extern void reorder_invert(int *order,int n);
 extern void reorder_reverse(int *order,int n);
 extern int *reorder_ident(int n);
-extern boolean reorder_is_bijection(int *order,int n);
+extern booleann reorder_is_bijection(int *order,int n);
 
 
 #define reorder_by_default reorder_by_greedy_coloring
-extern int *reorder_by_greedy_coloring(graph_t *g, boolean weighted);
-extern int *reorder_by_weighted_greedy_coloring(graph_t *g, boolean weighted);
-extern int *reorder_by_unweighted_greedy_coloring(graph_t *g,boolean weighted);
-extern int *reorder_by_degree(graph_t *g, boolean weighted);
-extern int *reorder_by_random(graph_t *g, boolean weighted);
-extern int *reorder_by_ident(graph_t *g, boolean weighted);
-extern int *reorder_by_reverse(graph_t *g, boolean weighted);
+extern int *reorder_by_greedy_coloring(graph_t *g, booleann weighted);
+extern int *reorder_by_weighted_greedy_coloring(graph_t *g, booleann weighted);
+extern int *reorder_by_unweighted_greedy_coloring(graph_t *g,booleann weighted);
+extern int *reorder_by_degree(graph_t *g, booleann weighted);
+extern int *reorder_by_random(graph_t *g, booleann weighted);
+extern int *reorder_by_ident(graph_t *g, booleann weighted);
+extern int *reorder_by_reverse(graph_t *g, booleann weighted);
 
 
 typedef struct _clique_options clique_options;
 struct _clique_options {
-	int *(*reorder_function)(graph_t *, boolean);
+	int *(*reorder_function)(graph_t *, booleann);
 	int *reorder_map;
 
 	/* arguments:  level, n, max, user_time, system_time, opts */
-	boolean (*time_function)(int,int,int,int,double,double,
+	booleann (*time_function)(int,int,int,int,double,double,
 				 clique_options *);
 	FILE *output;
 
-	boolean (*user_function)(set_t,graph_t *,clique_options *);
+	booleann (*user_function)(set_t,graph_t *,clique_options *);
 	void *user_data;
 	set_t *clique_list;
 	int clique_list_length;
@@ -612,24 +612,24 @@ extern clique_options *clique_default_options;
 /* Weighted clique functions */
 extern int clique_max_weight(graph_t *g,clique_options *opts);
 extern set_t clique_find_single(graph_t *g,int min_weight,int max_weight,
-				boolean maximal, clique_options *opts);
-extern int clique_find_all(graph_t *g, int req_weight, boolean exact,
-			   boolean maximal, clique_options *opts);
+				booleann maximal, clique_options *opts);
+extern int clique_find_all(graph_t *g, int req_weight, booleann exact,
+			   booleann maximal, clique_options *opts);
 
 /* Unweighted clique functions */
 #define clique_unweighted_max_size clique_unweighted_max_weight
 extern int clique_unweighted_max_weight(graph_t *g, clique_options *opts);
 extern set_t clique_unweighted_find_single(graph_t *g,int min_size,
-					   int max_size,boolean maximal,
+					   int max_size,booleann maximal,
 					   clique_options *opts);
 extern int clique_unweighted_find_all(graph_t *g, int min_size, int max_size,
-				      boolean maximal, clique_options *opts);
+				      booleann maximal, clique_options *opts);
 
 /* Time printing functions */
-extern boolean clique_print_time(int level, int i, int n, int max,
+extern booleann clique_print_time(int level, int i, int n, int max,
 				 double cputime, double realtime,
 				 clique_options *opts);
-extern boolean clique_print_time_always(int level, int i, int n, int max,
+extern booleann clique_print_time_always(int level, int i, int n, int max,
 					double cputime, double realtime,
 					clique_options *opts);
 
@@ -640,8 +640,8 @@ extern boolean clique_print_time_always(int level, int i, int n, int max,
 
 /* Procedures defined in nautycliquer.c */
 extern int find_clique(graph *g, int m, int n,
-				     int min, int max, boolean maximal);
+				     int min, int max, booleann maximal);
 extern int find_indset(graph *g, int m, int n,
-				     int min, int max, boolean maximal);
+				     int min, int max, booleann maximal);
 
 #endif /* !NAUTYCLIQUER_H */

@@ -52,8 +52,8 @@
 
    (1) In a separate file numleaves.c (present in the package), write
    a procedure with prototype matching
-      boolean
-      numleaves(graph *g, boolean digraph, long Qlo, long Qhi, int m, int n);
+      booleann
+      numleaves(graph *g, booleann digraph, long Qlo, long Qhi, int m, int n);
    It should return a nonzero value if g has between Qlo and Qhi leaves,
    and return 0 otherwise. The values of Qlo and Qhi are obtained from
    the -Q switch, with missing lower bound -NOLIMIT and missing upper
@@ -83,8 +83,8 @@
 #include "gtools.h"
 
 #ifdef FILTER
-extern boolean
-FILTER(graph *g, boolean digraph, long Qlo, long Qhi, int m, int n);
+extern booleann
+FILTER(graph *g, booleann digraph, long Qlo, long Qhi, int m, int n);
 #ifdef SUMMARY
 extern void SUMMARY(void);
 #endif
@@ -103,9 +103,9 @@ main(int argc, char *argv[])
     nauty_counter nout;
     int argnum,j,nprev,mprev;
     char *arg,sw;
-    boolean sswitch,fswitch,pswitch,qswitch,gswitch;
-    boolean hswitch,xswitch,iswitch,Iswitch,zswitch;
-    boolean badargs,digraph,vswitch,Qswitch;
+    booleann sswitch,fswitch,pswitch,qswitch,gswitch;
+    booleann hswitch,xswitch,iswitch,Iswitch,zswitch;
+    booleann badargs,digraph,vswitch,Qswitch;
     long Qlo,Qhi;
     long pval1,pval2,maxin,refresh,inclines;
     double t0,t1;

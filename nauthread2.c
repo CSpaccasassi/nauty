@@ -18,7 +18,7 @@
 typedef struct
 {
     int n;
-    boolean writeautoms;
+    booleann writeautoms;
 } params;   /* Used to pass parameters to the thread */
 
 static void*

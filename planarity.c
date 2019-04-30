@@ -43,7 +43,7 @@
 #endif
 
 
-boolean 
+booleann 
 sparseg_adjl_plan_and_iso (t_ver_sparse_rep *V, int n, t_adjl_sparse_rep *A,
 	int e, int *c, t_ver_sparse_rep **VR, t_adjl_sparse_rep **AR,
 	t_embed_sparse_rep **ER, int *nbr_e_obs)
@@ -66,7 +66,7 @@ sparseg_adjl_plan_and_iso (t_ver_sparse_rep *V, int n, t_adjl_sparse_rep *A,
 {
     t_dlcl           **dfs_tree, **back_edges, **mult_edges;
     int              edge_pos, v, w;
-    boolean          ans;
+    booleann          ans;
     t_ver_edge       *embed_graph;
  
     ans = sparseg_adjl_is_planar(V, n, A, c,
@@ -131,7 +131,7 @@ sparseg_adjl_footprint (t_ver_sparse_rep *V, int n,
 
 void 
 sparseg_adjl_print (t_ver_sparse_rep *V, int n,
-	t_adjl_sparse_rep *A, boolean user_level)
+	t_adjl_sparse_rep *A, booleann user_level)
 {
     int        v;
 
@@ -163,7 +163,7 @@ sparseg_adjl_print (t_ver_sparse_rep *V, int n,
 
 void 
 sparseg_adjl_embed_print (t_ver_sparse_rep *V_e, int n,
-	t_adjl_sparse_rep *A, t_embed_sparse_rep *E, boolean user_level)
+	t_adjl_sparse_rep *A, t_embed_sparse_rep *E, booleann user_level)
     /*
       print the embedding given by E,
       edges are referred to by their index in A
@@ -258,7 +258,7 @@ sparseg_adjl_to_nauty_graph (t_ver_sparse_rep *V, int n, t_adjl_sparse_rep *A)
 #if 0
 t_edge_sparse_rep *
 sparseg_adjl_edges (t_ver_sparse_rep *V, int n,
-	t_adjl_sparse_rep *A, int e, boolean digraph)
+	t_adjl_sparse_rep *A, int e, booleann digraph)
     /*
       e is the number of edges
     */
@@ -299,7 +299,7 @@ sparseg_adjl_edges (t_ver_sparse_rep *V, int n,
 
 t_edge_sparse_rep *
 sparseg_adjl_edges (t_ver_sparse_rep *V, int n, t_adjl_sparse_rep *A,
-	int e, boolean digraph)
+	int e, booleann digraph)
     /*
       e is the number of edges
     */
@@ -614,9 +614,9 @@ sparseg_adjl_edges (t_ver_sparse_rep *V, int n, t_adjl_sparse_rep *A,
 
 
 
-boolean 
+booleann 
 sparseg_adjl_add_edge (t_ver_sparse_rep *V, int n, t_adjl_sparse_rep **A,
-	int *size_A, int *pos, int u, int v, boolean CHECK)
+	int *size_A, int *pos, int u, int v, booleann CHECK)
     /*
       add the UNDIRECTED edge to the sparse graph (V, n, A)
       - pos records where to add the next edge in A
@@ -627,7 +627,7 @@ sparseg_adjl_add_edge (t_ver_sparse_rep *V, int n, t_adjl_sparse_rep **A,
       also we assume that the graph (V, n, A) is undirected
     */
 {
-    boolean             edge_exists;
+    booleann             edge_exists;
 
     edge_exists = FALSE;
     if (CHECK)
@@ -666,9 +666,9 @@ sparseg_adjl_add_edge (t_ver_sparse_rep *V, int n, t_adjl_sparse_rep **A,
     return TRUE;
 }
  
-boolean 
+booleann 
 sparseg_adjl_add_edge_no_extend (t_ver_sparse_rep *V, int n,
-    t_adjl_sparse_rep *A, int size_A, int *pos, int u, int v, boolean CHECK)
+    t_adjl_sparse_rep *A, int size_A, int *pos, int u, int v, booleann CHECK)
     /*
       like sparseg_adjl_add_edge but here we are guaranteed
       that pos + 1 < size_A
@@ -685,7 +685,7 @@ sparseg_adjl_add_edge_no_extend (t_ver_sparse_rep *V, int n,
       with an undirected graph
     */
 {
-    boolean   edge_added;
+    booleann   edge_added;
    
     edge_added =
         sparseg_adjl_add_dir_edge_no_extend(V, n, A, size_A, pos, u, v,
@@ -699,10 +699,10 @@ sparseg_adjl_add_edge_no_extend (t_ver_sparse_rep *V, int n,
 }
 
 
-boolean 
+booleann 
 sparseg_adjl_add_dir_edge (t_ver_sparse_rep *V, int n,
 	t_adjl_sparse_rep **A, int *size_A, int *pos, int u, int v,
-	boolean CHECK)
+	booleann CHECK)
     /*
       add the DIRECTED edge to the sparse graph (V, n, A)
       - pos records where to add the next edge in A
@@ -711,7 +711,7 @@ sparseg_adjl_add_dir_edge (t_ver_sparse_rep *V, int n,
       we check if the edge is already in the graph iff CHECK true
     */
 {
-    boolean             edge_exists;
+    booleann             edge_exists;
 
     edge_exists = FALSE;
     if (CHECK)
@@ -736,9 +736,9 @@ sparseg_adjl_add_dir_edge (t_ver_sparse_rep *V, int n,
     return TRUE;
 }
  
-boolean 
+booleann 
 sparseg_adjl_add_dir_edge_no_extend (t_ver_sparse_rep *V, int n,
-     t_adjl_sparse_rep *A, int size_A, int *pos, int u, int v, boolean CHECK)
+     t_adjl_sparse_rep *A, int size_A, int *pos, int u, int v, booleann CHECK)
     /*
       add an edge where A is guaranteed to be be big enough
       (unless that for some reason we attempt to add
@@ -778,7 +778,7 @@ sparseg_adjl_add_dir_edge_no_extend (t_ver_sparse_rep *V, int n,
  
 
 
-boolean 
+booleann 
 sparseg_adjl_remove_edge_no_red (t_ver_sparse_rep *V, t_adjl_sparse_rep *A,
 	int u, int v)
     /*
@@ -793,7 +793,7 @@ sparseg_adjl_remove_edge_no_red (t_ver_sparse_rep *V, t_adjl_sparse_rep *A,
 }
  
 
-boolean 
+booleann 
 sparseg_adjl_remove_dir_edge_no_red (t_ver_sparse_rep *V,
 	t_adjl_sparse_rep *A, int u, int v)
     /*
@@ -1054,7 +1054,7 @@ sparseg_adjl_relabel_vertex (t_adjl_sparse_rep *A, int pos, int u)
 #ifndef PLANAR_IN_MAGMA
 #endif
 
-boolean 
+booleann 
 sparseg_adjl_dir_edge_exists (t_ver_sparse_rep *V, int n,
 	t_adjl_sparse_rep *A, int u, int v)
     /*
@@ -1088,7 +1088,7 @@ sparseg_adjl_dir_edge_exists (t_ver_sparse_rep *V, int n,
 
 
 
-boolean 
+booleann 
 sparseg_adjl_u_adj_v (t_ver_sparse_rep *V, int n, t_adjl_sparse_rep *A,
 	int u, int v)
     /*
@@ -1099,7 +1099,7 @@ sparseg_adjl_u_adj_v (t_ver_sparse_rep *V, int n, t_adjl_sparse_rep *A,
 }
 
 
-boolean 
+booleann 
 sparseg_adjl_sub (t_ver_sparse_rep *V1, int n1, t_adjl_sparse_rep *A1,
 	t_ver_sparse_rep *V2, int n2, t_adjl_sparse_rep *A2)
     /*
@@ -1170,7 +1170,7 @@ sparseg_adjl_sub (t_ver_sparse_rep *V1, int n1, t_adjl_sparse_rep *A1,
 
 
 
-boolean 
+booleann 
 sparseg_adjl_eq (t_ver_sparse_rep *V1, int n1, t_adjl_sparse_rep *A1,
 	t_ver_sparse_rep *V2, int n2, t_adjl_sparse_rep *A2)
     /*
@@ -1222,7 +1222,7 @@ sparseg_adjl_eq (t_ver_sparse_rep *V1, int n1, t_adjl_sparse_rep *A1,
 /* aproto: header embed_graph_protos.h */
 
 /* aproto: beginstatic -- don't touch this!! */
-static boolean sparseg_dlcl_is_present (t_dlcl *, int, t_dlcl **);
+static booleann sparseg_dlcl_is_present (t_dlcl *, int, t_dlcl **);
 /* aproto: endstatic -- don't touch this!! */
  
  
@@ -1255,7 +1255,7 @@ sparseg_dlcl_print (t_dlcl **g, int n)
 }
 
 
-static boolean 
+static booleann 
 sparseg_dlcl_is_present (t_dlcl *l, int label, t_dlcl **p)
 {
     *p = embedg_dlcl_find(l, label);
@@ -1263,7 +1263,7 @@ sparseg_dlcl_is_present (t_dlcl *l, int label, t_dlcl **p)
 }
 
 
-boolean 
+booleann 
 sparseg_dlcl_is_adjacent (t_dlcl **g, int n, int v, int u, t_dlcl **p)
     /*
       is u adjacent to v
@@ -1342,7 +1342,7 @@ sparseg_dlcl_to_sparseg (t_dlcl **g, int n, int e,
     ASSERT(i_e == 2 * e);
 }
 
-boolean 
+booleann 
 sparseg_dlcl_sub (t_dlcl **g1, int n1, t_dlcl **g2, int n2)
     /*
       is g2 a subgraph of g1
@@ -1481,7 +1481,7 @@ sparseg_dlcl_sub (t_dlcl **g1, int n1, t_dlcl **g2, int n2)
  
 /* aproto: header embed_graph_protos.h */
 
-boolean 
+booleann 
 embedg_VES_is_vertex (int n, int i)
     /*
       is this a vertex
@@ -1491,7 +1491,7 @@ embedg_VES_is_vertex (int n, int i)
     return i < n ? TRUE : FALSE;
 }
 
-boolean 
+booleann 
 embedg_VES_is_virtual_vertex (int n, int i)
     /*
       is this a virtual vertex
@@ -1506,7 +1506,7 @@ embedg_VES_is_virtual_vertex (int n, int i)
     return i >= n && i < 2*n ? TRUE : FALSE;
 }
 
-boolean 
+booleann 
 embedg_VES_is_edge (int n, int i)
     /*
       is this an edge
@@ -1516,7 +1516,7 @@ embedg_VES_is_edge (int n, int i)
     return i >= 2*n ? TRUE : FALSE;
 }
 
-boolean 
+booleann 
 embedg_VES_is_tree_edge (t_ver_edge *embed_graph, int n, int i)
     /*
       is this s tree edge
@@ -1526,7 +1526,7 @@ embedg_VES_is_tree_edge (t_ver_edge *embed_graph, int n, int i)
         && embed_graph[i].type == TE;
 }
 
-boolean 
+booleann 
 embedg_VES_is_back_edge (t_ver_edge *embed_graph, int n, int i)
     /*
       is this a back edge
@@ -1536,7 +1536,7 @@ embedg_VES_is_back_edge (t_ver_edge *embed_graph, int n, int i)
         && embed_graph[i].type == BE;
 }
 
-boolean 
+booleann 
 embedg_VES_is_short_cut_edge (t_ver_edge *embed_graph, int n, int i)
     /*
       as the name indicates...
@@ -1798,11 +1798,11 @@ embedg_VES_walk_bicomp (t_ver_edge *embed_graph, int n, int v, int vin)
 
 void 
 embedg_VES_print_adj_list (t_ver_edge *embed_graph, int n, int r,
-	boolean consistent)
+	booleann consistent)
     /*
       print r's adjacency list - r can be a vertex or edge
 
-      the boolean <consistent> if true assumes that
+      the booleann <consistent> if true assumes that
       the list is consistent (will determine the way we traverse the list)
 
       a priori we should get the same result either way
@@ -1841,7 +1841,7 @@ embedg_VES_print_adj_list (t_ver_edge *embed_graph, int n, int r,
     }
 }
 
-boolean 
+booleann 
 embedg_VES_is_adj_list_consistent (t_ver_edge *embed_graph, int n, int r)
     /*
       checks that r's adjacency list is consistent:
@@ -1919,7 +1919,7 @@ embedg_VES_is_adj_list_consistent (t_ver_edge *embed_graph, int n, int r)
 }
 
 
-boolean 
+booleann 
 embedg_VES_are_adj_lists_consistent (t_ver_edge *embed_graph, int n)
     /*
       checks that the adjacency list of each vertex is consistent
@@ -2121,7 +2121,7 @@ static void embedg_dlcl_rec_insert_right (t_dlcl *, t_dlcl *);
 static void embedg_dlcl_rec_insert_left (t_dlcl *, t_dlcl *);
 static void embedg_dlcl_rec_retrieve (t_dlcl *);
 static void embedg_dlcl_rec_delete (t_dlcl *);
-static boolean embedg_dlcl_is_singleton (t_dlcl *);
+static booleann embedg_dlcl_is_singleton (t_dlcl *);
 /* aproto: endstatic -- don't touch this!! */
 
 
@@ -2372,14 +2372,14 @@ embedg_dlcl_delete_rec (t_dlcl *l, t_dlcl *r)
 }
 
 
-boolean 
+booleann 
 embedg_dlcl_is_empty (t_dlcl *l)
 {
     return (l == NP) ? TRUE : FALSE;
 }
 
 
-static boolean 
+static booleann 
 embedg_dlcl_is_singleton (t_dlcl *l)
 {
     return (l->right == l) ? TRUE : FALSE;
@@ -2528,7 +2528,7 @@ embedg_dlcl_length (t_dlcl *l)
 #endif
  
 
-boolean 
+booleann 
 sparseg_adjl_is_planar (
     t_ver_sparse_rep *V,
     int n,
@@ -3567,7 +3567,7 @@ embedg_merge_queue_delete (t_merge_queue q)
 }
 
 
-boolean 
+booleann 
 embedg_merge_queue_empty (t_merge_queue q)
 {
     return q.start == q.end ? TRUE : FALSE;
@@ -3733,7 +3733,7 @@ embedg_merge_queue_prune (t_merge_queue *q, int *v,
  
 
 
-boolean 
+booleann 
 embedg_VES_is_ver_pertinent (t_ver_edge *embed_graph, int n, int v, int w)
     /*
       is w pertinent (wrt v)
@@ -3741,7 +3741,7 @@ embedg_VES_is_ver_pertinent (t_ver_edge *embed_graph, int n, int v, int w)
       - or w has a non empty pertinent_bicomp_list
     */
 {
-    boolean       ans;
+    booleann       ans;
     
     ans = embed_graph[w].adjacent_to == v ? TRUE : FALSE;
 
@@ -3752,7 +3752,7 @@ embedg_VES_is_ver_pertinent (t_ver_edge *embed_graph, int n, int v, int w)
             FALSE : TRUE;
 }
 
-boolean 
+booleann 
 embedg_VES_is_ver_ext_active (t_ver_edge *embed_graph, int n, int v, int w)
     /*
       is w externally active (wrt v)
@@ -3765,7 +3765,7 @@ embedg_VES_is_ver_ext_active (t_ver_edge *embed_graph, int n, int v, int w)
       inactive
     */
 {
-    boolean       ans;
+    booleann       ans;
 
     ans = embed_graph[w].least_ancestor < v ? TRUE : FALSE;
 
@@ -3788,7 +3788,7 @@ embedg_VES_is_ver_ext_active (t_ver_edge *embed_graph, int n, int v, int w)
 }
 
 
-boolean 
+booleann 
 embedg_VES_is_ver_int_active (t_ver_edge *embed_graph, int n, int v, int w)
     /*
       is w internally active (wrt v):
@@ -3799,7 +3799,7 @@ embedg_VES_is_ver_int_active (t_ver_edge *embed_graph, int n, int v, int w)
         && !embedg_VES_is_ver_ext_active(embed_graph, n, v, w);
 }
 
-boolean 
+booleann 
 embedg_VES_is_ver_inactive (t_ver_edge *embed_graph, int n, int v, int w)
     /*
       is w inactive (wrt v), that is w nor pertinent nor externally activ
@@ -4448,7 +4448,7 @@ embedg_VES_embed_edge (t_ver_edge *embed_graph, int n, int *edge_pos,
 
 void 
 embedg_VES_add_edge (t_ver_edge *embed_graph, int n, int *edge_pos,
-	int v, int w, boolean MARK, int mark)
+	int v, int w, booleann MARK, int mark)
     /*
       add the edge (v, w): this is DIFFERENT from
       embedg_VES_embed_edge in the sense
@@ -4626,12 +4626,12 @@ embedg_VES_add_edge (t_ver_edge *embed_graph, int n, int *edge_pos,
 
 /* aproto: beginstatic -- don't touch this!! */
 static void embedg_recover_embedding_embed_mult
- (t_dlcl **, t_embed_sparse_rep *, int, int, int, int, int *, boolean *, int *);
+ (t_dlcl **, t_embed_sparse_rep *, int, int, int, int, int *, booleann *, int *);
 static void embedg_recover_embedding_embed_loops
- (t_dlcl **, t_embed_sparse_rep *, int, int, int *, boolean *);
+ (t_dlcl **, t_embed_sparse_rep *, int, int, int *, booleann *);
 static t_dlcl **embedg_get_reduced_obs (t_dlcl **, int);
-static boolean embedg_is_red_obs_K33 (t_dlcl **, int);
-static boolean embedg_is_red_obs_K5 (t_dlcl **, int);
+static booleann embedg_is_red_obs_K33 (t_dlcl **, int);
+static booleann embedg_is_red_obs_K5 (t_dlcl **, int);
 /* aproto: endstatic -- don't touch this!! */
  
  
@@ -4688,7 +4688,7 @@ embedg_recover_embedding (
         in either the embed_graph[v] record of the mult_edges[v] record
     */
     int          index_embed, v, mult, w, v_w_in_embed, new_first_edge;
-    boolean      set_next;
+    booleann      set_next;
 
     IF_DEB(
            fprintf(stdout, "in recover emb.\n");
@@ -5035,7 +5035,7 @@ embedg_recover_embedding (
 static void 
 embedg_recover_embedding_embed_mult (t_dlcl **mult_edges,
 	t_embed_sparse_rep *embedding, int nbr_e, int v, int w,
-	int mult, int *index_embed, boolean *set_next, int *first_edge)
+	int mult, int *index_embed, booleann *set_next, int *first_edge)
     /*
       see if the directed edge [v, w] is multiple: if so embed it
       in embedding
@@ -5055,7 +5055,7 @@ embedg_recover_embedding_embed_mult (t_dlcl **mult_edges,
     */
     t_dlcl      *p;
     int         v_w_in_embed, v_w_prev;
-    boolean     do_twins, start, do_first_edge;
+    booleann     do_twins, start, do_first_edge;
 
     IF_DEB_EMBED_MULT(
            fprintf(stdout, "in recover emb. mult, v %d w %d mult %d\n",
@@ -5294,7 +5294,7 @@ embedg_recover_embedding_embed_mult (t_dlcl **mult_edges,
 static void 
 embedg_recover_embedding_embed_loops (t_dlcl **mult_edges,
 	t_embed_sparse_rep *embedding, int nbr_e, int v,
-	int *index_embed, boolean *set_next)
+	int *index_embed, booleann *set_next)
     /*
       embed the [v, v] loops 
     */
@@ -5391,7 +5391,7 @@ embedg_recover_embedding_embed_loops (t_dlcl **mult_edges,
 
 void 
 embedg_recov_embed_walk_proper_face (int n, int e, t_adjl_sparse_rep *A,
-	t_embed_sparse_rep *embedding, boolean MARK, int mark)
+	t_embed_sparse_rep *embedding, booleann MARK, int mark)
     /*
       do a proper face walk in the recovered embedding starting
       at index e in the embedding
@@ -5438,7 +5438,7 @@ embedg_recov_embed_walk_proper_face (int n, int e, t_adjl_sparse_rep *A,
       
 
 
-boolean 
+booleann 
 embedg_check_recov_embedding (int n, int nbr_e, int nbr_comp,
 	t_ver_sparse_rep *vertices, t_adjl_sparse_rep *A,
 	t_embed_sparse_rep *embedding)
@@ -5682,7 +5682,7 @@ embedg_get_reduced_obs (t_dlcl **obs, int n)
     return reduced;
 }
 
-static boolean 
+static booleann 
 embedg_is_red_obs_K33 (t_dlcl **reduced, int n)
     /*
       check if the (reduced) obstruction is indeed K33 
@@ -5766,7 +5766,7 @@ embedg_is_red_obs_K33 (t_dlcl **reduced, int n)
 }
 
 
-static boolean 
+static booleann 
 embedg_is_red_obs_K5 (t_dlcl **reduced, int n)
     /*
       check if the (reduced) obstruction is indeed K5
@@ -5799,14 +5799,14 @@ embedg_is_red_obs_K5 (t_dlcl **reduced, int n)
 }
 
 
-boolean 
+booleann 
 embedg_check_recov_obs (t_dlcl **obs, int n, minor m)
     /*
       check if the recovered obstruction is one of K33 or K5
     */
 {
     t_dlcl      **reduced;
-    boolean     ans;
+    booleann     ans;
 
     reduced = embedg_get_reduced_obs(obs, n);
     if (m != MINOR_E5)
@@ -6012,7 +6012,7 @@ embedg_mark_obstruction (
 {
     int          c, vr, x, y, w;
     int          *path_v, *path_e, nbr_v, entry_in_path_e;
-    boolean      px_attached_high, py_attached_high, is_minor_D;
+    booleann      px_attached_high, py_attached_high, is_minor_D;
     minor        m;
     
  
@@ -6264,7 +6264,7 @@ embedg_iso_get_c_of_v (t_ver_edge *embed_graph, int n, int v, int w)
 }
 
 
-boolean 
+booleann 
 embedg_iso_is_minor_A (t_ver_edge *embed_graph, int n,
 	int *edge_pos, int v, int c, int *vr)
     /*
@@ -6420,7 +6420,7 @@ embedg_iso_get_x_y_w (t_ver_edge *embed_graph, int n, int v, int r,
 
 
 
-boolean 
+booleann 
 embedg_iso_is_minor_B (t_ver_edge *embed_graph, int n, int *edge_pos,
 	int v, int c, int *x, int *y, int *w)
     /*
@@ -6487,9 +6487,9 @@ embedg_iso_get_highest_x_y_path (
     int *entry_in_path_e, /* the in direction for the FIRST edge in
                                       path_e: needed later on *sigh*
                                    */
-    boolean *px_attached_high,
-    boolean *py_attached_high,
-    boolean *is_minor_D
+    booleann *px_attached_high,
+    booleann *py_attached_high,
+    booleann *is_minor_D
 )
     /*
       the obstruction is one of minor C, D, E.
@@ -6513,7 +6513,7 @@ embedg_iso_get_highest_x_y_path (
 
     int          vv, s, sin, p_x, p_y, cur_v, cur_vin;
     int          e, ein, s_e, s_ein;
-    boolean      avoid_vv;
+    booleann      avoid_vv;
     
     /*
       must start the walk at edge embed_graph[v^c].link[1 ^ 0],
@@ -6555,7 +6555,7 @@ embedg_iso_get_highest_x_y_path (
     avoid_vv = FALSE;
     while (TRUE)
     {
-        boolean      av;
+        booleann      av;
         
         av = 
             embedg_VES_get_succ_on_proper_face_with_avoidance(
@@ -8311,7 +8311,7 @@ embedg_vertices_orientation (t_ver_edge *embed_graph, int n)
     for (vv = n; vv < 2*n; vv++)
     {
         int      c, cur, cur_e;
-        boolean  NEW_BICOMP;
+        booleann  NEW_BICOMP;
 
         if (embed_graph[vv].link[0] == vv)
             /*
@@ -8622,7 +8622,7 @@ embedg_nbr_faces (t_ver_edge *embed_graph, int n, int edge_pos,
 }
 
 
-boolean 
+booleann 
 embedg_is_embed_valid (t_ver_edge *embed_graph, int n, int nbr_comp,
 	int edge_pos, int *ver_orient, int *nbr_e_embed)
     /*
@@ -8706,7 +8706,7 @@ embedg_is_embed_valid (t_ver_edge *embed_graph, int n, int nbr_comp,
 
 void 
 embedg_VES_get_succ_on_ext_face (t_ver_edge *embed_graph, int n, int v,
-	int vin, boolean MARK, int mark, int *s, int *sin)
+	int vin, booleann MARK, int mark, int *s, int *sin)
     /*
       find the successor s of v (entered via vin) on the external face
       -- also return the direction in which s has been entered
@@ -8807,7 +8807,7 @@ embedg_VES_get_succ_on_ext_face (t_ver_edge *embed_graph, int n, int v,
 
 void 
 embedg_VES_get_succ_active_on_ext_face (t_ver_edge *embed_graph, int n,
-	int v, int w, int win, boolean MARK, int mark, int *s, int *sin)
+	int v, int w, int win, booleann MARK, int mark, int *s, int *sin)
     /*
       find the ACTIVE (wrt v) successor s of w (entered via win)
       on the external face
@@ -8836,7 +8836,7 @@ embedg_VES_get_succ_active_on_ext_face (t_ver_edge *embed_graph, int n,
 
 void 
 embedg_VES_get_succ_ext_active_on_ext_face (t_ver_edge *embed_graph, int n,
-	int v, int w, int win, boolean MARK, int mark, int *s, int *sin)
+	int v, int w, int win, booleann MARK, int mark, int *s, int *sin)
     /*
       find the externally active (wrt v) successor s of w (entered via win)
       on the external face
@@ -8861,7 +8861,7 @@ embedg_VES_get_succ_ext_active_on_ext_face (t_ver_edge *embed_graph, int n,
 
 void 
 embedg_VES_get_succ_pertinent_on_ext_face (t_ver_edge *embed_graph, int n,
-	int v, int w, int win, boolean MARK, int mark, int *s, int *sin)
+	int v, int w, int win, booleann MARK, int mark, int *s, int *sin)
     /*
       find the pertinent (wrt v) successor s of w (entered via win)
       on the external face
@@ -8935,7 +8935,7 @@ embedg_VES_get_succ_pertinent_on_ext_face (t_ver_edge *embed_graph, int n,
 static void embedg_VES_walk_mark_part_ext_face (t_ver_edge *, int, int, int, int, int, int);
 static void embedg_VES_walk_mark_ext_face (t_ver_edge *, int, int, int);
 static void embedg_VES_walk_mark_part_proper_face (t_ver_edge *, int, int, int, int, int);
-static boolean embedg_VES_is_part_ext_face_marked (t_ver_edge *, int, int, int, int, int, int);
+static booleann embedg_VES_is_part_ext_face_marked (t_ver_edge *, int, int, int, int, int, int);
 static void embedg_get_u_x (t_ver_edge *, int, int, int, int *);
 static int embedg_get_least_neigh (t_dlcl **, t_dlcl **, int, int, int);
 static void embedg_add_mark_u_x (t_dlcl **, t_dlcl **, t_ver_edge *, int, int *, int, int, int *, int);
@@ -9040,7 +9040,7 @@ embedg_VES_walk_mark_part_proper_face (t_ver_edge *embed_graph, int n,
 
 
 
-static boolean 
+static booleann 
 embedg_VES_is_part_ext_face_marked (t_ver_edge *embed_graph, int n, int v,
 	int vin, int from, int to, int mark)
     /*
@@ -9079,7 +9079,7 @@ embedg_VES_is_part_ext_face_marked (t_ver_edge *embed_graph, int n, int v,
 }
 
 
-boolean 
+booleann 
 embedg_VES_is_ext_face_marked (t_ver_edge *embed_graph, int n, int v, int mark)
     /*
       simple check to see if all the vertices on the external
@@ -9546,7 +9546,7 @@ void
 embedg_mark_minor_C (t_dlcl **dfs_tree, t_dlcl **back_edges,
 	t_ver_edge *embed_graph, int n, int *edge_pos, int v,
 	int c, int x, int y, int w, int *path_v, int *path_e,
-	int nbr_v, boolean px_attached_high, boolean py_attached_high)
+	int nbr_v, booleann px_attached_high, booleann py_attached_high)
 {
     int          vv, p_x, p_y, u_x, u_y, u;
 
@@ -10166,9 +10166,9 @@ embedg_mark_minor_E (t_dlcl **dfs_tree, t_dlcl **back_edges,
 
 
 
-boolean 
+booleann 
 embedg_VES_get_succ_on_proper_face_with_avoidance (t_ver_edge *embed_graph,
-	int n, int e, int ein, int a, boolean MARK, int mark, int *s,
+	int n, int e, int ein, int a, booleann MARK, int mark, int *s,
 	int *next_e, int *next_ein)
     /*
       find the successor s of embed_graph[e].neighbour
@@ -10198,7 +10198,7 @@ embedg_VES_get_succ_on_proper_face_with_avoidance (t_ver_edge *embed_graph,
 {
     int            eout;
     int            twin, twinout;
-    boolean        avoid_a;
+    booleann        avoid_a;
 
     ASSERT(embedg_VES_is_edge(n, e));
     ASSERT(!embedg_VES_is_short_cut_edge(embed_graph, n, e));
@@ -10321,7 +10321,7 @@ embedg_VES_get_succ_on_proper_face (t_ver_edge *embed_graph, int n, int e,
       same as above but without avoidance
     */
 {
-    boolean  avoid;
+    booleann  avoid;
     
     avoid =
         embedg_VES_get_succ_on_proper_face_with_avoidance(
@@ -10335,7 +10335,7 @@ embedg_VES_get_succ_on_proper_face (t_ver_edge *embed_graph, int n, int e,
 
 void 
 embedg_VES_walk_proper_face (t_ver_edge *embed_graph, int n, int e,
-	int ein, boolean MARK, int mark)
+	int ein, booleann MARK, int mark)
     /*
       traversing a proper face starting at edge e which has been entered
       via ein

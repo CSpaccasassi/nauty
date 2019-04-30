@@ -112,7 +112,7 @@ static void writemarker(int, int, int, int, int, int);
 
  /* copies of some of the options: */
 static TLS_ATTR
-   boolean getcanon,digraph,writeautoms,domarkers,cartesian,doschreier;
+   booleann getcanon,digraph,writeautoms,domarkers,cartesian,doschreier;
 static TLS_ATTR int linelength,tc_level,mininvarlevel,maxinvarlevel,invararg;
 static TLS_ATTR void (*usernodeproc)(graph*,int*,int*,int,int,int,int,int,int);
 static TLS_ATTR void (*userautomproc)(int,int*,int*,int,int,int);
@@ -121,7 +121,7 @@ static TLS_ATTR void (*userlevelproc)
 static TLS_ATTR int (*usercanonproc)
           (graph*,int*,graph*,int,int,int,int);
 static TLS_ATTR void (*invarproc)
-          (graph*,int*,int*,int,int,int,int*,int,boolean,int,int);
+          (graph*,int*,int*,int,int,int,int*,int,booleann,int,int);
 static TLS_ATTR FILE *outfile;
 static TLS_ATTR dispatchvec dispatch;
 
@@ -157,7 +157,7 @@ static TLS_ATTR int gca_first, /* level of greatest common ancestor of
                       gca_canon */
     cosetindex;    /* the point being fixed at level gca_first */
 
-static TLS_ATTR boolean needshortprune;  /* used to flag calls to shortprune */
+static TLS_ATTR booleann needshortprune;  /* used to flag calls to shortprune */
 
 #if !MAXN
 DYNALLSTAT(set,defltwork,defltwork_sz);
@@ -916,7 +916,7 @@ static int
 processnode(int *lab, int *ptn, int level, int numcells)
 {
     int i,code,save,newlevel;
-    boolean ispruneok;
+    booleann ispruneok;
     int sr;
 
     code = 0;

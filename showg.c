@@ -157,7 +157,7 @@ typedef unsigned long setword;
 #endif
 typedef setword set;
 typedef setword graph;
-typedef int boolean;
+typedef int booleann;
 
 static setword bit[32]=
   {020000000000,010000000000,04000000000,02000000000,
@@ -347,7 +347,7 @@ opengraphfile(char *filename, int *codetype, int assumefixed, long position)
     FILE *f;
     int c,firstc;
     long i,l,pos,pos1,pos2;
-    boolean bad_header;
+    booleann bad_header;
 
     if (filename == NULL)
         f = stdin;
@@ -562,7 +562,7 @@ stringtograph(char *s, graph *g, int m)
     int n,i,j,k,v,x,nb,need;
     size_t ii;
     set *gi,*gj;
-    boolean done;
+    booleann done;
 
     n = graphsize(s);
     if (n == 0) return;
@@ -691,7 +691,7 @@ stringtograph(char *s, graph *g, int m)
 /***********************************************************************/
 
 graph*                 /* read graph into nauty format */
-readgg(FILE *f, graph *g, int reqm, int *pm, int *pn, boolean *digraph) 
+readgg(FILE *f, graph *g, int reqm, int *pm, int *pn, booleann *digraph) 
 /* graph6, digraph6 and sparse6 formats are supported 
    f = an open file 
    g = place to put the answer (NULL for dynamic allocation) 
@@ -764,7 +764,7 @@ readgg(FILE *f, graph *g, int reqm, int *pm, int *pn, boolean *digraph)
 static int
 longvalue(char **ps, long *l)
 {
-    boolean neg,pos;
+    booleann neg,pos;
     long sofar,last;
     char *s;
 
@@ -904,11 +904,11 @@ static long nin;
 
 static void
 putsetx(FILE *f, set *set1, int *curlenp, int linelength, int m,
-    boolean compress, int start)
+    booleann compress, int start)
 {
     int slen,j1,j2;
     char s[40];
-    boolean first;
+    booleann first;
 
     first = TRUE;
     j1 = start;
@@ -960,7 +960,7 @@ putsetx(FILE *f, set *set1, int *curlenp, int linelength, int m,
 *****************************************************************************/
 
 static void
-putgraphx(FILE *f, graph *g, int linelength, boolean triang, int m, int n)
+putgraphx(FILE *f, graph *g, int linelength, booleann triang, int m, int n)
 {
     int i,curlen;
     set *pg;
@@ -978,7 +978,7 @@ putgraphx(FILE *f, graph *g, int linelength, boolean triang, int m, int n)
 
 static void
 putedges(FILE *f, graph *g, int linelength, 
-         boolean digraph, int m, int n)
+         booleann digraph, int m, int n)
 /* Write list of edges, preceded by the numbers of vertices and
    edges.  Use labelorg */
 {
@@ -1023,7 +1023,7 @@ putedges(FILE *f, graph *g, int linelength,
 /***************************************************************************/
 
 static void
-putcgraph(FILE *f, graph *g, int linelength, boolean digraph, int m, int n)
+putcgraph(FILE *f, graph *g, int linelength, booleann digraph, int m, int n)
 /* write compressed form, using labelorg */
 {
     int i,curlen,j0;
@@ -1063,12 +1063,12 @@ putcgraph(FILE *f, graph *g, int linelength, boolean digraph, int m, int n)
 /**************************************************************************/
 
 static void
-putam(FILE *f, graph *g, int linelength, boolean space, boolean triang,
+putam(FILE *f, graph *g, int linelength, booleann space, booleann triang,
       int m, int n)   /* write adjacency matrix */
 {
     set *gi;
     int i,j;
-    boolean first;
+    booleann first;
 
     for (i = 0, gi = (set*)g; i < n - (triang!=0); ++i, gi += m)
     {
@@ -1094,11 +1094,11 @@ main(int argc, char *argv[])
     int m,n,codetype;
     int argnum,j;
     char *arg,sw;
-    boolean badargs,digraph;
+    booleann badargs,digraph;
     long maxin,pval1,pval2;
-    boolean fswitch,pswitch,cswitch,dswitch;
-    boolean aswitch,lswitch,oswitch,Fswitch;
-    boolean Aswitch,eswitch,tswitch,qswitch;
+    booleann fswitch,pswitch,cswitch,dswitch;
+    booleann aswitch,lswitch,oswitch,Fswitch;
+    booleann Aswitch,eswitch,tswitch,qswitch;
     int linelength;
     char *infilename,*outfilename;
 

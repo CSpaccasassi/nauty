@@ -99,8 +99,8 @@ main(int argc, char *argv[])
     FILE *infile;
     int nfiles,i,j;
     char *arg,sw;
-    boolean vswitch,xswitch;
-    boolean badargs;
+    booleann vswitch,xswitch;
+    booleann badargs;
     char buff[1024];
     size_t nr;
     DYNALLSTAT(char*,filename,filename_sz);

@@ -40,8 +40,8 @@ main(int argc, char *argv[])
 {
     char *infilename,*outfilename;
     FILE *infile,*outfile;
-    boolean badargs,quiet;
-    boolean digraph;
+    booleann badargs,quiet;
+    booleann digraph;
     int j,m,n,argnum;
     int codetype,outcode;
     graph *g;

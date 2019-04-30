@@ -22,7 +22,7 @@
 static FILE *outfile;
 static nauty_counter nout;
 static int outcode;
-static boolean digraph,dolabel;
+static booleann digraph,dolabel;
 
 /**************************************************************************/
 
@@ -86,7 +86,7 @@ writeone(graph *g, int m, int n, int *del, int ndel)
 /**************************************************************************/
 
 static void
-search(int level, int ndel, int *del, graph *g, int m, int n, boolean *degok)
+search(int level, int ndel, int *del, graph *g, int m, int n, booleann *degok)
 {
     int i;
 
@@ -111,7 +111,7 @@ main(int argc, char *argv[])
 {
     char *infilename,*outfilename;
     FILE *infile;
-    boolean badargs,quiet,dswitch,nswitch;
+    booleann badargs,quiet,dswitch,nswitch;
     int i,j,m,n,v,argnum;
     int ndel;
     int codetype;
@@ -123,11 +123,11 @@ main(int argc, char *argv[])
     int degv;
     double t;
 #if MAXN
-    boolean degok[MAXN];
-    boolean del[MAXN];
+    booleann degok[MAXN];
+    booleann del[MAXN];
 #else
-    DYNALLSTAT(boolean,degok,degok_sz);
-    DYNALLSTAT(boolean,del,del_sz);
+    DYNALLSTAT(booleann,degok,degok_sz);
+    DYNALLSTAT(booleann,del,del_sz);
 #endif
 
     HELP; PUTVERSION;
@@ -235,7 +235,7 @@ main(int argc, char *argv[])
         }
 
 #if !MAXN
-        DYNALLOC1(boolean,degok,degok_sz,n,"delptg");
+        DYNALLOC1(booleann,degok,degok_sz,n,"delptg");
         DYNALLOC1(int,del,del_sz,n,"delptg");
 #endif
 

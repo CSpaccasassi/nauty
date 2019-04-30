@@ -65,7 +65,7 @@ preparemarks(size_t nn)
 /**************************************************************************/
 
 static void
-writedread(FILE *f, sparsegraph *sg, boolean digraph)
+writedread(FILE *f, sparsegraph *sg, booleann digraph)
 /* Write in dreadnaut format */
 {
     size_t *v;
@@ -166,7 +166,7 @@ vnumber(long *dimen, int *index, int ndimen)
 /**************************************************************************/
 
 static void
-makepath(long n, boolean digraph, sparsegraph *sg)
+makepath(long n, booleann digraph, sparsegraph *sg)
 {
     int *d,*e,i;
     size_t *v,k;
@@ -217,7 +217,7 @@ makepath(long n, boolean digraph, sparsegraph *sg)
 /**************************************************************************/
 
 static void
-makecycle(long n, boolean digraph, sparsegraph *sg)
+makecycle(long n, booleann digraph, sparsegraph *sg)
 {
     int *d,*e,i;
     size_t *v;
@@ -274,7 +274,7 @@ makecycle(long n, boolean digraph, sparsegraph *sg)
 /**************************************************************************/
 
 static void
-makeflowersnark(long k, boolean digraph, sparsegraph *sg)
+makeflowersnark(long k, booleann digraph, sparsegraph *sg)
 /* Flower snark on 4*k vertices, no digraph variant 
 *
  * The flower snark Jn can be constructed with the following process :
@@ -352,7 +352,7 @@ makeflowersnark(long k, boolean digraph, sparsegraph *sg)
 /**************************************************************************/
 
 static void
-makeJohnson(long n, long k, boolean digraph, sparsegraph *sg)
+makeJohnson(long n, long k, booleann digraph, sparsegraph *sg)
 {
     size_t *v;
     int *d,*e,*ep,nv,deg,i,j,s,t,u;
@@ -413,7 +413,7 @@ makeJohnson(long n, long k, boolean digraph, sparsegraph *sg)
 /**************************************************************************/
 
 static void
-makecomplete(long n, boolean digraph, sparsegraph *sg)
+makecomplete(long n, booleann digraph, sparsegraph *sg)
 {
     int *d,*e,i,j;
     size_t *v,k;
@@ -456,7 +456,7 @@ makecomplete(long n, boolean digraph, sparsegraph *sg)
 /**************************************************************************/
 
 static void
-makeempty(long n, boolean digraph, sparsegraph *sg)
+makeempty(long n, booleann digraph, sparsegraph *sg)
 {
     int *d,*e,i;
     size_t *v;
@@ -497,7 +497,7 @@ makeempty(long n, boolean digraph, sparsegraph *sg)
 /**************************************************************************/
 
 static void
-makehypercube(long deg, boolean digraph, sparsegraph *sg)
+makehypercube(long deg, booleann digraph, sparsegraph *sg)
 {
     int *d,*e,i,j;
     size_t *v,k,nv;
@@ -526,11 +526,11 @@ makehypercube(long deg, boolean digraph, sparsegraph *sg)
 /**************************************************************************/
 
 static void
-maketheta(long *len, int npaths, boolean digraph, sparsegraph *sg)
+maketheta(long *len, int npaths, booleann digraph, sparsegraph *sg)
 {
     int i,j,k,n,ntemp,*d,*e;
     size_t *v,ne,etemp;
-    boolean hasone;
+    booleann hasone;
 
     hasone = FALSE;
     n = 2;
@@ -613,11 +613,11 @@ maketheta(long *len, int npaths, boolean digraph, sparsegraph *sg)
 /**************************************************************************/
 
 static void
-makegrid(long *dim, int ndim, boolean digraph, sparsegraph *sg)
+makegrid(long *dim, int ndim, booleann digraph, sparsegraph *sg)
 {
     int *d,*e,i,j,deg,n,oldn;
     size_t *v,k;
-    boolean closed[30];
+    booleann closed[30];
     int index[30];
 
     n = 1;
@@ -703,7 +703,7 @@ makegrid(long *dim, int ndim, boolean digraph, sparsegraph *sg)
 /**************************************************************************/
 
 static void
-makecirculant(long n, long *conn, int nconn, boolean digraph, sparsegraph *sg)
+makecirculant(long n, long *conn, int nconn, booleann digraph, sparsegraph *sg)
 {
     int *d,*e,i,j,deg;
     size_t *v,k;
@@ -760,7 +760,7 @@ makecirculant(long n, long *conn, int nconn, boolean digraph, sparsegraph *sg)
 /**************************************************************************/
 
 static void
-makegenpetersen(long n1, long n2, boolean digraph, sparsegraph *sg)
+makegenpetersen(long n1, long n2, booleann digraph, sparsegraph *sg)
 {
     int *d,*e,i,n;
     size_t *v,k;
@@ -804,7 +804,7 @@ makegenpetersen(long n1, long n2, boolean digraph, sparsegraph *sg)
 
 static void
 makecompletebipartite(long n1, long n2,
-                      long matching, boolean digraph, sparsegraph *sg)
+                      long matching, booleann digraph, sparsegraph *sg)
 {
     int *d,*e,i,j,jmissing,n;
     size_t *v,k;
@@ -869,10 +869,10 @@ main(int argc, char *argv[])
     int codetype;
     int argnum,j;
     char *arg,sw;
-    boolean badargs,quiet;
-    boolean Cswitch,Pswitch,gswitch,sswitch,zswitch,Jswitch,dswitch;
-    boolean pswitch,cswitch,eswitch,kswitch,bswitch,Qswitch,Gswitch;
-    boolean fswitch,Tswitch,verbose,havegraph,dreadnaut;
+    booleann badargs,quiet;
+    booleann Cswitch,Pswitch,gswitch,sswitch,zswitch,Jswitch,dswitch;
+    booleann pswitch,cswitch,eswitch,kswitch,bswitch,Qswitch,Gswitch;
+    booleann fswitch,Tswitch,verbose,havegraph,dreadnaut;
     long size;
     static FILE *outfile;
     char *outfilename;

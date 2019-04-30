@@ -44,12 +44,12 @@ static int edgeno[MAXNV][MAXNV];
 static int lastlev[MAXNE];
 
 static int ix[MAXNE+MAXNV],nix;
-static boolean first;
+static booleann first;
 static int lastreject[MAXNV];
-static boolean lastrejok;
+static booleann lastrejok;
 static unsigned long groupsize;
 static unsigned long newgroupsize;
-static boolean Gswitch,Tswitch,Aswitch,Bswitch;
+static booleann Gswitch,Tswitch,Aswitch,Bswitch;
 static int Brows;
 
 #define GROUPTEST_NOT 
@@ -119,7 +119,7 @@ writeautom(int *p, int n)
 
 /**************************************************************************/
 
-static boolean
+static booleann
 ismax(int *p, int n)
 /* test if x^p <= x */
 {
@@ -198,11 +198,11 @@ printam(FILE *f, int n, int ne, int *ix)
 
 static void
 trythisone(grouprec *group,
-       boolean lswitch, int *deg, int maxdeg, int ne, int n)
+       booleann lswitch, int *deg, int maxdeg, int ne, int n)
 /* Try one solution, accept if minimal. */
 {
     int i,ne2;
-    boolean accept;
+    booleann accept;
 
     nix = ne;
     newgroupsize = 1;
@@ -347,7 +347,7 @@ scan_lp(int level, int ne, long minedges, long maxedges, long sofar,
     int left;
     long min,max,k;
     int x1,x2;
-    boolean odd,even;
+    booleann odd,even;
 
     if (level == ne)
     {
@@ -446,7 +446,7 @@ scan_reg(int level, int ne, long minedges, long maxedges, long sofar,
 
 static void
 multi(graph *g, int nfixed, long minedges, long maxedges, long maxmult,
-      int maxdeg, boolean lswitch, int m, int n)
+      int maxdeg, booleann lswitch, int m, int n)
 {
     static DEFAULTOPTIONS_GRAPH(options);
     statsblk stats;
@@ -458,7 +458,7 @@ multi(graph *g, int nfixed, long minedges, long maxedges, long maxmult,
     int lab[MAXNV],ptn[MAXNV],orbits[MAXNV],deg[MAXNV];
     int delta[MAXNV],def[MAXNV];
     set active[(MAXNV+WORDSIZE-1)/WORDSIZE];
-    boolean isreg;
+    booleann isreg;
 
 #ifdef PATHCOUNTS
     ++count0;
@@ -618,9 +618,9 @@ main(int argc, char *argv[])
     int m,n,codetype;
     int argnum,j,nfixed,maxdeg,regdeg,ldeg;
     char *arg,sw;
-    boolean badargs;
-    boolean fswitch,uswitch,eswitch,qswitch,mswitch,Dswitch;
-    boolean lswitch,rswitch;
+    booleann badargs;
+    booleann fswitch,uswitch,eswitch,qswitch,mswitch,Dswitch;
+    booleann lswitch,rswitch;
     long minedges,maxedges,maxmult;
     double t;
     char *infilename,*outfilename;

@@ -44,10 +44,10 @@ main(int argc, char *argv[])
     int argnum,i,j,outcode,val;
     int unsym0,unsym1,loop0;
     char *arg,sw,ochar;
-    boolean badargs;
-    boolean nswitch,sswitch,gswitch,hswitch,qswitch;
-    boolean warn,loop,unsymm,compl,triangle,tournament;
-    boolean zswitch,oswitch,nowarn;
+    booleann badargs;
+    booleann nswitch,sswitch,gswitch,hswitch,qswitch;
+    booleann warn,loop,unsymm,compl,triangle,tournament;
+    booleann zswitch,oswitch,nowarn;
     char *infilename,*outfilename;
     FILE *infile,*outfile;
     nauty_counter nin;

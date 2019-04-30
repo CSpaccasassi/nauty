@@ -28,12 +28,12 @@ FILE *outfile;
 #define MAXNV 128 
 
 static int col[MAXNV];
-static boolean first;
+static booleann first;
 static int lastreject[MAXNV];
-static boolean lastrejok;
+static booleann lastrejok;
 static unsigned long groupsize;
 static unsigned long newgroupsize;
-static boolean Tswitch;
+static booleann Tswitch;
 
 static int fail_level;
 
@@ -131,12 +131,12 @@ testmax(int *p, int n, int *abort)
 /**************************************************************************/
 
 static int
-trythisone(grouprec *group, graph *g, boolean digraph, int m, int n)
+trythisone(grouprec *group, graph *g, booleann digraph, int m, int n)
 /* Try one solution, accept if maximal. */
 /* Return value is level to return to. */
 {
     int i,j;
-    boolean accept;
+    booleann accept;
     graph *gi;
     size_t ne;
 
@@ -204,7 +204,7 @@ trythisone(grouprec *group, graph *g, boolean digraph, int m, int n)
 /**************************************************************************/
 
 static int
-scan(int level, graph *g, boolean digraph, int *prev, long minedges, long maxedges,
+scan(int level, graph *g, booleann digraph, int *prev, long minedges, long maxedges,
     long sofar, long numcols, grouprec *group, int m, int n)
 /* Recursive scan for default case */
 /* Returned value is level to return to. */
@@ -246,7 +246,7 @@ colourgraph(graph *g, int nfixed, long minedges, long maxedges,
     int i,j,k,nloops;
     set *gi,*gj;
     int lab[MAXNV],ptn[MAXNV],orbits[MAXNV];
-    boolean loop[MAXNV];
+    booleann loop[MAXNV];
     int prev[MAXNV]; /* If >= 0, earlier point that must have greater colour */
     int weight[MAXNV];
     int region,start,stop;
@@ -371,7 +371,7 @@ colourdigraph(graph *g, int nfixed, long minedges, long maxedges,
     size_t ii;
     set *gi,*gj,*gci,*gcj;
     int lab[MAXNV],ptn[MAXNV],orbits[MAXNV];
-    boolean loop[MAXNV];
+    booleann loop[MAXNV];
     int prev[MAXNV]; /* If >= 0, earlier point that must have greater colour */
     int weight[MAXNV];
     int region,start,stop;
@@ -507,8 +507,8 @@ main(int argc, char *argv[])
     int m,n,codetype;
     int argnum,j,nfixed;
     char *arg,sw;
-    boolean badargs,digraph;
-    boolean fswitch,uswitch,eswitch,qswitch,mswitch;
+    booleann badargs,digraph;
+    booleann fswitch,uswitch,eswitch,qswitch,mswitch;
     long minedges,maxedges,numcols;
     double t;
     char *infilename,*outfilename;

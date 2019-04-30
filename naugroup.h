@@ -38,13 +38,13 @@ extern "C" {
 #endif
 
 extern void freepermrec(permrec*, int);
-extern grouprec *groupptr(boolean);
+extern grouprec *groupptr(booleann);
 extern permrec *newpermrec(int);
 extern void groupautomproc(int,int*,int*,int,int,int);
 extern void
    grouplevelproc(int*,int*,int,int*,statsblk*,int,int,int,int,int,int);
 extern void makecosetreps(grouprec*);
-extern int permcycles(int*,int,int*,boolean);
+extern int permcycles(int*,int,int*,booleann);
 extern void allgroup(grouprec*,void(*)(int*,int));
 extern int allgroup2(grouprec*,void(*)(int*,int,int*));
 extern int allgroup3(grouprec*,void(*)(int*,int,int*,void*),void*);

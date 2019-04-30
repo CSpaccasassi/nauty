@@ -298,7 +298,7 @@ orbjoin(int *orbits, int *map, int n)
 *****************************************************************************/
 
 void
-writeperm(FILE *f, int *perm, boolean cartesian, int linelength, int n)
+writeperm(FILE *f, int *perm, booleann cartesian, int linelength, int n)
 {
     int i,k,l,curlen,intlen;
     char s[30];
@@ -479,14 +479,14 @@ doref(graph *g, int *lab, int *ptn, int level, int *numcells,
      int *qinvar, int *invar, set *active, int *code,
      void (*refproc)(graph*,int*,int*,int,int*,int*,set*,int*,int,int),
      void (*invarproc)(graph*,int*,int*,int,int,int,int*,
-                                                 int,boolean,int,int),
+                                                 int,booleann,int,int),
      int mininvarlev, int maxinvarlev, int invararg,
-     boolean digraph, int m, int n)
+     booleann digraph, int m, int n)
 {
     int pw;
     int i,cell1,cell2,nc,tvpos,minlev,maxlev;
     long longcode;
-    boolean same;
+    booleann same;
 
 #if !MAXN 
     DYNALLOC1(int,workperm,workperm_sz,n,"doref"); 
@@ -560,9 +560,9 @@ doref(graph *g, int *lab, int *ptn, int level, int *numcells,
 
 void
 maketargetcell(graph *g, int *lab, int *ptn, int level, set *tcell,
-       int *tcellsize, int *cellpos, int tc_level, boolean digraph,
+       int *tcellsize, int *cellpos, int tc_level, booleann digraph,
        int hint,
-       int (*targetcell)(graph*,int*,int*,int,int,boolean,int,int,int),
+       int (*targetcell)(graph*,int*,int*,int,int,booleann,int,int,int),
        int m, int n)
 {
     int i,j,k;

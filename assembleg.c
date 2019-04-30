@@ -86,7 +86,7 @@ readinputs(FILE *f, int imin, int imax)
     size_t tablesize;
     graph *g;
     int m,n;
-    boolean digraph;
+    booleann digraph;
 
     if ((gin = malloc(sizeof(graphptr)*10000)) == NULL ||
         (size = malloc(sizeof(int)*10000)) == NULL)
@@ -124,7 +124,7 @@ readinputs(FILE *f, int imin, int imax)
 
 static void
 assemble(graph *g, int nmin, int nmax, int sofar, int lastpos,
-          boolean writeconn, FILE *outfile)
+          booleann writeconn, FILE *outfile)
 /* Recursively add one more graph */
 {
     int pos,newsize;
@@ -157,9 +157,9 @@ main(int argc, char *argv[])
 {
     char *infilename,*outfilename;
     FILE *infile,*outfile;
-    boolean badargs,quiet;
-    boolean nswitch,cswitch,iswitch;
-    boolean digraph;
+    booleann badargs,quiet;
+    booleann nswitch,cswitch,iswitch;
+    booleann digraph;
     int j,m,n,argnum;
     int codetype;
     graph *g;

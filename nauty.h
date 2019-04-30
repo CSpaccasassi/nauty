@@ -21,12 +21,12 @@ it is necessary to check they are correct.
                                  /* 2 = in malloc.h, 0 = in neither place */
 #define HAS_MATH_INF 1 /* INFINITY is defined in math.h or */
                                  /* some system header likely to be used */
-#define HAS_STDIO_UNLOCK 1  /* Whether there are getc_unlocked, */
+#define HAS_STDIO_UNLOCK 0  /* Whether there are getc_unlocked, */
                                /* putc_unlocked,flockfile and funlockfile*/
 
-#define DEFAULT_WORDSIZE 32
+#define DEFAULT_WORDSIZE 0
 #define SIZEOF_INT 4
-#define SIZEOF_LONG 8
+#define SIZEOF_LONG 4
 #define SIZEOF_LONG_LONG 8   /* 0 if nonexistent */
 #define SIZEOF_POINTER 8
 #define SIZEOF_INT128_T 16   /* 0 if nonexistent */
@@ -40,7 +40,7 @@ it is necessary to check they are correct.
 #define USE_ANSICONTROLS 0 
                           /* whether --enable-ansicontrols is used */
 
-#define _FILE_OFFSET_BITS 0
+#define _FILE_OFFSET_BITS 64
 #if _FILE_OFFSET_BITS == 64
 #define _LARGEFILE_SOURCE
 #else
@@ -48,9 +48,9 @@ it is necessary to check they are correct.
 #endif
 
 /* Support of gcc extensions __builtin_clz, __builtin_clzl, __builtin_clzll */
-#define HAVE_CLZ 0
-#define HAVE_CLZL 0
-#define HAVE_CLZLL 0
+#define HAVE_CLZ 1
+#define HAVE_CLZL 1
+#define HAVE_CLZLL 1
 
 /* Support of gcc extensions
       __builtin_popcount, __builtin_popcountl, __builtin_popcountll
@@ -60,10 +60,10 @@ it is necessary to check they are correct.
       _mm_popcnt_u32, _mm_popcnt_u64
    for the Intel compiler icc.  These need no compiler switch.
 */
-#define HAVE_HWPOPCNT 0
-#define HAVE_POPCNT 0
-#define HAVE_POPCNTL 0
-#define HAVE_POPCNTLL 0
+#define HAVE_HWPOPCNT 1
+#define HAVE_POPCNT 1
+#define HAVE_POPCNTL 1
+#define HAVE_POPCNTLL 1
 #define HAVE_MMPOP32 0
 #define HAVE_MMPOP64 0
 
@@ -286,7 +286,7 @@ it is necessary to check they are correct.
 *   can be compiled to dynamically allocate arrays.  Predefine MAXN=0 to     *
 *   achieve this effect, which is default behaviour from version 2.0.        *
 *   In that case, graphs of size up to NAUTY_INFINITY-2 can be handled       *
-*   if the the memory is available.                                          *
+*   if the memory is available.                                              *
 *                                                                            *
 *   If only very small graphs need to be processed, use MAXN<=WORDSIZE       *
 *   since this causes substantial code optimizations.                        *
@@ -825,7 +825,8 @@ typedef int nvector,np2vector;
 
     /* typedefs for sets, graphs, permutations, etc.: */
 
-typedef int boolean;    /* boolean MUST be the same as int */
+// renaming "boolean" to "booleann" to avoid name clashes in MINGW
+typedef int booleann;    /* boolean MUST be the same as int */
 
 #define UPROC void      /* obsolete */
 
@@ -870,8 +871,8 @@ struct optionstruct;  /* incomplete definition */
 
 typedef struct
 {
-    boolean (*isautom)        /* test for automorphism */
-            (graph*,int*,boolean,int,int);
+    booleann (*isautom)        /* test for automorphism */
+            (graph*,int*,booleann,int,int);
     int     (*testcanlab)     /* test for better labelling */
             (graph*,graph*,int*,int*,int,int);
     void    (*updatecan)      /* update canonical object */
@@ -880,10 +881,10 @@ typedef struct
             (graph*,int*,int*,int,int*,int*,set*,int*,int,int);
     void    (*refine1)        /* refine partition, MAXM==1 */
             (graph*,int*,int*,int,int*,int*,set*,int*,int,int);
-    boolean (*cheapautom)     /* test for easy automorphism */
-            (int*,int,boolean,int);
+    booleann (*cheapautom)     /* test for easy automorphism */
+            (int*,int,booleann,int);
     int     (*targetcell)     /* decide which cell to split */
-            (graph*,int*,int*,int,int,boolean,int,int,int);
+            (graph*,int*,int*,int,int,booleann,int,int,int);
     void    (*freedyn)(void); /* free dynamic memory */
     void    (*check)          /* check compilation parameters */
             (int,int,int,int);
@@ -897,11 +898,11 @@ typedef struct optionstruct
 {
     int getcanon;             /* make canong and canonlab? */
 #define LABELONLY 2   /* new value UNIMPLEMENTED */
-    boolean digraph;          /* multiple edges or loops? */
-    boolean writeautoms;      /* write automorphisms? */
-    boolean writemarkers;     /* write stats on pts fixed, etc.? */
-    boolean defaultptn;       /* set lab,ptn,active for single cell? */
-    boolean cartesian;        /* use cartesian rep for writing automs? */
+    booleann digraph;          /* multiple edges or loops? */
+    booleann writeautoms;      /* write automorphisms? */
+    booleann writemarkers;     /* write stats on pts fixed, etc.? */
+    booleann defaultptn;       /* set lab,ptn,active for single cell? */
+    booleann cartesian;        /* use cartesian rep for writing automs? */
     int linelength;           /* max chars/line (excl. '\n') for output */
     FILE *outfile;            /* file for output, if any */
     void (*userrefproc)       /* replacement for usual refine procedure */
@@ -915,16 +916,16 @@ typedef struct optionstruct
     int  (*usercanonproc)     /* procedure called for better labellings */
          (graph*,int*,graph*,int,int,int,int);
     void (*invarproc)         /* procedure to compute vertex-invariant */
-         (graph*,int*,int*,int,int,int,int*,int,boolean,int,int);
+         (graph*,int*,int*,int,int,int,int*,int,booleann,int,int);
     int tc_level;             /* max level for smart target cell choosing */
     int mininvarlevel;        /* min level for invariant computation */
     int maxinvarlevel;        /* max level for invariant computation */
     int invararg;             /* value passed to (*invarproc)() */
     dispatchvec *dispatch;    /* vector of object-specific routines */
-    boolean schreier;         /* use random schreier method */
+    booleann schreier;         /* use random schreier method */
     void *extra_options;      /* arbitrary extra options */
 #ifdef NAUTY_IN_MAGMA
-    boolean print_stats;      /* CAYLEY specfic - GYM Sep 1990 */
+    booleann print_stats;      /* CAYLEY specfic - GYM Sep 1990 */
     char *invarprocname;      /* Magma - no longer global sjc 1994 */
     int lab_h;                /* Magma - no longer global sjc 1994 */
     int ptn_h;                /* Magma - no longer global sjc 1994 */
@@ -1184,14 +1185,14 @@ extern "C" {
 
 extern void alloc_error(const char*);
 extern void breakout(int*,int*,int,int,int,set*,int);
-extern boolean cheapautom(int*,int,boolean,int);
+extern booleann cheapautom(int*,int,booleann,int);
 extern void doref(graph*,int*,int*,int,int*,int*,int*,set*,int*,
   void(*)(graph*,int*,int*,int,int*,int*,set*,int*,int,int),
-  void(*)(graph*,int*,int*,int,int,int,int*,int,boolean,int,int),
-  int,int,int,boolean,int,int);
+  void(*)(graph*,int*,int*,int,int,int,int*,int,booleann,int,int),
+  int,int,int,booleann,int,int);
 extern void extra_autom(int*,int);
 extern void extra_level(int,int*,int*,int,int,int,int,int,int);
-extern boolean isautom(graph*,int*,boolean,int,int);
+extern booleann isautom(graph*,int*,booleann,int,int);
 extern dispatchvec dispatch_graph;
 extern int itos(int,char*);
 extern void fmperm(int*,set*,set*,int,int);
@@ -1199,8 +1200,8 @@ extern void fmptn(int*,int*,int,set*,set*,int,int);
 extern void longprune(set*,set*,set*,set*,int);
 extern void nauty(graph*,int*,int*,set*,int*,optionblk*,
                   statsblk*,set*,int,int,int,graph*);
-extern void maketargetcell(graph*,int*,int*,int,set*,int*,int*,int,boolean,
-           int,int (*)(graph*,int*,int*,int,int,boolean,int,int,int),int,int);
+extern void maketargetcell(graph*,int*,int*,int,set*,int*,int*,int,booleann,
+           int,int (*)(graph*,int*,int*,int,int,booleann,int,int,int),int,int);
 extern int nextelement(set*,int,int);
 extern int orbjoin(int*,int*,int);
 extern void permset(set*,set*,int,int*);
@@ -1208,10 +1209,10 @@ extern void putstring(FILE*,char*);
 extern void refine(graph*,int*,int*,int,int*,int*,set*,int*,int,int);
 extern void refine1(graph*,int*,int*,int,int*,int*,set*,int*,int,int);
 extern void shortprune(set*,set*,int);
-extern int targetcell(graph*,int*,int*,int,int,boolean,int,int,int);
+extern int targetcell(graph*,int*,int*,int,int,booleann,int,int,int);
 extern int testcanlab(graph*,graph*,int*,int*,int,int);
 extern void updatecan(graph*,graph*,int*,int,int,int);
-extern void writeperm(FILE*,int*,boolean,int,int);
+extern void writeperm(FILE*,int*,booleann,int,int);
 extern void nauty_freedyn(void);
 extern void nauty_check(int,int,int,int);
 extern void naugraph_check(int,int,int,int);

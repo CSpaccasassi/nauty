@@ -55,13 +55,13 @@ main(int argc, char *argv[])
 {
     char *infilename,*outfilename;
     FILE *infile,*outfile;
-    boolean badargs,quiet,Sswitch,fswitch,mswitch;
+    booleann badargs,quiet,Sswitch,fswitch,mswitch;
     int j,m,n,argnum,fixed;
     int codetype,outcode;
     graph *g;
     nauty_counter nin;
     int mult;
-    boolean digraph;
+    booleann digraph;
     char *arg,sw;
     double t;
     long seed;

@@ -110,11 +110,11 @@ write_planarcode(FILE *f, t_ver_sparse_rep *VR, t_adjl_sparse_rep *A,
 
 /*************************************************************************/
 
-static boolean
+static booleann
 isplanar(t_ver_sparse_rep *V, int n, t_adjl_sparse_rep *A, int e,
          int *c, t_ver_sparse_rep **VR, t_adjl_sparse_rep **AR,
          t_embed_sparse_rep  **ER, int *nbr_e_obs,
-         boolean planarcheck, boolean nonplanarcheck)
+         booleann planarcheck, booleann nonplanarcheck)
 /*
   The input graph is given as an adjacency list:
       V: array of vertices 
@@ -137,7 +137,7 @@ isplanar(t_ver_sparse_rep *V, int n, t_adjl_sparse_rep *A, int e,
 {
     t_dlcl           **dfs_tree, **back_edges, **mult_edges;
     int              edge_pos, v, w;
-    boolean          ans;
+    booleann          ans;
     t_ver_edge       *embed_graph;
  
     ans = sparseg_adjl_is_planar(V, n, A, c,
@@ -172,9 +172,9 @@ main(int argc, char *argv[])
     char *infilename,*outfilename;
     FILE *infile,*outfile;
     sparsegraph sg;
-    boolean badargs;
-    boolean verbose,nonplanar,quiet;
-    boolean planarcode,nowrite,nocheck;
+    booleann badargs;
+    booleann verbose,nonplanar,quiet;
+    booleann planarcode,nowrite,nocheck;
     int i,j,k,n,argnum,ne,loops;
     int codetype,outcode;
     t_ver_sparse_rep *VR;

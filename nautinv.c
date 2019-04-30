@@ -187,7 +187,7 @@ DYNALLSTAT(set,wss,wss_sz);
 
 void
 twopaths(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-         int *invar, int invararg, boolean digraph, int m, int n)
+         int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i,v,w;
         int wt;
@@ -233,7 +233,7 @@ twopaths(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
 
 void
 quadruples(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-           int *invar, int invararg, boolean digraph, int m, int n)
+           int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i,pc;
         setword sw;
@@ -312,7 +312,7 @@ quadruples(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
 
 void
 triples(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-        int *invar, int invararg, boolean digraph, int m, int n)
+        int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i,pc;
         setword sw;
@@ -380,14 +380,14 @@ triples(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
 
 void
 adjtriang(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-          int *invar, int invararg, boolean digraph, int m, int n)
+          int *invar, int invararg, booleann digraph, int m, int n)
 {
         int j,pc;
         setword sw;
         set *gi;
         int wt;
         int i,v1,v2;
-        boolean v1v2;
+        booleann v1v2;
         set *gv1,*gv2;
 
 #if !MAXN
@@ -506,7 +506,7 @@ getbigcells(int *ptn, int level, int minsize, int *bigcells,
 
 void
 celltrips(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-          int *invar, int invararg, boolean digraph, int m, int n)
+          int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i,pc;
         setword sw;
@@ -574,7 +574,7 @@ celltrips(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
 
 void
 cellquads(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-          int *invar, int invararg, boolean digraph, int m, int n)
+          int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i,pc;
         setword sw;
@@ -650,7 +650,7 @@ cellquads(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
 
 void
 cellquins(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-          int *invar, int invararg, boolean digraph, int m, int n)
+          int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i,pc;
         setword sw;
@@ -762,7 +762,7 @@ uniqinter(set *s1, set *s2, int m)
 
 void 
 cellfano2(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-          int *invar, int invararg, boolean digraph, int m, int n)
+          int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i,pc;
         setword sw;
@@ -911,7 +911,7 @@ setnbhd(graph *g, int m, int n, set *w, set *wn)
 
 void 
 cellfano(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-         int *invar, int invararg, boolean digraph, int m, int n)
+         int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i,pc;
         setword sw;
@@ -1021,13 +1021,13 @@ cellfano(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
 
 void
 distances(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-          int *invar, int invararg, boolean digraph, int m, int n)
+          int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i;
         set *gw;
         int wt;
         int d,dlim,cell1,cell2,iv,v,w;
-        boolean success;
+        booleann success;
 
 #if !MAXN
         DYNALLOC1(set,workset,workset_sz,m,"distances");
@@ -1098,7 +1098,7 @@ distances(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
 
 void
 indsets(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-        int *invar, int invararg, boolean digraph, int m, int n)
+        int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i;
         int wt;
@@ -1173,7 +1173,7 @@ indsets(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
 
 void
 cliques(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-        int *invar, int invararg, boolean digraph, int m, int n)
+        int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i;
         int wt;
@@ -1249,7 +1249,7 @@ cliques(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
 
 void
 cellcliq(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-         int *invar, int invararg, boolean digraph, int m, int n)
+         int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i;
         int wt;
@@ -1345,7 +1345,7 @@ cellcliq(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
 
 void
 cellind(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-        int *invar, int invararg, boolean digraph, int m, int n)
+        int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i;
         int wt;
@@ -1440,7 +1440,7 @@ cellind(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
 
 void
 adjacencies(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-            int *invar, int invararg, boolean digraph, int m, int n)
+            int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i,v,w;
         int vwt,wwt;
@@ -1704,7 +1704,7 @@ semirefine(graph *g, int *lab, int *ptn, int level, int *numcells,
 
 void 
 refinvar(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-          int *invar, int invararg, boolean digraph, int m, int n)
+          int *invar, int invararg, booleann digraph, int m, int n)
 {
         int i,j;
         int wt;

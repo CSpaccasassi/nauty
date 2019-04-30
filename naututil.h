@@ -11,9 +11,9 @@ used, it is necessary to check they are correct.
 /* Check whether various headers are available */
 
 #define HAVE_ISATTY  1     /* if isatty() is available */
-#define HAVE_TIMES  1      /* if times() is available */
+#define HAVE_TIMES  0      /* if times() is available */
 #define HAVE_TIME  1      /* if time() is available */
-#define HAVE_GETRUSAGE 1  /* if getrusage() is available */
+#define HAVE_GETRUSAGE 0  /* if getrusage() is available */
 #define HAVE_GETTIMEOFDAY  1  /* if gettimeofday() */
 
 /*==================================================================*/
@@ -160,22 +160,22 @@ extern void putorbitsplus(FILE*,int*,int,int);
 extern void putptn(FILE*,int*,int*,int,int,int);
 extern void putquotient(FILE*,graph*,int*,int*,int,int,int,int);
 extern void putquotient_sg(FILE*,sparsegraph*,int*,int*,int,int);
-extern void putset(FILE*,set*,int*,int,int,boolean);
-extern void putset_firstbold(FILE*,set*,int*,int,int,boolean);
-extern void rangraph(graph*,boolean,int,int,int);
-extern void rangraph2(graph*,boolean,int,int,int,int);
-extern void rangraph2_sg(sparsegraph*,boolean,int,int,int);
+extern void putset(FILE*,set*,int*,int,int,booleann);
+extern void putset_firstbold(FILE*,set*,int*,int,int,booleann);
+extern void rangraph(graph*,booleann,int,int,int);
+extern void rangraph2(graph*,booleann,int,int,int,int);
+extern void rangraph2_sg(sparsegraph*,booleann,int,int,int);
 extern void ranreg_sg(sparsegraph *sg, int degree, int n);
 extern void ranperm(int*,int);
-extern void readgraph(FILE*,graph*,boolean,boolean,boolean,int,int,int);
-extern void readgraph_sg(FILE*,sparsegraph*,boolean,boolean,int,int);
-extern void readgraph_swg(FILE*,sparsegraph*,boolean,boolean,int,int);
-extern boolean readinteger(FILE*,int*);
-extern boolean readinteger_sl(FILE*,int*);
-extern void readperm(FILE*,int*,boolean,int);
-extern void readptn(FILE*,int*,int*,int*,boolean,int);
-extern void readvperm(FILE*,int*,boolean,int,int*);
-extern boolean readstring(FILE*,char*,int);
+extern void readgraph(FILE*,graph*,booleann,booleann,booleann,int,int,int);
+extern void readgraph_sg(FILE*,sparsegraph*,booleann,booleann,int,int);
+extern void readgraph_swg(FILE*,sparsegraph*,booleann,booleann,int,int);
+extern booleann readinteger(FILE*,int*);
+extern booleann readinteger_sl(FILE*,int*);
+extern void readperm(FILE*,int*,booleann,int);
+extern void readptn(FILE*,int*,int*,int*,booleann,int);
+extern void readvperm(FILE*,int*,booleann,int,int*);
+extern booleann readstring(FILE*,char*,int);
 extern void relabel(graph*,int*,int*,graph*,int,int);
 extern void relabel_sg(sparsegraph*,int*,int*,sparsegraph*);
 extern long sethash(set*,int,long,int);

@@ -136,11 +136,11 @@ main(int argc, char *argv[])
 {
     char *infilename,*outfilename;
     FILE *infile,*outfile;
-    boolean badargs,quiet;
-    boolean vswitch,Vswitch;
-    boolean eswitch,Eswitch;
-    boolean aswitch,Aswitch;
-    boolean isvt,iset,isat;
+    booleann badargs,quiet;
+    booleann vswitch,Vswitch;
+    booleann eswitch,Eswitch;
+    booleann aswitch,Aswitch;
+    booleann isvt,iset,isat;
     int i,j,norbs,argnum;
     int codetype,outcode;
     sparsegraph g,h;

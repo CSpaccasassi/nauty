@@ -78,7 +78,7 @@ perminvar(graph *g, int *perm, int m, int n)
 /**************************************************************************/
 
 static void
-gcomplement(graph *g, boolean loopstoo, int m, int n)
+gcomplement(graph *g, booleann loopstoo, int m, int n)
 /* Replace g by its complement */
 {
     int i,j;
@@ -144,7 +144,7 @@ gcomplement_bip(graph *g, int m, int n1, int n2)
 /**************************************************************************/
 
 static void
-ranedges(long e, boolean loopsok, graph *g, int m, int n)
+ranedges(long e, booleann loopsok, graph *g, int m, int n)
 /* Random graph with n vertices and e edges */
 {
     unsigned long ln,li,nc2,ned,sofar;
@@ -261,7 +261,7 @@ grandtourn_bip(graph *g, int m, int n1, int n2)
 /**************************************************************************/
 
 static void
-grandgraph(graph *g, boolean digraph, boolean loopsok,
+grandgraph(graph *g, booleann digraph, booleann loopsok,
                                          int p1, int p2, int m, int n)
 /* Random graph with probability p1/p2 */
 {
@@ -293,7 +293,7 @@ grandgraph(graph *g, boolean digraph, boolean loopsok,
 /**************************************************************************/
 
 static void
-grandgraph_bip(graph *g, boolean digraph,
+grandgraph_bip(graph *g, booleann digraph,
                          int p1, int p2, int m, int n1, int n2)
 /* Random bipartite graph with probability p1/p2 */
 {
@@ -326,7 +326,7 @@ grandgraph_bip(graph *g, boolean digraph,
 /**************************************************************************/
 
 static void
-ranarcs(long e, boolean loopsok, graph *g, int m, int n)
+ranarcs(long e, booleann loopsok, graph *g, int m, int n)
 /* Random digraph graph with n vertices and e edges */
 {
     unsigned long ln,li,nn,ned,sofar;
@@ -368,7 +368,7 @@ makeranreg(int *cub, int degree, int multmax, int loopmax, int n)
    The length of cub had better be at least degree*n  */
 {
     long i,j,k,v,w,nn,mult;
-    boolean ok;
+    booleann ok;
 #if MAXN
     int deg[MAXN],p[MAXLREG*MAXN];
 #else
@@ -438,7 +438,7 @@ rundmodel(int *cub, int degree, int n)
     long iters,fails;
     size_t i,j,navail;
     int *cubi,*cubj,vi,vj,k;
-    boolean ok;
+    booleann ok;
 #if MAXN
     int deg[MAXN],avail[MAXN*MAXLREG];
 #else
@@ -618,10 +618,10 @@ dmodel_sg(int degree, sparsegraph *sg, int n)
     long k0,nde;
 #if MAXN
     int cub[MAXLREG*MAXN];
-    boolean adj[MAXN];
+    booleann adj[MAXN];
 #else
     DYNALLSTAT(int,cub,cub_sz);
-    DYNALLSTAT(boolean,adj,adj_sz);
+    DYNALLSTAT(booleann,adj,adj_sz);
 #endif
 
     SG_ALLOC(*sg,n,degree*n,"dmodel_sg");
@@ -651,7 +651,7 @@ dmodel_sg(int degree, sparsegraph *sg, int n)
 	comdeg = n - degree - 1;
 #if !MAXN
         DYNALLOC1(int,cub,cub_sz,comdeg*n,"dmodel_sg");
-        DYNALLOC1(boolean,adj,adj_sz,n,"dmodel_sg");
+        DYNALLOC1(booleann,adj,adj_sz,n,"dmodel_sg");
 #endif
         rundmodel(cub,comdeg,n);
 
@@ -684,7 +684,7 @@ rundmodel_bip(int *cub, int deg1, int deg2, int n1, int n2)
     long iters,fails;
     size_t i,j,k,navail,ne;
     int *cubi,*cubj,vi,vj,n;
-    boolean ok;
+    booleann ok;
 #if MAXN
     int deg[MAXN],avail[MAXN*MAXLREG];
 #else
@@ -760,10 +760,10 @@ dmodel_bip_sg(int deg1, sparsegraph *sg, int n1, int n2)
     size_t j,k0,nde,ne,comne;
 #if MAXN
     int cub[MAXLREG*MAXN];
-    boolean adj[MAXN];
+    booleann adj[MAXN];
 #else
     DYNALLSTAT(int,cub,cub_sz);
-    DYNALLSTAT(boolean,adj,adj_sz);
+    DYNALLSTAT(booleann,adj,adj_sz);
 #endif
 
     n = n1 + n2;
@@ -810,7 +810,7 @@ dmodel_bip_sg(int deg1, sparsegraph *sg, int n1, int n2)
 	comne = n1*(size_t)comdeg1;
 #if !MAXN
         DYNALLOC1(int,cub,cub_sz,2*comne,"dmodel_bip_sg");
-        DYNALLOC1(boolean,adj,adj_sz,n,"dmodel_bip_sg");
+        DYNALLOC1(booleann,adj,adj_sz,n,"dmodel_bip_sg");
 #endif
         rundmodel_bip(cub,comdeg1,comdeg2,n1,n2);
 
@@ -963,17 +963,17 @@ main(int argc, char *argv[])
     int m,n,n1,n2,codetype;
     int argnum,j;
     char *arg,sw;
-    boolean badargs;
-    boolean gswitch,sswitch,qswitch,Sswitch,Rswitch,lswitch,tswitch;
-    boolean aswitch,P1switch,P2switch,eswitch,rswitch,mswitch,dswitch;
-    boolean Tswitch;
+    booleann badargs;
+    booleann gswitch,sswitch,qswitch,Sswitch,Rswitch,lswitch,tswitch;
+    booleann aswitch,P1switch,P2switch,eswitch,rswitch,mswitch,dswitch;
+    booleann Tswitch;
     long numgraphs,nout,P1value,P2value,evalue,rvalue;
     nauty_counter ln,nc2;
     int Svalue,loopmax,multmax;
     static FILE *outfile;
     char *outfilename;
     sparsegraph sg;
-    boolean usesparse,digraph,bipartite;
+    booleann usesparse,digraph,bipartite;
 
 #if MAXN
     graph g[MAXM*1L*MAXN];

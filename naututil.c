@@ -192,7 +192,7 @@ setsize(set *set1, int m)
 void
 flushline(FILE *f)
 {
-    boolean msg;
+    booleann msg;
     int c;
 
     msg = FALSE;
@@ -217,7 +217,7 @@ flushline(FILE *f)
 *                                                                            *
 *****************************************************************************/
 
-boolean
+booleann
 readinteger(FILE *f, int *p)
 {
     int c,ans,minus;
@@ -254,7 +254,7 @@ readinteger(FILE *f, int *p)
 *                                                                            *
 *****************************************************************************/
 
-boolean
+booleann
 readinteger_sl(FILE *f, int *p)
 {
     int c,ans,minus;
@@ -295,7 +295,7 @@ readinteger_sl(FILE *f, int *p)
 *                                                                            *
 *****************************************************************************/
 
-boolean
+booleann
 readstring(FILE *f, char *s, int slen)
 {
     int c;
@@ -390,7 +390,7 @@ getint_sl(FILE *f)
 
 void
 putset(FILE *f, set *set1, int *curlenp, int linelength,
-       int m, boolean compress)
+       int m, booleann compress)
 {
     int slen,j1,j2;
     char s[40];
@@ -435,11 +435,11 @@ putset(FILE *f, set *set1, int *curlenp, int linelength,
 
 void
 putset_firstbold(FILE *f, set *set1, int *curlenp, int linelength,
-       int m, boolean compress)
+       int m, booleann compress)
 {
     int slen,slen1,j1,j2;
     char s[50],c;
-    boolean bold;
+    booleann bold;
 
     bold = TRUE;
     j1 = -1;
@@ -505,13 +505,13 @@ putset_firstbold(FILE *f, set *set1, int *curlenp, int linelength,
 *****************************************************************************/
 
 void
-readgraph(FILE *f, graph *g, boolean digraph, boolean prompt,
-      boolean edit, int linelength, int m, int n)
+readgraph(FILE *f, graph *g, booleann digraph, booleann prompt,
+      booleann edit, int linelength, int m, int n)
 {
     int v,c;
     int curlen,w;
     graph *gv;
-    boolean neg;
+    booleann neg;
 
     if (!edit)
         for (v = 0, gv = g; v < n; ++v, gv += M) EMPTYSET(gv,m);
@@ -615,7 +615,7 @@ ranreg_sg(sparsegraph *sg, int degree, int n)
  */
 {
     long i,k,v,w;
-    boolean ok;
+    booleann ok;
     int *dd,*ee;
     size_t *vv,nde,j;
  
@@ -695,11 +695,11 @@ ranreg_sg(sparsegraph *sg, int degree, int n)
 *****************************************************************************/
 
 void
-readgraph_sg(FILE *f, sparsegraph *sg, boolean digraph, boolean prompt,
+readgraph_sg(FILE *f, sparsegraph *sg, booleann digraph, booleann prompt,
              int linelength, int n)
 {
     int i,j,k,vv,ww,c;
-    boolean neg,done;
+    booleann neg,done;
     int *d,*e,*evi;
     echunk *ec,*ecnext,*ec_end;
     size_t ned,*v,iec,iec_end;
@@ -922,11 +922,11 @@ readgraph_sg(FILE *f, sparsegraph *sg, boolean digraph, boolean prompt,
 *****************************************************************************/
 
 void
-readgraph_swg(FILE *f, sparsegraph *sg, boolean digraph, boolean prompt,
+readgraph_swg(FILE *f, sparsegraph *sg, booleann digraph, booleann prompt,
              int linelength, int n)
 {
     int i,j,k,vv,ww,c;
-    boolean neg,done;
+    booleann neg,done;
     int *d,*e,*evi;
     echunkw *ec,*ecnext,*ec_end;
     size_t ned,*v,iec,iec_end;
@@ -1749,7 +1749,7 @@ putcanon_sg(FILE *f, int *canonlab, sparsegraph *canong, int linelength)
 *****************************************************************************/
 
 void
-readptn(FILE *f, int *lab, int *ptn, int *numcells, boolean prompt, int n)
+readptn(FILE *f, int *lab, int *ptn, int *numcells, booleann prompt, int n)
 {
     int i,j;
     int c,v1,v2,m;
@@ -2132,7 +2132,7 @@ hash(set *setarray, long length, int key)
 *****************************************************************************/
 
 void
-readperm(FILE *f, int *perm, boolean prompt, int n)
+readperm(FILE *f, int *perm, booleann prompt, int n)
 {
     int nv;
 
@@ -2151,7 +2151,7 @@ readperm(FILE *f, int *perm, boolean prompt, int n)
 *****************************************************************************/
 
 void
-readvperm(FILE *f, int *perm, boolean prompt, int n, int *nv)
+readvperm(FILE *f, int *perm, booleann prompt, int n, int *nv)
 {
     int i;
     int m,c,v1,v2;
@@ -2759,7 +2759,7 @@ mathon(graph *g1, int m1, int n1, graph *g2, int m2, int n2)
 *****************************************************************************/
 
 void
-rangraph(graph *g, boolean digraph, int invprob, int m, int n)
+rangraph(graph *g, booleann digraph, int invprob, int m, int n)
 {
     int i,j;
     long li;
@@ -2793,7 +2793,7 @@ rangraph(graph *g, boolean digraph, int invprob, int m, int n)
 *****************************************************************************/
 
 void
-rangraph2(graph *g, boolean digraph, int p1, int p2, int m, int n)
+rangraph2(graph *g, booleann digraph, int p1, int p2, int m, int n)
 {
     int i,j;
     long li;
@@ -2824,7 +2824,7 @@ rangraph2(graph *g, boolean digraph, int p1, int p2, int m, int n)
 *****************************************************************************/
 
 void
-rangraph2_sg(sparsegraph *sg, boolean digraph, int p1, int p2, int n)
+rangraph2_sg(sparsegraph *sg, booleann digraph, int p1, int p2, int n)
 {
     int i,j,k;
     int *dd,*ee;
@@ -3086,7 +3086,7 @@ putdegseq_sg(FILE *f, sparsegraph *sg, int linelength)
 void
 complement(graph *g, int m, int n)
 {
-    boolean loops;
+    booleann loops;
     int i,j;
     graph *gp;
 

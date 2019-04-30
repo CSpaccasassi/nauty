@@ -24,7 +24,7 @@
 /**************************************************************************/
 
 static void
-compl(graph *g, int m, int n, graph *h, boolean comploops)
+compl(graph *g, int m, int n, graph *h, booleann comploops)
 /* h := complement of g */
 {
     int i,j;
@@ -58,8 +58,8 @@ main(int argc, char *argv[])
 {
     char *infilename,*outfilename;
     FILE *infile,*outfile;
-    boolean also,dolabel,badargs,restricted,Restricted,quiet;
-    boolean digraph,Lswitch;
+    booleann also,dolabel,badargs,restricted,Restricted,quiet;
+    booleann digraph,Lswitch;
     int j,m,n,argnum;
     int codetype,outcode;
     graph *g;

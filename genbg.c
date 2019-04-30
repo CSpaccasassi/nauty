@@ -108,7 +108,7 @@ OUTPROC feature.
    format, and n1,n2 are the numbers of vertices on each side. Your
    procedure can be in a separate file so long as it is linked with
    genbg. The global variables nooutput, nautyformat and canonise
-   (all type boolean) can be used to test for the presence of the
+   (all type booleann) can be used to test for the presence of the
    flags -u, -n and -l, respectively.
 
    For backward compatibility, it is possible to instead define OUTPROC1 to
@@ -170,19 +170,19 @@ extern void SUMMARY(nauty_counter,double);
 #endif
 
 static FILE *outfile;           /* file for output graphs */
-static boolean connec;          /* presence of -c */
-static boolean verbose;         /* presence of -v */
-static boolean simple;          /* presence of -z */
-boolean nautyformat;            /* presence of -n */
-boolean nooutput;               /* presence of -u */
-boolean canonise;               /* presence of -l */
-boolean graph6;                 /* presence of -g */
-boolean sparse6;                /* presence of -s */
-boolean greout;                 /* presence of -a */
-boolean quiet;                  /* presence of -q */
-boolean footfree;               /* presence of -F */
-boolean cutfree;                /* presence of -L */
-boolean antichain;              /* presence of -A */
+static booleann connec;          /* presence of -c */
+static booleann verbose;         /* presence of -v */
+static booleann simple;          /* presence of -z */
+booleann nautyformat;            /* presence of -n */
+booleann nooutput;               /* presence of -u */
+booleann canonise;               /* presence of -l */
+booleann graph6;                 /* presence of -g */
+booleann sparse6;                /* presence of -s */
+booleann greout;                 /* presence of -a */
+booleann quiet;                  /* presence of -q */
+booleann footfree;               /* presence of -F */
+booleann cutfree;                /* presence of -L */
+booleann antichain;              /* presence of -A */
 int class1size;                 /* same as n1 */
 int mincommon;                  /* -1 or value of -Y */
 int maxcommon;                  /* -1 or value of -Z */
@@ -404,7 +404,7 @@ fragments(int *x, int nx, int *frag, int *nfrag)
 {
     int allx,i,j,v;
     int vbit,nw,w[MAXN];
-    boolean done;
+    booleann done;
 
     allx = 0;
     for (i = 0; i < nx; ++i) allx |= x[i];
@@ -445,7 +445,7 @@ fragments(int *x, int nx, int *frag, int *nfrag)
  
 /*********************************************************************/
 
-static boolean
+static booleann
 isconnected(graph *g, int n)
 /* test if g is connected */
 {
@@ -469,7 +469,7 @@ isconnected(graph *g, int n)
 
 /**************************************************************************/
 
-static boolean
+static booleann
 distinvar(graph *g, int *invar, int n1, int n2)
  /* make distance invariant/
     exit immediately FALSE if n-1 not maximal else exit TRUE
@@ -660,7 +660,7 @@ userautomproc(int count, int *p, int *orbits, int numorbits,
 
 static void
 refinex(graph *g, int *lab, int *ptn, int level, int *numcells,
-    int *count, set *active, boolean goodret,
+    int *count, set *active, booleann goodret,
     int *code, int m, int n)
 {
     int i,c1,c2,labc1;
@@ -830,8 +830,8 @@ makecanon(graph *g, graph *gcan, int n1, int n2)
 
 /**************************************************************************/
 
-static boolean
-accept1(graph *g, int n2, int x, graph *gx, int *deg, boolean *rigid)
+static booleann
+accept1(graph *g, int n2, int x, graph *gx, int *deg, booleann *rigid)
  /* decide if n2 in theta(g+x) -- version for n2+1 < maxn2 */
 {
     int i,n;
@@ -943,8 +943,8 @@ accept1(graph *g, int n2, int x, graph *gx, int *deg, boolean *rigid)
 
 /**************************************************************************/
 
-static boolean
-accept2(graph *g, int n2, int x, graph *gx, int *deg, boolean nuniq)
+static booleann
+accept2(graph *g, int n2, int x, graph *gx, int *deg, booleann nuniq)
 /* decide if n in theta(g+x) -- version for n+1 == maxn */
 {
     int i,n;
@@ -1184,7 +1184,7 @@ xbnds(int n2, int ne, int dmax)
 /**************************************************************************/
 
 static void
-genextend(graph *g, int n2, int *deg, int ne, boolean rigid, int xlb, int xub)
+genextend(graph *g, int n2, int *deg, int ne, booleann rigid, int xlb, int xub)
 /* extend from n2 to n2+1 */
 {
     int x,y,d;
@@ -1193,11 +1193,11 @@ genextend(graph *g, int n2, int *deg, int ne, boolean rigid, int xlb, int xub)
     int xlbx,xubx,n;
     graph gx[MAXN];
     int degx[MAXN];
-    boolean rigidx;
+    booleann rigidx;
     int dneed,need,nfeet,hideg,deg1,ft[MAXN],nfrag,frag[MAXN];
 
 #ifdef INSTRUMENT
-    boolean haschild;
+    booleann haschild;
 
     haschild = FALSE;
     ++nodes[n2];
@@ -1404,7 +1404,7 @@ int
 main(int argc, char *argv[])
 {
     char *arg;
-    boolean badargs,gotD,gote,gotf,gotmr,gotY,gotZ,gotd,gotX;
+    booleann badargs,gotD,gote,gotf,gotmr,gotY,gotZ,gotd,gotX;
     long Dval1,Dval2;
     long dval1,dval2;
     int i,j,imin,imax,argnum,sw;

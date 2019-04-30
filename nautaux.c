@@ -104,12 +104,12 @@ ptncode(graph *g, int *lab, int *ptn, int level, int m, int n)
 *                                                                            *
 *****************************************************************************/
 
-boolean
+booleann
 equitable(graph *g, int *lab, int *ptn, int level, int m, int n)
 {
     int i;
     int v1,v2,nc,inter,cellend;
-    boolean ok;
+    booleann ok;
 
     /* find all cells: put starts in workperm[0..n] */
 

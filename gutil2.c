@@ -348,7 +348,7 @@ contract1(graph *g, graph *h, int v, int w, int n)
 /**************************************************************************/
 
 static TLS_ATTR int knm[18][16];  /* knm[n,m] = conncontent(K_n - m*K_2) */
-static TLS_ATTR boolean knm_computed = FALSE;
+static TLS_ATTR booleann knm_computed = FALSE;
 
 int
 conncontent(graph *g, int m, int n)
@@ -504,7 +504,7 @@ conncontent(graph *g, int m, int n)
     return v1 - v2;
 }
 
-boolean
+booleann
 stronglyconnected(graph *g, int m, int n)
 /* test if digraph g is strongly connected */
 {

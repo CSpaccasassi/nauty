@@ -210,7 +210,7 @@ main(int argc, char *argv[])
 {
     char *infilename,*outfilename;
     FILE *infile,*outfile;
-    boolean badargs,quiet,tswitch;
+    booleann badargs,quiet,tswitch;
     int j,argnum;
     int codetype,outcode;
     sparsegraph g,h;

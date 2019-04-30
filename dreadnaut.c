@@ -181,7 +181,7 @@ static int curfile;
 static FILE *fileptr[MAXIFILES];
 static FILE *outfile;
 static char def_ext[] = DEFEXT;
-static boolean firstpath;       /* used in usernode() */
+static booleann firstpath;       /* used in usernode() */
 
 DEFAULTOPTIONS_TRACES(traces_opts);
 static TracesStats traces_stats;
@@ -242,7 +242,7 @@ extern int CANONPROC(graph*,int*,graph*,int,int,int,int);
 #define INVARPROC NULL
 #define INVARPROCNAME "none"
 #else
-extern void INVARPROC(graph*,int*,int*,int,int,int,int*,int,boolean,int,int);
+extern void INVARPROC(graph*,int*,int*,int,int,int,int*,int,booleann,int,int);
 #define INVARPROCNAME "user-defined"
 #endif
 
@@ -250,15 +250,15 @@ extern void INVARPROC(graph*,int*,int*,int,int,int,int*,int,boolean,int,int);
 #define INVARPROC_SG NULL
 #define INVARPROCNAME_SG "none"
 #else
-extern void INVARPROC_SG(graph*,int*,int*,int,int,int,int*,int,boolean,int,int);
+extern void INVARPROC_SG(graph*,int*,int*,int,int,int,int*,int,booleann,int,int);
 #define INVARPROCNAME_SG "user-defined"
 #endif
 
 static struct invarrec
 {
-    void (*entrypoint)(graph*,int*,int*,int,int,int,int*,int,boolean,int,int);
+    void (*entrypoint)(graph*,int*,int*,int,int,int,int*,int,booleann,int,int);
     char *name;
-    void (*entrypoint_sg)(graph*,int*,int*,int,int,int,int*,int,boolean,int,int);
+    void (*entrypoint_sg)(graph*,int*,int*,int,int,int,int*,int,booleann,int,int);
     char *name_sg;
 } invarproc[]
     = {{INVARPROC, INVARPROCNAME, INVARPROC_SG, INVARPROCNAME_SG},
@@ -288,7 +288,7 @@ static void usernode(graph*,int*,int*,int,int,int,int,int,int);
 static void userlevel(int*,int*,int,int*,statsblk*,int,int,int,int,int,int);
 static int usercanon(graph*,int*,graph*,int,int,int,int);
 
-static boolean options_writeautoms,options_writemarkers,
+static booleann options_writeautoms,options_writemarkers,
             options_digraph,options_getcanon,options_linelength;
 static int options_invarproc,options_mininvarlevel,options_maxinvarlevel,
 	    options_invararg,options_tc_level,options_cartesian;
@@ -378,12 +378,12 @@ int
 main(int argc, char *argv[])
 {
     int m,n,newm,newn;
-    boolean gvalid,ovalid,cvalid,pvalid,minus,prompt,doquot;
-    boolean gvalid_sg,cvalid_sg;
+    booleann gvalid,ovalid,cvalid,pvalid,minus,prompt,doquot;
+    booleann gvalid_sg,cvalid_sg;
     int i,j,k,worksize,numcells,savednc,refcode,umask,qinvar;
     int oldorg,oldmode;
     int maxsize,cell1,cell2;
-    boolean ranreg,same;
+    booleann ranreg,same;
     char *s1,*s2;
     int c,d;
     unsigned long uli;
@@ -396,7 +396,7 @@ main(int argc, char *argv[])
     long zseed;
     permnode *generators;
     char *ap,*parameters;
-    boolean flushing;
+    booleann flushing;
 
     HELP; PUTVERSION;
 

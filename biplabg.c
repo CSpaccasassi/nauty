@@ -19,7 +19,7 @@
 
 /**************************************************************************/
 
-static boolean
+static booleann
 biplabel(graph *g, int m, int n, graph *h)
 /* h := bipartite labelling of g; else return FALSE */
 {
@@ -53,7 +53,7 @@ main(int argc, char *argv[])
 {
         char *infilename,*outfilename;
         FILE *infile,*outfile;
-        boolean badargs,quiet;
+        booleann badargs,quiet;
 	int j,m,n,argnum;
 	int codetype,outcode;
 	graph *g;

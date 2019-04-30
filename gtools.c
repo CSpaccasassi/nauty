@@ -12,7 +12,7 @@
 #endif
 
 TLS_ATTR size_t ogf_linelen;
-TLS_ATTR boolean is_pipe;
+TLS_ATTR booleann is_pipe;
 
 #if HAVE_FSEEKO
 #define FSEEK_VER fseeko
@@ -29,7 +29,12 @@ extern int fseek(FILE*,long,int);
 #endif
 
 #if !POPEN_DEC
+#ifdef _WIN32
+#include <windows.h>
+extern FILE *_popen(const char*,const char*);
+#else
 extern FILE *popen(const char*,const char*);
+#endif
 #endif
 
 /*
@@ -104,7 +109,7 @@ opengraphfile(char *filename, int *codetype, int assumefixed, long position)
     int c,bl,firstc;
     long i,l;
     OFF_T_VER pos,pos1,pos2;
-    boolean bad_header;
+    booleann bad_header;
 
     is_pipe = FALSE;
 
@@ -124,7 +129,11 @@ opengraphfile(char *filename, int *codetype, int assumefixed, long position)
 #else
             filename += 4;
             while (*filename == ' ') ++filename;
-            f = popen(filename,"r");
+#ifdef _WIN32
+	    f = _popen(filename,"r");
+#else    
+	    f = popen(filename,"r");
+#endif
 #endif
             assumefixed = FALSE;
             is_pipe = TRUE;
@@ -528,7 +537,7 @@ stringcounts(char *s, int *pn, size_t *pe)
     char *p;
     int i,j,k,x,nb,v,n,need;
     size_t count;
-    boolean done;
+    booleann done;
 
     n = graphsize(s);
     *pn = n;
@@ -617,7 +626,7 @@ stringtograph(char *s, graph *g, int m)
     int n,i,j,k,v,x,nb,need;
     size_t ii;
     set *gi,*gj;
-    boolean done;
+    booleann done;
 
     n = graphsize(s);
     if (n == 0) return;
@@ -760,7 +769,7 @@ stringtograph_inc(char *s, graph *g, int m,
     int n,i,j,k,v,x,nb,need;
     size_t ii;
     set *gi,*gj;
-    boolean done;
+    booleann done;
 
     if (s[0] == ';' && !prevg)
         gt_abort(">E stringtograph_inc missing prior graph\n");
@@ -901,7 +910,7 @@ stringtograph_inc(char *s, graph *g, int m,
 /***********************************************************************/
 
 graph*                 /* read graph into nauty format */
-readgg(FILE *f, graph *g, int reqm, int *pm, int *pn, boolean *digraph) 
+readgg(FILE *f, graph *g, int reqm, int *pm, int *pn, booleann *digraph) 
 /* graph6, digraph6 and sparse6 formats are supported 
    f = an open file 
    g = place to put the answer (NULL for dynamic allocation) 
@@ -970,6 +979,78 @@ readgg(FILE *f, graph *g, int reqm, int *pm, int *pn, boolean *digraph)
 }
 
 /***********************************************************************/
+graph*                 /* read graph into nauty format, and allocate enough memory for the species nodes */
+readggcrn(FILE *f, graph *g, int reqm, int *pm, int *pn, booleann *digraph, int speciesCount) 
+/* graph6, digraph6 and sparse6 formats are supported 
+   f = an open file 
+   g = place to put the answer (NULL for dynamic allocation) 
+   reqm = the requested value of m (0 => compute from n) 
+   *pm = the actual value of m 
+   *pn = the value of n 
+   *digraph = whether the input is a digraph
+*/
+{
+    char *s,*p;
+    int m,n;
+
+    if ((readg_line = gtools_getline(f)) == NULL) return NULL;
+
+    s = readg_line;
+    if (s[0] == ':')
+    {
+        readg_code = SPARSE6;
+        *digraph = FALSE;
+        p = s + 1;
+    }
+    else if (s[0] == '&')
+    {
+  readg_code = DIGRAPH6;
+        *digraph = TRUE;
+  p = s + 1;
+    }
+    else
+    {
+        readg_code = GRAPH6;
+        *digraph = FALSE;
+        p = s;
+    }
+
+    while (*p >= BIAS6 && *p <= MAXBYTE) 
+        ++p;
+    if (*p == '\0')
+        gt_abort(">E readgg: missing newline\n");
+    else if (*p != '\n')
+        gt_abort(">E readgg: illegal character\n");
+
+    n = graphsize(s);
+    if (readg_code == GRAPH6 && p - s != G6LEN(n))
+        gt_abort(">E readgg: truncated graph6 line\n");
+    if (readg_code == DIGRAPH6 && p - s != D6LEN(n))
+        gt_abort(">E readgg: truncated digraph6 line\n");
+
+    if (reqm > 0 && TIMESWORDSIZE(reqm) < n)
+        gt_abort(">E readgg: reqm too small\n");
+    else if (reqm > 0)
+        m = reqm;
+    else
+        // TODO: add speciesCount when calculating the size of m (the size of the adjacency matrix in multiples of WORDSIZE)
+        m = (n + speciesCount + WORDSIZE - 1) / WORDSIZE;
+
+    // TODO: allocate extra nodes for the species nodes in the encoding (i.e. ALLOCS(n+speciesCount, m*sizeof(graph))
+    if (g == NULL)
+    {
+        if ((g = (graph*)ALLOCS(n + speciesCount,m*sizeof(graph))) == NULL)
+            gt_abort(">E readgg: malloc failed\n");
+    }
+
+    *pn = n;
+    *pm = m;
+
+    stringtograph(s,g,m);
+    return g;
+}
+
+/***********************************************************************/
 
 graph*                 /* read undirected graph into nauty format */
 readg(FILE *f, graph *g, int reqm, int *pm, int *pn) 
@@ -983,7 +1064,7 @@ readg(FILE *f, graph *g, int reqm, int *pm, int *pn)
    Only allows undirected graphs.
 */
 {
-    boolean digraph;
+    booleann digraph;
     graph *gg;
 
     gg = readgg(f,g,reqm,pm,pn,&digraph);
@@ -1051,7 +1132,7 @@ checkgline(char *s)
 
 graph*                 /* read graph into nauty format */
 readgg_inc(FILE *f, graph *g, int reqm, int *pm, int *pn,
- 	  graph *prevg, int prevm, int prevn, boolean *digraph) 
+ 	  graph *prevg, int prevm, int prevn, booleann *digraph) 
 /* graph6, digraph6 and sparse6 formats are supported 
    f = an open file 
    g = place to put the answer (NULL for dynamic allocation) 
@@ -1155,7 +1236,7 @@ readg_inc(FILE *f, graph *g, int reqm, int *pm, int *pn,
    input is a sparse6 increment.
 */
 {
-    boolean digraph;
+    booleann digraph;
     graph *gg;
 
     gg = readgg_inc(f,g,reqm,pm,pn,prevg,prevm,prevn,&digraph);
@@ -1180,7 +1261,7 @@ stringtosparsegraph(char *s, sparsegraph *sg, int *nloops)
     int *d,*e;
     size_t *v;
     int loops;
-    boolean done;
+    booleann done;
 
     n = graphsize(s);
 
@@ -1446,7 +1527,7 @@ stringtosparsegraph(char *s, sparsegraph *sg, int *nloops)
 /***********************************************************************/
 
 sparsegraph*               /* read graph into sparsegraph format */
-read_sgg_loops(FILE *f, sparsegraph *sg, int *nloops, boolean *digraph) 
+read_sgg_loops(FILE *f, sparsegraph *sg, int *nloops, booleann *digraph) 
 /* graph6, digraph6 and sparse6 formats are supported
  * f = an open file
  * sg = place to put the answer (NULL for dynamic allocation) 
@@ -1520,7 +1601,7 @@ read_sg_loops(FILE *f, sparsegraph *sg, int *nloops)
  */
 {
     sparsegraph *sgg;
-    boolean digraph;
+    booleann digraph;
 
     sgg = read_sgg_loops(f,sg,nloops,&digraph);
     if (!sgg) return NULL;
@@ -1541,7 +1622,7 @@ read_sg(FILE *f, sparsegraph *sg)
 {
     int loops;
     sparsegraph *sgg;
-    boolean digraph;
+    booleann digraph;
 
     sgg = read_sgg_loops(f,sg,&loops,&digraph); 
     if (!sgg) return NULL;
@@ -2445,7 +2526,7 @@ writelast(FILE *f)
 int
 longvalue(char **ps, long *l)
 {
-    boolean neg,pos;
+    booleann neg,pos;
     long sofar,last;
     char *s;
 
@@ -2490,7 +2571,7 @@ longvalue(char **ps, long *l)
 int
 doublevalue(char **ps, double *l)
 {
-    boolean neg,pos;
+    booleann neg,pos;
     double sofar,weight;
     char *s;
 
@@ -2592,7 +2673,7 @@ arg_double(char **ps, double *val, char *id)
 
 /************************************************************************/
 
-boolean
+booleann
 strhaschar(char *s, int c)
 /* Check if s contains c.  Saves the bother of figuring out whether
   strchr() is available, or index() or whatever.  */

@@ -7,7 +7,7 @@
 
 void
 degstats(graph *g, int m, int n, unsigned long *edges, int *mindeg,
-     int *mincount, int *maxdeg, int *maxcount, boolean *eulerian)
+     int *mincount, int *maxdeg, int *maxcount, booleann *eulerian)
 /* Compute degree-related graph properties.
    *edges = number of edges
    *mindeg, *mincount = minimum degree and how many there are
@@ -124,11 +124,11 @@ degstats3(graph *g, int m, int n, unsigned long *edges, int *mindeg,
 /**************************************************************************/
 
 void
-degstats2(graph *g, boolean digraph, int m, int n,
+degstats2(graph *g, booleann digraph, int m, int n,
      unsigned long *edges, int *loops,
      int *minindeg, int *minincount, int *maxindeg, int *maxincount,
      int *minoutdeg, int *minoutcount, int *maxoutdeg, int *maxoutcount,
-     boolean *eulerian)
+     booleann *eulerian)
 /* Compute degree-related graph properties.
    *edges = number of edges (including loops), directed edges for digraphs
    *loops = number of loops
@@ -304,7 +304,7 @@ degstats2(graph *g, boolean digraph, int m, int n,
 
 /*********************************************************************/
 
-boolean
+booleann
 isconnected1(graph *g, int n)
 /* test if g is connected (m=1) */
 {
@@ -328,7 +328,7 @@ isconnected1(graph *g, int n)
 
 /**************************************************************************/
 
-boolean
+booleann
 isconnected(graph *g, int m, int n)
 /* Test if g is connected */
 {
@@ -375,7 +375,7 @@ isconnected(graph *g, int m, int n)
 
 /**************************************************************************/
  
-boolean
+booleann
 issubconnected(graph *g, set *sub, int m, int n)
 /* Test if the subset of g induced by sub is connected. Empty is connected. */
 /* Note that the value for empty subgraphs disagrees with isconnected() */
@@ -429,7 +429,7 @@ issubconnected(graph *g, set *sub, int m, int n)
  
 /**********************************************************************/
  
-boolean
+booleann
 isbiconnected1(graph *g, int n)
 /* Test if g is biconnected; version for m=1. */
 {
@@ -478,7 +478,7 @@ isbiconnected1(graph *g, int n)
 }
 /**********************************************************************/
  
-boolean
+booleann
 isbiconnected(graph *g, int m, int n)
 /* test if g is biconnected */
 {
@@ -540,7 +540,7 @@ isbiconnected(graph *g, int m, int n)
 
 /**************************************************************************/
 
-boolean
+booleann
 twocolouring(graph *g, int *colour, int m, int n)
 /* If g is bipartite, set colour[*] to 0 or 1 to indicate an example
    of 2-colouring and return TRUE.  Otherwise return FALSE.
@@ -625,7 +625,7 @@ twocolouring(graph *g, int *colour, int m, int n)
 
 /**************************************************************************/
 
-boolean
+booleann
 isbipartite(graph *g, int m, int n)
 /* Test if g is bipartite */
 {
@@ -649,7 +649,7 @@ bipartiteside(graph *g, int m, int n)
     some 2-coluring.  Note that this is not isomorphism-invariant
     if g is disconnected. */
 {
-    boolean isbip;
+    booleann isbip;
     int i,sz;
 #if MAXN
     int colour[MAXN];

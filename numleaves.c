@@ -14,8 +14,8 @@
 
 #include "gtools.h"
 
-boolean
-numleaves(graph *g, boolean digraph, long Qlo, long Qhi, int m, int n)
+booleann
+numleaves(graph *g, booleann digraph, long Qlo, long Qhi, int m, int n)
 {
     int i,leaves;
     set *gi;

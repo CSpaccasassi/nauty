@@ -41,14 +41,14 @@ extern "C" {
 extern void freeschreier(schreier **gp, permnode **gens);
 extern void addpermutation(permnode **ring, int *p, int n); 
 extern permnode *findpermutation(permnode *gens, int *p, int n);
-extern boolean addgenerator(schreier **gp, permnode **gens, int *p, int n);
-extern boolean
+extern booleann addgenerator(schreier **gp, permnode **gens, int *p, int n);
+extern booleann
 	condaddgenerator(schreier **gp, permnode **gens, int *p, int n);
-extern boolean expandschreier(schreier *gp, permnode **gens, int n);
+extern booleann expandschreier(schreier *gp, permnode **gens, int n);
 extern int *getorbits(int *fix, int nfix,
 		 schreier *gp, permnode **gens, int n);
 extern int getorbitsmin(int *fix, int nfix, schreier *gp, permnode **gens,
-		 int **orbits, int *cell, int ncell, int n, boolean changed);
+		 int **orbits, int *cell, int ncell, int n, booleann changed);
 extern void pruneset(set *fixset, schreier *gp, permnode **gens,
 		      set *x, int m, int n);
 extern void newgroup(schreier **gp, permnode **gens, int n);

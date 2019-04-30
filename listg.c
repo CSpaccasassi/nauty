@@ -70,11 +70,11 @@ extern int labelorg;
 
 static void
 putsetx(FILE *f, set *set1, int *curlenp, int linelength, int m,
-        boolean compress, int start)
+        booleann compress, int start)
 {
     int slen,j1,j2;
     char s[40];
-    boolean first;
+    booleann first;
 
     first = TRUE;
     j1 = start;
@@ -126,7 +126,7 @@ putsetx(FILE *f, set *set1, int *curlenp, int linelength, int m,
 *****************************************************************************/
 
 static void
-putgraphx(FILE *f, graph *g, int linelength, boolean triang, int m, int n)
+putgraphx(FILE *f, graph *g, int linelength, booleann triang, int m, int n)
 {
     int i,curlen;
     set *pg;
@@ -143,8 +143,8 @@ putgraphx(FILE *f, graph *g, int linelength, boolean triang, int m, int n)
 /***************************************************************************/
 
 static void
-putedges(FILE *f, graph *g, boolean ptn, int linelength, 
-         boolean digraph, int m, int n)
+putedges(FILE *f, graph *g, booleann ptn, int linelength, 
+         booleann digraph, int m, int n)
 /* Write list of edges, preceded by the numbers of vertices and
    edges and optionally by "1" if "ptn" is TRUE.  Use labelorg */
 {
@@ -213,7 +213,7 @@ putHCP(FILE *f, graph *g, int m, int n)
 /***************************************************************************/
 
 static void
-putcgraph(FILE *f, graph *g, int linelength, boolean digraph, int m, int n)
+putcgraph(FILE *f, graph *g, int linelength, booleann digraph, int m, int n)
 /* write compressed form, using labelorg */
 {
     int i,curlen,j0;
@@ -253,7 +253,7 @@ putcgraph(FILE *f, graph *g, int linelength, boolean digraph, int m, int n)
 /**************************************************************************/
 
 static void
-putve(FILE *f, unsigned long id, graph *g, boolean digraph, int m, int n)
+putve(FILE *f, unsigned long id, graph *g, booleann digraph, int m, int n)
 /* Write the numbers of vertices and edges */
 {
     unsigned long ne;
@@ -275,7 +275,7 @@ putGRAPE(FILE *f, graph *g, int m, int n)
 {
     int i,j;
     setword *pg;
-    boolean first;
+    booleann first;
 
     fprintf(f,
        "rec( isGraph:=true, order:=%d, group:=Group([],()),\n",n);
@@ -326,7 +326,7 @@ putdotty(FILE *f, graph *g, unsigned long id, char *extras, int m, int n)
 /**************************************************************************/
 
 static void
-putbliss(FILE *f, unsigned long id, boolean qswitch, graph *g, int m, int n)
+putbliss(FILE *f, unsigned long id, booleann qswitch, graph *g, int m, int n)
 /* Write the graph in Bliss format, according to
  *      http://www.tcs.hut.fi/Software/bliss/fileformat.shtml */
 {
@@ -351,13 +351,13 @@ putbliss(FILE *f, unsigned long id, boolean qswitch, graph *g, int m, int n)
 /**************************************************************************/
 
 static void
-putam(FILE *f, graph *g, int linelength, boolean space,
-    boolean triang, int m, int n)
+putam(FILE *f, graph *g, int linelength, booleann space,
+    booleann triang, int m, int n)
 /* write adjacency matrix */
 {
     set *gi;
     int i,j;
-    boolean first;
+    booleann first;
 
     for (i = 0, gi = (set*)g; i < n - (triang!=0); ++i, gi += m)
     {
@@ -376,12 +376,12 @@ putam(FILE *f, graph *g, int linelength, boolean space,
 /**************************************************************************/
 
 static void
-putMagma(FILE *outfile, graph *g, int linelength, boolean digraph,
+putMagma(FILE *outfile, graph *g, int linelength, booleann digraph,
          int m, int n, long index)
 {
     int i,j,j0;
     set *gi;
-    boolean first;
+    booleann first;
 
     fprintf(outfile,"g%ld := %s<%d|[\n",
                  index,(digraph?"Digraph":"Graph"),n);
@@ -410,7 +410,7 @@ putMaple(FILE *outfile, graph *g, int linelength, int m, int n, long index)
 {
     int i,j;
     set *gi;
-    boolean first;
+    booleann first;
 
 #if MAPLE_MATRIX
     fprintf(outfile,"f%ld := Matrix(%d,%d,[\n",index,n,n);
@@ -473,7 +473,7 @@ putLaplacianMaple(FILE *outfile, graph *g, int linelength,
 {
     int i,j,d;
     set *gi;
-    boolean first;
+    booleann first;
 
 #if MAPLE_MATRIX
     fprintf(outfile,"f%ld := Matrix(%d,%d,[\n",index,n,n);
@@ -515,14 +515,14 @@ main(int argc, char *argv[])
     int m,n,codetype;
     int argnum,j,nprev,mprev;
     char *arg,sw;
-    boolean badargs,first,digraph;
+    booleann badargs,first,digraph;
     unsigned long maxin;
     long pval1,pval2;
-    boolean fswitch,pswitch,cswitch,dswitch;
-    boolean aswitch,lswitch,oswitch,Fswitch;
-    boolean Aswitch,eswitch,tswitch,qswitch;
-    boolean sswitch,Mswitch,Wswitch,Lswitch,Eswitch;
-    boolean bswitch,Gswitch,yswitch,Yswitch,Hswitch;
+    booleann fswitch,pswitch,cswitch,dswitch;
+    booleann aswitch,lswitch,oswitch,Fswitch;
+    booleann Aswitch,eswitch,tswitch,qswitch;
+    booleann sswitch,Mswitch,Wswitch,Lswitch,Eswitch;
+    booleann bswitch,Gswitch,yswitch,Yswitch,Hswitch;
     int linelength;
     char *infilename,*outfilename,*yarg;
 

@@ -44,14 +44,14 @@ static int edgeno[MAXNV][MAXNV];
 
 static set x[MAXME];
 static int ix[2*MAXNE],nix;
-static boolean first;
+static booleann first;
 static int me;
 static int lastreject[MAXNV];
-static boolean lastrejok;
+static booleann lastrejok;
 static int rejectlevel;
 static unsigned long groupsize;
 static unsigned long newgroupsize;
-static boolean Gswitch,Vswitch,ntgroup,ntisol,digraph6;
+static booleann Gswitch,Vswitch,ntgroup,ntisol,digraph6;
 
 static int splitlevel,splitmod,splitres,splitcount;
 static unsigned long splitcases;
@@ -136,7 +136,7 @@ writeautom(int *p, int n)
 
 /**************************************************************************/
 
-static boolean
+static booleann
 ismax(int *p, int n)
 /* test if x^p <= x */
 {
@@ -200,7 +200,7 @@ static int
 trythisone(grouprec *group, int ne, int n)
 {
     int i,k;
-    boolean accept;
+    booleann accept;
     graph g[WORDSIZE];
 
     first = TRUE;
@@ -289,7 +289,7 @@ trythisone(grouprec *group, int ne, int n)
 
 static int
 scan(int level, int ne, int minarcs, int maxarcs, int sofar,
-    boolean oriented, grouprec *group, int n)
+    booleann oriented, grouprec *group, int n)
 /* Main recursive scan; returns the level to return to. */
 {
     int k,retlev;
@@ -384,7 +384,7 @@ scan(int level, int ne, int minarcs, int maxarcs, int sofar,
 
 static void
 direct(graph *g, int nfixed, long minarcs, long maxarcs,
-       boolean oriented, int m, int n)
+       booleann oriented, int m, int n)
 {
     static DEFAULTOPTIONS_GRAPH(options);
     statsblk stats;
@@ -532,8 +532,8 @@ main(int argc, char *argv[])
     int m,n,codetype;
     int argnum,j,nfixed;
     char *arg,sw;
-    boolean badargs;
-    boolean Tswitch,uswitch,eswitch,qswitch,oswitch,fswitch,sswitch;
+    booleann badargs;
+    booleann Tswitch,uswitch,eswitch,qswitch,oswitch,fswitch,sswitch;
     long minarcs,maxarcs;
     double t;
     char *infilename,*outfilename;

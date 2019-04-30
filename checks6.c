@@ -17,7 +17,7 @@
 
 /***********************************************************************/
 
-static boolean
+static booleann
 seemsbad(char *s)
 /* Check graph string for apparent problem, if so, correct it */
 {
@@ -135,9 +135,9 @@ main(int argc, char *argv[])
 	long nin,nerr;
 	int argnum,j;
 	char *arg,sw,*s;
-	boolean pswitch;
-	boolean wswitch;
-	boolean badargs;
+	booleann pswitch;
+	booleann wswitch;
+	booleann badargs;
 	long pval1,pval2,maxin;
 
 	HELP; PUTVERSION;

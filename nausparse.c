@@ -147,8 +147,8 @@ preparemarks2(size_t nn)
 *                                                                            *
 *****************************************************************************/
 
-boolean
-isautom_sg(graph *g, int *p, boolean digraph, int m, int n)
+booleann
+isautom_sg(graph *g, int *p, booleann digraph, int m, int n)
 {
     int *d,*e;
     size_t *v;
@@ -182,7 +182,7 @@ isautom_sg(graph *g, int *p, boolean digraph, int m, int n)
 *                                                                            *
 *****************************************************************************/
 
-boolean
+booleann
 aresame_sg(sparsegraph *g1, sparsegraph *g2)
 {
     int *d1,*e1;
@@ -643,7 +643,7 @@ refine_sg(graph *g, int *lab, int *ptn, int level, int *numcells,
     int size,bigsize,bigpos;
     int nactive,hitcells;
     int lj,di,splitv;
-    boolean trivsplit;
+    booleann trivsplit;
     size_t *v,vi,ii;
 
     SG_VDE(g,v,d,e);
@@ -1129,8 +1129,8 @@ refine_sg(graph *g, int *lab, int *ptn, int level, int *numcells,
 *                                                                            *
 *****************************************************************************/
 
-boolean
-cheapautom_sg(int *ptn, int level, boolean digraph, int n)
+booleann
+cheapautom_sg(int *ptn, int level, booleann digraph, int n)
 {
     int i,k,nnt;
 
@@ -1267,7 +1267,7 @@ bestcell_sg(graph *g, int *lab, int *ptn, int level,
 
 int
 targetcell_sg(graph *g, int *lab, int *ptn, int level, int tc_level,
-       boolean digraph, int hint, int m, int n)
+       booleann digraph, int hint, int m, int n)
 {
     int i;
 
@@ -1321,7 +1321,7 @@ sortlists_sg(sparsegraph *g)
 *****************************************************************************/
 
 void
-put_sg(FILE *f, sparsegraph *sg, boolean digraph, int linelength)
+put_sg(FILE *f, sparsegraph *sg, booleann digraph, int linelength)
 {
     int *d,*e;
     int n,di;
@@ -1527,7 +1527,7 @@ nauty_to_sg(graph *g, sparsegraph *sg, int m, int n)
 
 void
 distances_sg(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
-         int *invar, int invararg, boolean digraph, int m, int n)
+         int *invar, int invararg, booleann digraph, int m, int n)
 {
     int *d,*e;
     int i,k,dlim,wt;
@@ -1536,7 +1536,7 @@ distances_sg(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
     int head,tail;
     long longcode;
     size_t *v,vi,j;
-    boolean success;
+    booleann success;
 
     SG_VDE(g,v,d,e);
 
@@ -1616,7 +1616,7 @@ distances_sg(graph *g, int *lab, int *ptn, int level, int numcells, int tvpos,
 
 void
 adjacencies_sg(graph *g, int *lab, int *ptn, int level, int numcells,
-               int tvpos, int *invar, int invararg, boolean digraph,
+               int tvpos, int *invar, int invararg, booleann digraph,
                int m, int n)
 {
     int *d,*e;

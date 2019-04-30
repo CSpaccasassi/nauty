@@ -89,9 +89,9 @@ extern "C" {
 
 extern dispatchvec dispatch_sparse;
 
-extern int targetcell_sg(graph*,int*,int*,int,int,boolean,int,int,int);
-extern boolean cheapautom_sg(int*,int,boolean,int);
-extern boolean isautom_sg(graph*,int*,boolean,int,int);
+extern int targetcell_sg(graph*,int*,int*,int,int,booleann,int,int,int);
+extern booleann cheapautom_sg(int*,int,booleann,int);
+extern booleann isautom_sg(graph*,int*,booleann,int,int);
 extern void refine_sg(graph*,int*,int*,int,int*,int*,set*,int*,int,int);
 extern int testcanlab_sg(graph*,graph*,int*,int*,int,int);
 extern void updatecan_sg(graph*,graph*,int*,int,int,int);
@@ -108,8 +108,8 @@ extern void nausparse_check(int,int,int,int);
 extern sparsegraph *nauty_to_sg(graph*,sparsegraph*,int,int);
 extern graph* sg_to_nauty(sparsegraph*,graph*,int,int*);
 extern void sortlists_sg(sparsegraph*);
-extern boolean aresame_sg(sparsegraph*,sparsegraph*);
-extern void put_sg(FILE*,sparsegraph*,boolean,int);
+extern booleann aresame_sg(sparsegraph*,sparsegraph*);
+extern void put_sg(FILE*,sparsegraph*,booleann,int);
 extern sparsegraph *copy_sg(sparsegraph*,sparsegraph*);
 extern void distvals(sparsegraph*,int,int*,int);
 
@@ -117,11 +117,11 @@ extern void sparsenauty(sparsegraph*g,int*,int*,int*,
                         optionblk*,statsblk*,sparsegraph*);
 
 extern void
-   adjacencies_sg(graph*,int*,int*,int,int,int,int*,int,boolean,int,int);
+   adjacencies_sg(graph*,int*,int*,int,int,int,int*,int,booleann,int,int);
 extern void
-   distances_sg(graph*,int*,int*,int,int,int,int*,int,boolean,int,int);
+   distances_sg(graph*,int*,int*,int,int,int,int*,int,booleann,int,int);
 extern void
-   distances_sg(graph*,int*,int*,int,int,int,int*,int,boolean,int,int);
+   distances_sg(graph*,int*,int*,int,int,int,int*,int,booleann,int,int);
 
 #ifdef __cplusplus
 }

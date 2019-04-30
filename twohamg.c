@@ -64,7 +64,7 @@ typedef struct p4
 {
     int e1,e2,e3;
     int v1,v2,v3,v4;
-    boolean ok;
+    booleann ok;
 } p4;
 
 DYNALLSTAT(int,bluefarend,bluefarend_sz);   /* Parallel to sg.v */
@@ -82,7 +82,7 @@ DYNALLSTAT(p4,p4list,p4list_sz);  /* List of non-triangular p4s */
 /* vstack is a stack of interesting vertices; onstack says whether a
    vertex is on vstack so that we don't put it there twice */
 DYNALLSTAT(int,vstack,vstack_sz);
-DYNALLSTAT(boolean,onstack,onstack_sz);
+DYNALLSTAT(booleann,onstack,onstack_sz);
 static int *top;
 #define PUSH(v) if (!onstack[v]) { *(top++) = (v); onstack[v] = TRUE; }
 #define POP(v) { v = *(--top); onstack[v] = FALSE; }
@@ -170,7 +170,7 @@ initialise_g(int n, int *e)
     DYNALLOC1(int,bluedeg,bluedeg_sz,n,"malloc");
     DYNALLOC1(int,reddeg,reddeg_sz,n,"malloc");
     DYNALLOC1(int,vstack,vstack_sz,n,"malloc");
-    DYNALLOC1(boolean,onstack,onstack_sz,n,"malloc");
+    DYNALLOC1(booleann,onstack,onstack_sz,n,"malloc");
     DYNALLOC1(int,beste,beste_sz,2*n,"malloc");
 
   /* Randomize e; seems to be no purpose for this any more. */
@@ -244,8 +244,8 @@ initialise_colouring(int n)
 
 /**************************************************************************/
 
-static boolean
-makeblue(int edge, boolean lastok)
+static booleann
+makeblue(int edge, booleann lastok)
 /* Colour WHITE edge BLUE, return success. 
    lastok indicates if it is ok to add the final blue edge */
 {
@@ -274,8 +274,8 @@ makeblue(int edge, boolean lastok)
 
 /**************************************************************************/
 
-static boolean
-makered(int edge, boolean lastok)
+static booleann
+makered(int edge, booleann lastok)
 /* Colour WHITE edge RED, return success. 
    lastok indicates if it is ok to add the final red edge */
 {
@@ -304,7 +304,7 @@ makered(int edge, boolean lastok)
 
 /**************************************************************************/
 
-static boolean
+static booleann
 propagate(int n, int *e, int *nblue, int *nred)
 /* Look at active vertices and propagate colourings */
 {
@@ -499,7 +499,7 @@ fishtail(int n, int *nblue, int *nred)
 static int
 searchnode(int level, int n, int *e, int nblue, int nred)
 {
-    boolean ok;
+    booleann ok;
     int i,status,nbest;
     addrval *valptr;
     int best,score,bestscore;
@@ -607,7 +607,7 @@ dispatchsearch(int n, int *e, int nblue, int nred)
 {
     int i,status;
     addrval *valptr;
-    boolean ok;
+    booleann ok;
     nauty_counter remaininglimit;
 
     ok = propagate(n,e,&nblue,&nred);
@@ -789,7 +789,7 @@ iscrossdecomposable(sparsegraph sg, int vertex)
 /**************************************************************************/
 
 static int
-p4decomposition(sparsegraph sg, int vertex, boolean vertical)
+p4decomposition(sparsegraph sg, int vertex, booleann vertical)
 /* Test which non-triangular P4s extend to a decomposition.
    Return -2: timeout
           -1: not decomposable at all
@@ -898,9 +898,9 @@ main(int argc, char *argv[])
     int n,codetype;
     int argnum,i,j,outcode;
     char *arg,sw;
-    boolean badargs;
-    boolean sswitch,gswitch,qswitch,vswitch,xswitch,Xswitch;
-    boolean pswitch,Lswitch,tswitch,yswitch,Yswitch;
+    booleann badargs;
+    booleann sswitch,gswitch,qswitch,vswitch,xswitch,Xswitch;
+    booleann pswitch,Lswitch,tswitch,yswitch,Yswitch;
     long Lvalue;
     double t;
     char *infilename,*outfilename;

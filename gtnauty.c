@@ -13,7 +13,7 @@
 
 #include "gtools.h"   /* which includes naututil.h, nausparse.h, stdio.h */
 
-static boolean issymm;
+static booleann issymm;
 static set *g0;
 static int gm;
 static int fuzz2[] = {006532,070236,035523,062437};
@@ -119,7 +119,7 @@ setlabptnfmt(char *fmt, int *lab, int *ptn, set *active, int m, int n)
 
 /**************************************************************************/
 
-static boolean
+static booleann
 hasloops(graph *g, int m, int n)
 /* Test for loops */
 {
@@ -132,7 +132,7 @@ hasloops(graph *g, int m, int n)
     return FALSE;
 }
 
-static boolean
+static booleann
 hasloops_sg(sparsegraph *sg)
 {
     size_t *v,vi,j;
@@ -151,7 +151,7 @@ hasloops_sg(sparsegraph *sg)
 }
 
 void
-fcanonise(graph *g, int m, int n, graph *h, char *fmt, boolean digraph)
+fcanonise(graph *g, int m, int n, graph *h, char *fmt, booleann digraph)
 /*  canonise g under format fmt; result in h.
    fmt is either NULL (for no vertex classification) or is a string
    with char-valued colours for the vertices.  If it ends early, it
@@ -229,8 +229,8 @@ fcanonise(graph *g, int m, int n, graph *h, char *fmt, boolean digraph)
 void
 fcanonise_inv(graph *g, int m, int n, graph *h, char *fmt,
    void (*invarproc)(graph*,int*,int*,int,int,int,int*,int,
-    boolean,int,int), int mininvarlevel, int maxinvarlevel,
-    int invararg, boolean digraph)
+    booleann,int,int), int mininvarlevel, int maxinvarlevel,
+    int invararg, booleann digraph)
 /* Canonise g under format fmt; result in h.
    fmt is either NULL (for no vertex classification) or is a string
    with char-valued colours for the vertices.  If it ends early, it
@@ -315,8 +315,8 @@ fcanonise_inv(graph *g, int m, int n, graph *h, char *fmt,
 void
 fcanonise_inv_sg(sparsegraph *g, int m, int n, sparsegraph *h, char *fmt,
    void (*invarproc)(graph*,int*,int*,int,int,int,int*,int,
-    boolean,int,int), int mininvarlevel, int maxinvarlevel,
-    int invararg, boolean digraph)
+    booleann,int,int), int mininvarlevel, int maxinvarlevel,
+    int invararg, booleann digraph)
 /*  canonise g under format fmt; result in h.
    fmt is either NULL (for no vertex classification) or is a string
    with char-valued colours for the vertices.  If it ends early, it
@@ -424,7 +424,7 @@ fgroup(graph *g, int m, int n, char *fmt, int *orbits, int *numorbits)
     int i,j;
     int orbrep;
     int numcells,code;
-    boolean digraph;
+    booleann digraph;
     statsblk stats;
     static DEFAULTOPTIONS_GRAPH(options);
 
@@ -500,7 +500,7 @@ fgroup(graph *g, int m, int n, char *fmt, int *orbits, int *numorbits)
 void
 fgroup_inv(graph *g, int m, int n, char *fmt, int *orbits, int *numorbits,
       void (*invarproc)(graph*,int*,int*,int,int,int,int*,int,
-       boolean,int,int), int mininvarlevel, int maxinvarlevel, int invararg)  
+       booleann,int,int), int mininvarlevel, int maxinvarlevel, int invararg)  
 /* Find the orbits of undirected graph g stabilised by format fmt.
    The orbits are put into orbits[] and the number of them into *numorbits
    fmt is either NULL (for no vertex classification) or is a string
@@ -523,7 +523,7 @@ fgroup_inv(graph *g, int m, int n, char *fmt, int *orbits, int *numorbits,
 #endif
     int i,j;
     int orbrep;
-    boolean digraph;
+    booleann digraph;
     int numcells,code;
     statsblk stats;
     static DEFAULTOPTIONS_GRAPH(options);

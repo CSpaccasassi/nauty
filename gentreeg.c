@@ -292,7 +292,7 @@ WriteIt(int level)
    (*outproc)(outfile,par,nv);
 }
 
-static boolean
+static booleann
 good( int p, int h, int t ) {
   if (p==2 && mindiam<=2 && t==0) return TRUE;
   if (t == 1) {
@@ -407,8 +407,8 @@ main(int argc, char *argv[])
 #endif
 {
         char *arg;
-        boolean badargs,uswitch,sswitch,pswitch,lswitch,Zswitch;
-        boolean qswitch,Dswitch,gotmr,gotf;
+        booleann badargs,uswitch,sswitch,pswitch,lswitch,Zswitch;
+        booleann qswitch,Dswitch,gotmr,gotf;
         long Z1,Z2;
 	char *outfilename,sw;
         int i,j,argnum;

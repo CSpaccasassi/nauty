@@ -41,8 +41,8 @@ main(int argc, char *argv[])
 	int m,n,c;
 	int argnum,j,outcode,initorg;
 	char *arg,sw;
-	boolean badargs,prompt,digraph;
-	boolean zswitch,sswitch,gswitch,oswitch,nswitch,hswitch,qswitch;
+	booleann badargs,prompt,digraph;
+	booleann zswitch,sswitch,gswitch,oswitch,nswitch,hswitch,qswitch;
 	char *infilename,*outfilename;
 	FILE *infile,*outfile;
 	nauty_counter nin;

@@ -990,7 +990,7 @@ hasin(cubgraph cub, int n, int ne, int *x0, int *x1, int limit)
 /* test if cub has "in" property */
 {
 	edgevec v1,v2,initclass,outclass;
-	boolean done[MAXNE];
+	booleann done[MAXNE];
 	int i,ii;
 	int nbad;
 	
@@ -1028,7 +1028,7 @@ hasin(cubgraph cub, int n, int ne, int *x0, int *x1, int limit)
 
 /**************************************************************************/
 
-static boolean
+static booleann
 eplus(cubgraph acub, int n, int ne, int x, int y, int *pwhy)
 {
         cubgraph cub;
@@ -1126,12 +1126,12 @@ eplus(cubgraph acub, int n, int ne, int x, int y, int *pwhy)
 
 static int
 hase34(cubgraph cub,
-       int n, int ne, int *x0, int *x1, int *why, boolean plus, int limit)
+       int n, int ne, int *x0, int *x1, int *why, booleann plus, int limit)
 /* test if cub has "e34" property */
 {
 	edgevec v1,v2,initclass,outclass;
 	int ea[4*MAXNE],eb[4*MAXNE],ec[4*MAXNE];
-	boolean done[4*MAXNE];
+	booleann done[4*MAXNE];
 	int count[MAXNE];
 	int i,ii;
 	int vi,nbad,pluswhy;
@@ -1217,7 +1217,7 @@ oldhasout(cubgraph cub, int n, int ne, int *x0, int *x1, int limit)
 /* test if cub has "out" property */
 {
         edgevec v1,v2,initclass,outclass;
-        boolean done[MAXNE];
+        booleann done[MAXNE];
         int i,ii;
         int nbad;
         
@@ -1324,7 +1324,7 @@ hasout(cubgraph cub, int n, int ne, int weight, int *x0, int *x1, int limit)
 
 /**************************************************************************/
 
-static boolean
+static booleann
 biconnected_cub(cubgraph cub, int n)
 /* test whether cub is biconnected */
 {
@@ -1382,7 +1382,7 @@ biconnected_cub(cubgraph cub, int n)
 
 /**************************************************************************/
 
-static boolean
+static booleann
 biconnected_cub_v(cubgraph cub, int vv, int n)
 /* test whether cub-vv is biconnected */
 {
@@ -1442,7 +1442,7 @@ biconnected_cub_v(cubgraph cub, int vv, int n)
 
 /**************************************************************************/
 
-static boolean
+static booleann
 biconnected_v(graph *g, int vv, int m, int n)
 /* test whether g-vv is biconnected */
 /* version for arbitrary sizes */
@@ -1512,7 +1512,7 @@ biconnected_v(graph *g, int vv, int m, int n)
 
 /**************************************************************************/
 
-static boolean
+static booleann
 triconnected_cub(cubgraph cub, int n)
 /* test whether triconnected; awfully inefficient */
 {
@@ -1528,7 +1528,7 @@ triconnected_cub(cubgraph cub, int n)
 
 /**************************************************************************/
 
-static boolean
+static booleann
 gtocub(graph *g, int m, int n, cubgraph cub, int *pne)
 /* Convert nauty-format graph into cubgraph.  Returns FALSE if there
  * are any vertices of degree 4 or more.
@@ -1562,7 +1562,7 @@ gtocub(graph *g, int m, int n, cubgraph cub, int *pne)
 
 /**************************************************************************/
 
-static boolean
+static booleann
 sgtocub(sparsegraph *sg, cubgraph cub, int *pne)
 /* Convert sparse-format graph into cubgraph.  Returns FALSE if there
  * are any vertices of degree 4 or more.
@@ -1598,8 +1598,8 @@ main(int argc, char *argv[])
 {
         char *infilename,*outfilename;
         FILE *infile,*outfile,*msgfile;
-        boolean badargs,biconn,triconn,fragment;
-	boolean in,out,inin,inout,e34,e34plus,testing;
+        booleann badargs,biconn,triconn,fragment;
+	booleann in,out,inin,inout,e34,e34plus,testing;
         nauty_counter numread,noncub,nonham,nonconn,numto;
         int ch,weight,m,n,ne,i,namesgot,nl;
 	int nbad,limit,x0[BADLIM],x1[BADLIM],y0[BADLIM],y1[BADLIM];

@@ -41,7 +41,7 @@ static TLS_ATTR int schreierfails = SCHREIERFAILS;
 
 #define TMP
 
-static boolean filterschreier(schreier*,int*,permnode**,boolean,int,int);
+static booleann filterschreier(schreier*,int*,permnode**,booleann,int,int);
 #define PNCODE(x) ((int)(((size_t)(x)>>3)&0xFFFUL))
 
 /* #define TESTP(id,p,n) testispermutation(id,p,n) */
@@ -322,7 +322,7 @@ addpermutationunmarked(permnode **ring, int *p, int n)
 
 /************************************************************************/
 
-boolean
+booleann
 addgenerator(schreier **gp, permnode **ring, int *p, int n)
 /* Add new permutation to group, unless it is discovered to be
  * already in the group.  It is is possible to be in the group
@@ -336,7 +336,7 @@ addgenerator(schreier **gp, permnode **ring, int *p, int n)
 
 /************************************************************************/
 
-boolean
+booleann
 condaddgenerator(schreier **gp, permnode **ring, int *p, int n)
 /* Add new permutation to group, unless it is discovered to be
  * already in the group.  It is is possible to be in the group
@@ -539,9 +539,9 @@ applyperm(int *wp, int *p, int k, int n)
 
 /************************************************************************/
 
-static boolean
+static booleann
 filterschreier(schreier *gp, int *p, permnode **ring,
-               boolean ingroup, int maxlevel, int n)
+               booleann ingroup, int maxlevel, int n)
 /* Filter permutation p up to level maxlevel of gp.
  * Use ingroup=TRUE if p is known to be in the group, otherwise
  * at least one equivalent generator is added unless it is proved
@@ -554,7 +554,7 @@ filterschreier(schreier *gp, int *p, permnode **ring,
     schreier *sh;
     int *orbits,*pwr;
     permnode **vec,*curr;
-    boolean changed,lchanged,ident;
+    booleann changed,lchanged,ident;
 #if !MAXN
     DYNALLOC1(int,workperm,workperm_sz,n,"filterschreier");
 #endif
@@ -656,13 +656,13 @@ filterschreier(schreier *gp, int *p, permnode **ring,
 
 /************************************************************************/
 
-boolean
+booleann
 expandschreier(schreier *gp, permnode **ring, int n)
 /* filter random elements until schreierfails failures.
  * Return true if it ever expanded. */
 {
     int i,j,nfails,wordlen,skips;
-    boolean changed;
+    booleann changed;
     permnode *pn;
 #if !MAXN
     DYNALLOC1(int,workperm2,workperm2_sz,n,"expandschreier");
@@ -749,7 +749,7 @@ getorbits(int *fix, int nfix, schreier *gp, permnode **ring, int n)
 
 int
 getorbitsmin(int *fix, int nfix, schreier *gp, permnode **ring,
-         int **orbits, int *cell, int ncell, int n, boolean changed)
+         int **orbits, int *cell, int ncell, int n, booleann changed)
 /* If the basis elements fix[0..nfix-1] are minimal in their orbits,
  * as far as we know, return value nfix and set *orbits to point
  * to orbits fixing fix[0..nfix-1]. If fix[i] is seen to be not

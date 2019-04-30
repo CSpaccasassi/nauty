@@ -27,11 +27,11 @@
 #include "schreier.h" 
 
 typedef struct TracesOptions {
-	boolean getcanon;
-	boolean writeautoms;
-	boolean cartesian;
-	boolean digraph;
-	boolean defaultptn;
+	booleann getcanon;
+	booleann writeautoms;
+	booleann cartesian;
+	booleann digraph;
+	booleann defaultptn;
 	int linelength;
 	FILE* outfile;
 	int strategy;    /* Only the value 0 is supported in this version. */
@@ -39,7 +39,7 @@ typedef struct TracesOptions {
 	permnode **generators;
     void (*userautomproc)(int,int*,int);
     int  (*usercanonproc)(graph*,int*,graph*,int,int,int,int);
-    boolean weighted;
+    booleann weighted;
 } TracesOptions;
 
 #define DEFAULTOPTIONS_TRACES(opts) TracesOptions opts \

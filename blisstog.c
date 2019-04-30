@@ -29,7 +29,7 @@ nextchar(FILE *f)
     else                        return s[0];
 }
 
-static boolean
+static booleann
 readblissgraph(FILE *f, sparsegraph *g)
 /* Reads a graph from Bliss format into a sparse graph */
 {
@@ -139,7 +139,7 @@ main(int argc, char *argv[])
     int j,firstarg;
     SG_DECL(g);
     size_t flen;
-    boolean ispipe;
+    booleann ispipe;
     int nmin,nmax;
     char zcmd[515];
 
