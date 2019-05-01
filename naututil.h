@@ -273,7 +273,11 @@ extern void unitptn(int*,int*,int*,int);
 
 #ifndef NAUTY_SEED_DEFINED
 #if HAVE_GETTIMEOFDAY
+#ifdef _WIN32
+#include <time.h>
+#else
 #include <sys/time.h>
+#endif
 #define INITSEED \
 {struct timeval nauty_tv; \
  gettimeofday(&nauty_tv,NULL); \
@@ -290,7 +294,11 @@ extern void unitptn(int*,int*,int*,int);
 
 #ifndef NAUTY_REALTIME_DEFINED
 #if HAVE_GETTIMEOFDAY
+#ifdef _WIN32
+#include <time.h>
+#elif
 #include <sys/time.h>
+#endif
 #define REALTIMEDEFS struct timeval nauty_rtv;
 #define NAUTYREALTIME (gettimeofday(&nauty_rtv,NULL), \
  (double)(nauty_rtv.tv_sec + 1e-6 * nauty_rtv.tv_usec))

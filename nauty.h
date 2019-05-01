@@ -11,6 +11,10 @@ creating nauty.h out of nauty-h.in.  If configure is not being used,
 it is necessary to check they are correct.
 ====================================================================*/
 
+#ifdef _WIN32
+#include <intrin.h>
+#endif
+
 /* Check whether various headers or options are available */
 #define HAVE_UNISTD_H  1    /* <unistd.h> */
 #define HAVE_SYSTYPES_H  1    /* <sys/types.h> */
@@ -48,10 +52,15 @@ it is necessary to check they are correct.
 #endif
 
 /* Support of gcc extensions __builtin_clz, __builtin_clzl, __builtin_clzll */
+#ifdef _WIN32
+#define HAVE_CLZ 0
+#define HAVE_CLZL 0
+#define HAVE_CLZLL 0
+#else
 #define HAVE_CLZ 1
 #define HAVE_CLZL 1
 #define HAVE_CLZLL 1
-
+#endif
 /* Support of gcc extensions
       __builtin_popcount, __builtin_popcountl, __builtin_popcountll
    Note that these may only be fast if the compiler switch -mpopcnt is used.
@@ -172,8 +181,8 @@ it is necessary to check they are correct.
 *       28-Nov-96 : - include sys/types.h if not ANSI (tentative!)           *
 *       24-Jan-97 : - and stdlib.h if ANSI                                   *
 *                   - removed use of cfree() from UNIX variants              *
-*       25-Jan-97 : - changed options.getcanon from booleann to int           *
-*                     Backwards compatibility is ok, as booleann and int      *
+*       25-Jan-97 : - changed options.getcanon from boolean to int           *
+*                     Backwards compatibility is ok, as boolean and int      *
 *                     are the same.  Now getcanon=2 means to get the label   *
 *                     and not care about the group.  Sometimes faster.       *
 *        6-Feb-97 : - Put in #undef for FALSE and TRUE to cope with          *
@@ -336,7 +345,9 @@ it is necessary to check they are correct.
 #include <sys/types.h>
 #endif
 #if HAVE_UNISTD_H
+#ifndef _WIN32
 #include <unistd.h>
+#endif
 #endif
 #if HAVE_STDDEF_H
 #include <stddef.h>
@@ -825,6 +836,7 @@ typedef int nvector,np2vector;
 
     /* typedefs for sets, graphs, permutations, etc.: */
 
+// redefining "boolean" to "booleann" to avoid clashes with MinGW's definition of boolean
 typedef int booleann;    /* booleann MUST be the same as int */
 
 #define UPROC void      /* obsolete */

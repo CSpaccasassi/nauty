@@ -11,6 +11,10 @@ creating nauty.h out of nauty-h.in.  If configure is not being used,
 it is necessary to check they are correct.
 ====================================================================*/
 
+#ifdef _WIN32
+#include <intrin.h>
+#endif
+
 /* Check whether various headers or options are available */
 #define HAVE_UNISTD_H  @header_unistd_h@    /* <unistd.h> */
 #define HAVE_SYSTYPES_H  @header_sys_types_h@    /* <sys/types.h> */
@@ -48,9 +52,15 @@ it is necessary to check they are correct.
 #endif
 
 /* Support of gcc extensions __builtin_clz, __builtin_clzl, __builtin_clzll */
+#ifdef _WIN32
+#define HAVE_CLZ 0
+#define HAVE_CLZL 0
+#define HAVE_CLZLL 0
+#else
 #define HAVE_CLZ @have_clz@
 #define HAVE_CLZL @have_clzl@
 #define HAVE_CLZLL @have_clzll@
+#endif
 
 /* Support of gcc extensions
       __builtin_popcount, __builtin_popcountl, __builtin_popcountll
@@ -336,7 +346,9 @@ it is necessary to check they are correct.
 #include <sys/types.h>
 #endif
 #if HAVE_UNISTD_H
+#ifndef _WIN32
 #include <unistd.h>
+#endif
 #endif
 #if HAVE_STDDEF_H
 #include <stddef.h>
