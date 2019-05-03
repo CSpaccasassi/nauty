@@ -15,8 +15,13 @@ TLS_ATTR size_t ogf_linelen;
 TLS_ATTR booleann is_pipe;
 
 #if HAVE_FSEEKO
+#ifdef _WIN32
+#define FSEEK_VER _fseeki64
+#define FTELL_VER _ftelli64
+#else
 #define FSEEK_VER fseeko
 #define FTELL_VER ftello
+#endif
 #define OFF_T_VER off_t
 #else
 #if !FTELL_DEC
