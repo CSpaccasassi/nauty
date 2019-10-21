@@ -985,7 +985,7 @@ readgg(FILE *f, graph *g, int reqm, int *pm, int *pn, booleann *digraph)
 
 /***********************************************************************/
 graph*                 /* read graph into nauty format, and allocate enough memory for the species nodes */
-readggcrn(FILE *f, graph *g, int reqm, int *pm, int *pn, booleann *digraph, int speciesCount) 
+readggcrn(FILE *f, graph *g, int reqm, int *pm, int *pn, booleann *digraph, int speciesCount, int classCount)
 /* graph6, digraph6 and sparse6 formats are supported 
    f = an open file 
    g = place to put the answer (NULL for dynamic allocation) 
@@ -1038,13 +1038,13 @@ readggcrn(FILE *f, graph *g, int reqm, int *pm, int *pn, booleann *digraph, int 
     else if (reqm > 0)
         m = reqm;
     else
-        // TODO: add speciesCount when calculating the size of m (the size of the adjacency matrix in multiples of WORDSIZE)
-        m = (n + speciesCount + WORDSIZE - 1) / WORDSIZE;
+        // add speciesCount when calculating the size of m (the size of the adjacency matrix in multiples of WORDSIZE)
+        m = (n + speciesCount  + classCount + WORDSIZE - 1) / WORDSIZE;
 
-    // TODO: allocate extra nodes for the species nodes in the encoding (i.e. ALLOCS(n+speciesCount, m*sizeof(graph))
+    // allocate extra nodes for the species and class nodes in the encoding (i.e. ALLOCS(n + speciesCount + classCount, m*sizeof(graph))
     if (g == NULL)
     {
-        if ((g = (graph*)ALLOCS(n + speciesCount,m*sizeof(graph))) == NULL)
+        if ((g = (graph*)ALLOCS(n + speciesCount + classCount,m*sizeof(graph))) == NULL)
             gt_abort(">E readgg: malloc failed\n");
     }
 
@@ -2769,19 +2769,19 @@ arg_sequence(char **ps, char *sep,
             fprintf(stderr,">E %s: value too big\n",id);
             gt_abort(NULL);
         }
-	else if (code == ARG_MISSING)
+	      else if (code == ARG_MISSING)
         {
             fprintf(stderr,">E %s: value missing\n",id);
             gt_abort(NULL);
         }
 
-	if (*s == '\0' || !strhaschar(sep,*s))
-	{
-	    *numvals = ival+1;
-	    *ps = s;
-	    return;
-	}
-	++s;
+	      if (*s == '\0' || !strhaschar(s, sep))
+	      {
+	          *numvals = ival+1;
+	          *ps = s;
+	          return;
+	      }
+	      ++s;
     }
     fprintf(stderr,">E %s: too many values\n",id);
     gt_abort(NULL);
